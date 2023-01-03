@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:visiter_app/feature/login/controller/login_controller.dart';
 
+import '../../../Core/routes.dart';
+
 class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
@@ -33,7 +35,8 @@ class LoginView extends GetView<LoginController> {
                     ),
                     Image.asset(
                       "assets/Image/visitor-management.jpg",
-                      width: 600,
+                      width: 400,
+                      height: 150,
                     ),
                     SizedBox(
                       height: 20,
@@ -46,7 +49,7 @@ class LoginView extends GetView<LoginController> {
                               width: 1, color: Colors.blue), //<-- SEE HERE
                         ),
                       ),
-                    controller: controller.emailController,
+                      controller: controller.emailController,
                       onSaved: (value) {
                         controller.email = value!;
                       },
@@ -84,7 +87,8 @@ class LoginView extends GetView<LoginController> {
                           controller.password = value!;
                         },
                         validator: (value) {
-                          controller.isValid(value, 'Enter password');                        },
+                          controller.isValid(value, 'Enter password');
+                        },
                       ),
                     ),
                     SizedBox(
@@ -93,7 +97,22 @@ class LoginView extends GetView<LoginController> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        InkWell(
+                        // InkWell(
+                        //   child: Text(
+                        //     "Forgot password",
+                        //     style: TextStyle(
+                        //         fontSize: 18,
+                        //         fontWeight: FontWeight.bold,
+                        //         color: Colors.blue),
+                        //   ),
+                        //   onTap: () => controller.checkconnl(),
+                        //
+                        // ),
+                        TextButton(
+                          onPressed: () {
+                            controller.checkconnl();
+                            Get.toNamed(Routes.forgetpass);
+                          },
                           child: Text(
                             "Forgot password",
                             style: TextStyle(
@@ -101,8 +120,7 @@ class LoginView extends GetView<LoginController> {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.blue),
                           ),
-                          onTap: () => controller.checkconnl(),
-                        ),
+                        )
                       ],
                     ),
                     SizedBox(
@@ -114,9 +132,7 @@ class LoginView extends GetView<LoginController> {
                           minimumSize: const Size.fromHeight(50),
                           shape: StadiumBorder(), // NEW
                         ),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                         child: Text(
                           'LOGIN',
                           style: TextStyle(

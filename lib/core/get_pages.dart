@@ -20,12 +20,16 @@ import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
 import 'package:visiter_app/feature/splash/binding/splash_binding.dart';
 
+import '../feature/Forgetpass/binding/forget_binding.dart';
+import '../feature/Forgetpass/view/forget_view.dart';
+
 List<GetPage> allpages = [
   GetPage(name: Routes.splash, page: () => SplashView(), binding: SplashBinding()),
   GetPage(name: Routes.intro, page: () => IntroView(), binding: IntroBind()),
   GetPage(name: Routes.dashboard, page: () => DashboardView(), binding: DashboardBinding()),
   GetPage(name: Routes.signup, page: () => SignupView(), binding: SignupBinding()),
   GetPage(name: Routes.login, page: () => LoginView(), binding: LoginBinding()),
+  GetPage(name: Routes.forgetpass, page: () => ForgetView(), binding: ForgetBinding()),
   GetPage(name: Routes.otp, page: () => OtpView(), binding: OtpBinding()),
   GetPage(name: Routes.details, page: () => DetailView(), binding: DetailBinding()),
   GetPage(name: Routes.apiform, page: () => OtpDetail(), binding: OtpDetailBinding()),
