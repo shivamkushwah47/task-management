@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/routes.dart';
 
 class OtpDetailController extends GetxController {
   GlobalKey<FormState> SignupFormKey = GlobalKey<FormState>();
@@ -32,5 +34,13 @@ class OtpDetailController extends GetxController {
       FirebaseFirestore.instance.collection("users").add(userData);
       print("user created by firebase");
     }
+  }
+  signUpEmailPass() {
+    FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailIdController.text, password: passwordController.text).then((value) {
+      Get.offAndToNamed(Routes.login);
+    }).onError((error, stackTrace) {
+      print("Error: ${error.toString()}");
+    });
   }
 }

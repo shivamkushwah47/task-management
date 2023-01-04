@@ -132,7 +132,9 @@ class LoginView extends GetView<LoginController> {
                           minimumSize: const Size.fromHeight(50),
                           shape: StadiumBorder(), // NEW
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          controller.signInEmailPass();
+                        },
                         child: Text(
                           'LOGIN',
                           style: TextStyle(
@@ -164,6 +166,22 @@ class LoginView extends GetView<LoginController> {
                         ),
                       ],
                     ),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue,
+                          minimumSize: const Size.fromHeight(50),
+                          shape: StadiumBorder(), // NEW
+                        ),
+                        onPressed: () {
+                          controller.EmailPassSignout();
+                        },
+                        child: Text(
+                          'Logout',
+                          style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.white),
+                        )),
                   ],
                 ),
               ),

@@ -1,5 +1,6 @@
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:visiter_app/core/routes.dart';
+import 'package:visiter_app/feature/Forgetpass/view/forget_view.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
 import 'package:visiter_app/feature/Introduction/view/introduction_view.dart';
 import 'package:visiter_app/feature/dashboard/binding/dashboard_binding.dart';
@@ -19,9 +20,7 @@ import 'package:visiter_app/feature/splash/view/splash_view.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
 import 'package:visiter_app/feature/splash/binding/splash_binding.dart';
-
 import '../feature/Forgetpass/binding/forget_binding.dart';
-import '../feature/Forgetpass/view/forget_view.dart';
 
 List<GetPage> allpages = [
   GetPage(name: Routes.splash, page: () => SplashView(), binding: SplashBinding()),
