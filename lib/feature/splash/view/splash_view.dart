@@ -13,8 +13,10 @@ class SplashView extends GetView<SplashController> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: AnimatedSplashScreen(
-          splash: Image.asset("assets/Image/taskManageIcon2.png"
+
+          splash: Image.asset("assets/Icon/Task Management.gif"
             ,),
+          splashIconSize: 250,
           nextScreen: IntroView(),
           splashTransition: SplashTransition.slideTransition,
           backgroundColor: Colors.white,
