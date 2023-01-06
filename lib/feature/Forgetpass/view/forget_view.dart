@@ -19,32 +19,60 @@ class ForgetView extends GetView<ForgetController> {
                 key: controller.forgetFormKey,
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    SizedBox(
+                      height: 250,
+                      child: Image.asset(
+                        "assets/Image/forgotpass.png",
+                      ),
+                    ),
                     Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
-                        "FORGOT PASSWORD",
+                        "Forgot",
                         style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black),
+                            color: Colors.purple),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        "Password?",
+                        style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.purple),
+                      ),
                     ),
-                    Image.asset(
-                      "assets/Image/visitor-management.jpg",
-                      width: 600,
+                    SizedBox(height: 10,),
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text("Don't worry! it happens. Please enter the",
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.grey),
+                      ),
                     ),
-                    SizedBox(
-                      height: 20,
+                    Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text("address associated with your account.",
+                        style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.grey),
+                      ),
                     ),
+SizedBox(height: 10,),
+
                     TextFormField(
                       decoration: InputDecoration(
-                        hintText: "Enter email Id",
+                        hintText: " Enter email Id",
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
-                              width: 1, color: Colors.blue), //<-- SEE HERE
+                              width: 1, color: Colors.purple), //<-- SEE HERE
                         ),
                       ),
                     controller: controller.emailController,
@@ -58,29 +86,30 @@ class ForgetView extends GetView<ForgetController> {
                     SizedBox(
                       height: 20,
                     ),
-                    SizedBox(
-                      height: 10,
-                    ),
+
 
                     SizedBox(
                       height: 20,
                     ),
-                    ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue,
-                          minimumSize: const Size.fromHeight(50),
-                          shape: StadiumBorder(), // NEW
-                        ),
-                        onPressed: () {
-                          controller.forget();
-                        },
-                        child: Text(
-                          'FORGOT',
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.white),
-                        )),
+                    SizedBox(
+                      width: Get.width-160,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.purple,
+                            minimumSize: const Size.fromHeight(45),
+                            shape: StadiumBorder(), // NEW
+                          ),
+                          onPressed: () {
+                            controller.forget();
+                          },
+                          child: Text(
+                            'SUBMIT',
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
+                          )),
+                    ),
                     SizedBox(
                       height: 10,
                     ),
