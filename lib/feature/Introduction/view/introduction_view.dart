@@ -14,20 +14,20 @@ class IntroView extends GetView<IntroController> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Align(
-              alignment: Alignment.bottomRight,
-              child: IconButton(
-                  onPressed: () {},
-                  color: Colors.black87,
-                  icon: Icon(Icons.arrow_back_ios)),
-            ),
-            InkWell(
-              child: Text(
-                "Skip",
-                style: TextStyle(fontSize: 20, color: Colors.black87),
-              ),
-              onTap: () => Get.toNamed(Routes.dashboard),
-            )
+            // Align(
+            //   alignment: Alignment.bottomRight,
+            //   child: IconButton(
+            //       onPressed: () {},
+            //       color: Colors.black87,
+            //       icon: Icon(Icons.arrow_back_ios)),
+            // ),
+            // InkWell(
+            //   child: Text(
+            //     "Skip",
+            //     style: TextStyle(fontSize: 20, color: Colors.black87),
+            //   ),
+            //   onTap: () => Get.toNamed(Routes.dashboard),
+            // )
           ],
         ),
         elevation: 0,
@@ -38,77 +38,82 @@ class IntroView extends GetView<IntroController> {
         child: IntroductionScreen(
           pages: [
             PageViewModel(
-                title: "PLANNING",
-                image: Image.asset('assets/Image/visitor-management.jpg'),
+                title: "WORK TOGETHER",
+                image: Image.asset('assets/Image/introduction1.png'),
                 bodyWidget: Column(
                   children: [
                     Text(
-                      'Lorem ipsum is simply dummy text of the printing and typesetting industry',
+                      'Simply Collaborate with your team wherever you are',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 70,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff255DEC),
+                          backgroundColor: Colors.purple,
                           shape: StadiumBorder()),
-                      child: Text("Next",
+                      child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {},
+                      onPressed: () { Get.toNamed(Routes.dashboard);},
                     )
                   ],
                 ),
-                decoration: PageDecoration()),
+
+                decoration: PageDecoration( titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
             PageViewModel(
-                title: "STARTUP",
-                image: Image.asset('assets/Image/visitor-management.jpg'),
+                title: "GET ORGANIZED",
+                image: Image.asset('assets/Image/introduction2.jpg'),
+
                 bodyWidget: Column(
                   children: [
                     Text(
-                      'Lorem ipsum is simply dummy text of the printing and typesetting industry',
+                      'Stay on top of your work',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
+
+
                     SizedBox(
-                      height: 18,
+                      height: 92,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff255DEC),
+                          backgroundColor: Colors.purple,
                           shape: StadiumBorder()),
-                      child: Text("Next",
+                      child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {},
+                      onPressed: () {Get.toNamed(Routes.dashboard);},
                     )
                   ],
                 ),
-                decoration: PageDecoration()),
+                decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
             PageViewModel(
-                title: "SUCCESS",
-                image: Image.asset('assets/Image/visitor-management.jpg'),
+
+                title: "SIMPLY",
+                image: Image.asset('assets/Image/introduction3.jpg'),
                 bodyWidget: Column(
                   children: [
                     Text(
-                      'Lorem ipsum is simply dummy text of the printing and typesetting industry',
+                      'Ubi task keeps it simple and lets you focus on your work',
                       textAlign: TextAlign.center,
                       style: TextStyle(fontSize: 20, color: Colors.black),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 70,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xff255DEC),
+                          backgroundColor: Colors.purple,
                           shape: StadiumBorder()),
-                      child: Text("Next",
+                      child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {},
+                      onPressed: () {Get.toNamed(Routes.dashboard);},
                     )
                   ],
                 ),
-                decoration: PageDecoration()),
+                decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
           ],
           onDone: () {
             // For skip the Inroduction Screen
@@ -120,12 +125,12 @@ class IntroView extends GetView<IntroController> {
           showSkipButton: true,
           showBackButton: false,
           skip: Text(
-            'Skip',
+            '',
             style: TextStyle(color: Colors.black),
           ),
           next:
-              const Text("Next", style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600)),
-          done: const Text("Done",
+              const Text("", style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600)),
+          done: const Text("",
               style: TextStyle(color: Colors.black, fontSize: 16)),
           dotsDecorator: const DotsDecorator(
             size: Size(18.0, 10.0),
@@ -133,7 +138,7 @@ class IntroView extends GetView<IntroController> {
             color: Colors.grey,
             //color of dots
             activeSize: Size(18.0, 10.0),
-            activeColor: Color(0xffFFD600),
+            activeColor: Color(0xff4C00B0),
             //color of active dot
               activeShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
@@ -143,8 +148,22 @@ class IntroView extends GetView<IntroController> {
               borderRadius: BorderRadius.all(Radius.circular(20.0)),
             ),
           ),
+
+
         ),
+
+
+
+
+
+
       ),
+
+
+
+
+
+
     );
   }
 }
