@@ -359,6 +359,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.1"
   google_sign_in:
     dependency: "direct main"
     description:
@@ -812,6 +819,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.12"
+  text_field_suffix_button:
+    dependency: "direct main"
+    description:
+      name: text_field_suffix_button
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   typed_data:
     dependency: transitive
     description:

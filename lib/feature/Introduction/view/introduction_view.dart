@@ -114,7 +114,7 @@ class IntroView extends GetView<IntroController> {
             // For skip the Inroduction Screen
             Get.toNamed(Routes.dashboard);
           },
-          autoScrollDuration: 3000,
+          autoScrollDuration: 2000,
           showDoneButton: true,
           showNextButton: true,
           showSkipButton: true,

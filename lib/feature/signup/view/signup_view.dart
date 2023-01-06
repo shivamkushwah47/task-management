@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+    return Scaffold( backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      //   elevation: 0,
+      // ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -21,43 +22,51 @@ class SignupView extends GetView<SignupController> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("CREATE ACCOUNT",
+                        Text("Sign up",
                             style: TextStyle(
-                                color: Colors.black,
+                                color: Colors.purple,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 28)),
+                                fontSize: 24)),
                       ],
-                    ), 
+                    ),
+
+                  //
+                  SizedBox(
+                    height: 70,
+                  ),
+                  Container(
+                    alignment: Alignment.topLeft,
+                    margin: EdgeInsets.only(left: 7,bottom: 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Phone Number", style: TextStyle( color: Colors.black,fontSize: 18, fontWeight: FontWeight.bold),),
+                      ],
+
+                    ),
+                  ),
+
+
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  //      Text("Phone Number",
+                  //           textAlign: TextAlign.left,
+                  //           style: TextStyle(
+                  //               color: Colors.black,
+                  //               fontWeight: FontWeight.bold,
+                  //               fontSize: 16),
+                  //      ),
 
                   SizedBox(
                     height: 20,
-                  ),
-
-                    Text("ENTER YOUR PHONE NUMBER TO SEND OTP",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 22)),
-
-                       Text("",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-
-                                color: Colors.black,
-                                fontWeight: FontWeight.w300,
-                                fontSize: 20)
-
-                       ),
-
-                  SizedBox(
-                    height: 100,
                   ),
                   Form(
                     key: controller.myformkey,
@@ -69,8 +78,10 @@ class SignupView extends GetView<SignupController> {
                             decoration: const InputDecoration(
                               counterText: '',
                               labelText: 'Phone Number',
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(width: 2,color:Colors.purple),
+
+
                               ),
                             ),
                             controller: SignupController.phoneController,
@@ -85,12 +96,13 @@ class SignupView extends GetView<SignupController> {
                       ),
                     ),
                   ),
+
                   SizedBox(
-                    height: 100,
+                    height: 65,
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Colors.purple,
                         minimumSize: const Size.fromHeight(50),
                         shape: StadiumBorder(), // NEW
                       ),
@@ -99,23 +111,43 @@ class SignupView extends GetView<SignupController> {
                          // Get.toNamed(Routes.navigationbar);
                       },
                       child: Text(
-                        'SEND OTP',
+
+                        'Request OTP',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 14,
                             fontWeight: FontWeight.w800,
                             color: Colors.white),
+
+
                       )),
                   SizedBox(
                     height: 24,
                   ),
-                  Align(
-                    child: Text("OR",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                        )),
-                  ),
+
+
+                  Row(children: <Widget>[
+                    Expanded(
+                      child: new Container(
+                          margin: const EdgeInsets.only(left: 10.0, right: 15.0),
+                          child: Divider(
+                            color: Colors.black,
+                            height: 50,
+                          )),
+                    ),
+
+                    Text("or Sign in with Google"),
+
+                    Expanded(
+                      child: new Container(
+                          margin: const EdgeInsets.only(left: 15.0, right: 10.0),
+                          child: Divider(
+                            color: Colors.black,
+                            height: 50,
+                          )),
+                    ),
+                  ]),
+
+
                   SizedBox(
                     height: 24,
                   ),
@@ -125,7 +157,7 @@ class SignupView extends GetView<SignupController> {
                         minimumSize: const Size.fromHeight(50),
                         shape: StadiumBorder(),
                         side:
-                            BorderSide(width: 1.0, color: Colors.blue), // NEW
+                            BorderSide(width: 1.4, color: Colors.purple), // NEW
                       ),
                       onPressed: () {
                         controller.checkconn();
@@ -142,14 +174,34 @@ class SignupView extends GetView<SignupController> {
                             width: 10,
                           ),
                           Text(
-                            'SIGNUP',
+                            'Google',
                             style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w800,
-                                color: Colors.blue),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.purple,),
+
                           ),
                         ],
                       )),
+                  SizedBox(
+                    height: 60,
+                  ),
+                  Container(
+
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Already registered'),
+                        TextButton(onPressed: (){
+                          Get.toNamed(Routes.login);
+                        }, child:Text('Login',style: TextStyle(color: Colors.purple),))
+
+
+                      ],
+
+
+                    ),
+                  ),
 
                 ],
               ),
