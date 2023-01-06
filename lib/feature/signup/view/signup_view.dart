@@ -197,6 +197,7 @@ class SignupView extends GetView<SignupController> {
 
                         }, child:Text('Login',style: TextStyle(color: Colors.purple),))
 
+
                       ],
 
 
