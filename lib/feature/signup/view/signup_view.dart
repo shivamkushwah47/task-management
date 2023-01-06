@@ -194,6 +194,7 @@ class SignupView extends GetView<SignupController> {
                         Text('Already registered'),
                         TextButton(onPressed: (){
                           Get.toNamed(Routes.login);
+
                         }, child:Text('Login',style: TextStyle(color: Colors.purple),))
 
 

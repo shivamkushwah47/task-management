@@ -137,6 +137,7 @@ class OtpView extends GetView<OtpController> {
                           border: Border.all(
                             color: Colors.purple.withOpacity(0.5),
                             width: 2.0,
+
                           ),
                         ),
                       ),
