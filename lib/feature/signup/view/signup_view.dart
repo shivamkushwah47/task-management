@@ -135,6 +135,8 @@ class SignupView extends GetView<SignupController> {
                           )),
                     ),
 
+
+
                     Text("or Sign in with Google"),
 
                     Expanded(

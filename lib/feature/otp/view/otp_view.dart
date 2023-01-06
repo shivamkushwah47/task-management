@@ -12,6 +12,7 @@ class OtpView extends GetView<OtpController> {
     // TODO: implement build
     return Scaffold(
 
+
       body: SafeArea(
         child: Container(
           margin: EdgeInsets.only(left: 15, right: 15),
