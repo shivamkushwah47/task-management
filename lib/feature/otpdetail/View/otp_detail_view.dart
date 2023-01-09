@@ -31,7 +31,8 @@ class OtpDetail extends GetView<OtpDetailController> {
               padding: EdgeInsets.only(left: 35, top: 30),
               child: Text(
                 'Register to \nGet Started!',
-                style: TextStyle(color: Colors.white, fontSize: 23,fontWeight: FontWeight.bold),
+                style: TextStyle(color: Colors.white, fontSize: Get.height*0.035
+                    ,fontWeight: FontWeight.bold),
               ),
             ),
             Center(
