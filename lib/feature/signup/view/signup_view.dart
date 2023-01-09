@@ -76,10 +76,15 @@ class SignupView extends GetView<SignupController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           IntlPhoneField(
+
                             decoration: const InputDecoration(
-                              counterText: '',
-                              labelText: 'Phone Number',
                               enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(width: 2,color:Colors.purple),
+                              ),
+
+                              counterText: '',
+                              hintText: 'Phone Number',
+                        focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(width: 2,color:Colors.purple),
 
 

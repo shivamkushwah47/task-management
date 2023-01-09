@@ -56,7 +56,7 @@ class IntroView extends GetView<IntroController> {
                           shape: StadiumBorder()),
                       child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () { Get.toNamed(Routes.dashboard);},
+                      onPressed: () { Get.toNamed(Routes.login);},
                     )
                   ],
                 ),
@@ -84,7 +84,7 @@ class IntroView extends GetView<IntroController> {
                           shape: StadiumBorder()),
                       child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {Get.toNamed(Routes.dashboard);},
+                      onPressed: () {Get.toNamed(Routes.login);},
                     )
                   ],
                 ),
@@ -109,7 +109,7 @@ class IntroView extends GetView<IntroController> {
                           shape: StadiumBorder()),
                       child: Text("GET STARTED",
                           style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {Get.toNamed(Routes.dashboard);},
+                      onPressed: () {Get.toNamed(Routes.login);},
                     )
                   ],
                 ),
@@ -117,7 +117,7 @@ class IntroView extends GetView<IntroController> {
           ],
           onDone: () {
             // For skip the Inroduction Screen
-            Get.toNamed(Routes.dashboard);
+            Get.toNamed(Routes.login);
           },
           autoScrollDuration: 3000,
           showDoneButton: true,

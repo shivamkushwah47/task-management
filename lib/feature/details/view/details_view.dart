@@ -103,26 +103,23 @@ class DetailView extends GetView<DetailController> {
 
                       SizedBox(height: 80,),
                       SizedBox(
-                        height: 54,
-                        width: 284,
+                        width: double.infinity,
+                        height: 50,
                         child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.blue,
-                                elevation: 3,
-                                shape: StadiumBorder(),
-                                padding: EdgeInsets.all(
-                                    8) //content padding inside button
-                                ),
+                                backgroundColor: Colors.purple,
+                                shape: StadiumBorder()),
                             onPressed: () {
-
                               controller.validate();
-
                             },
-                            child: Text("Signup",
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700))),
+                            child: Text(
+
+                              "SUBMIT",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w500),
+                            )),
                       ),
                       SizedBox(
                         height: 15,

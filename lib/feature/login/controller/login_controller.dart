@@ -22,12 +22,6 @@ class LoginController extends GetxController {
   var email = '';
   var password = '';
 
-  login() {
-    getStorage.write("id", 1);
-    getStorage.write("name", "shivam singh");
-    Get.offAllNamed(Routes.dashboard);
-  }
-
   @override
   void onInit() {
     super.onInit();
@@ -76,6 +70,7 @@ class LoginController extends GetxController {
     if (loginFormKey.currentState!.validate()) {
       if (isEmail(emailController.text)) {
         print("Login Form vaidated");
+        checkconnl();
         return true;
       }
     }
@@ -90,11 +85,8 @@ class LoginController extends GetxController {
           colorText: Colors.white,
           snackPosition: SnackPosition.BOTTOM
       );
-    } else if (connectionresult == ConnectivityResult.wifi) {
-      print("wifi connection");
-
-    } else if (connectionresult == ConnectivityResult.mobile) {
-      print("mobileData connection");
+    } else if (connectionresult == ConnectivityResult.wifi||connectionresult == ConnectivityResult.mobile) {
+      signInEmailPass();
 
     }
   }

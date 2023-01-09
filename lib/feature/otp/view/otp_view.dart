@@ -65,9 +65,6 @@ class OtpView extends GetView<OtpController> {
                   textAlign: TextAlign.center,
                 ),
 
-
-
-
                 SizedBox(
                   height: 25,
                 ),
@@ -123,7 +120,9 @@ class OtpView extends GetView<OtpController> {
                       length: 6,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.center,
-
+                      onChanged: (value){
+                        controller.code = value;
+                      },
 
                       defaultPinTheme: PinTheme(
                         height: 60.0,

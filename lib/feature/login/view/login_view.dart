@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/login/controller/login_controller.dart';
-import '../../../Core/routes.dart';
 
 class LoginView extends GetView<LoginController> {
   @override
@@ -19,18 +19,18 @@ class LoginView extends GetView<LoginController> {
 
     child: Scaffold(
       backgroundColor: Colors.transparent,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Container(),
-            Container(
-              padding: EdgeInsets.only(left: 35, top: 130),
-              child: Text(
-                'Welcome\nBack',
-                style: TextStyle(color: Colors.white, fontSize: 33),
-              ),
+      body: Stack(
+        children: [
+          Container(),
+          Container(
+            padding: EdgeInsets.only(left: 35, top: 130),
+            child: Text(
+              'Welcome\nBack',
+              style: TextStyle(color: Colors.white, fontSize: 33),
             ),
-            Container(
+          ),
+          SingleChildScrollView(
+            child: Container(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.5),
               child: Column(
@@ -38,111 +38,129 @@ class LoginView extends GetView<LoginController> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(left: 35, right: 35),
-                    child: Column(
-                      children: [
-                        TextField(
-                          style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.email,color: Colors.purple),
-                              fillColor: Colors.grey.shade300,
-                              filled: true,
-                              hintText: "Enter Email",
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide( width: 2,
-                                  color: Colors.purple,
-                                ),
+                    child: Form(
+                      key: controller.loginFormKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.email,color: Colors.purple),
+                                fillColor: Colors.grey.shade300,
+                                filled: true,
+                                hintText: "Enter Email",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide( width: 2,
+                                    color: Colors.purple,
+                                  ),
 
-                              )
+                                )
 
+                            ),
+                            controller: controller.emailController,
+                            onSaved: (value) {
+                              controller.email = value!;
+                            },
+                            validator: (value) {
+                              controller.isValid(value, 'Please Enter user Id');
+                            },
                           ),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        TextField(
-                          style: TextStyle(),
-                          obscureText: true,
-                          decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.lock,color: Colors.purple),
-                              fillColor: Colors.grey.shade300,
-                              filled: true,
-                              hintText: "Password",
-                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(30),
-                                borderSide: BorderSide(  width: 2,
-                                  color: Colors.purple,
-                                ),
-                              )),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Sign in',
-                              style: TextStyle(color: Colors.purple,
-                                  fontSize: 27, fontWeight: FontWeight.w700),
-                            ),
-                            CircleAvatar(
-                              radius: 30,
-                              backgroundColor: Colors.purple.shade900,
-                              child: IconButton(
-                                  color: Colors.white,
-                                  onPressed: () {},
-                                  icon: Icon(
-                                    Icons.arrow_forward,
-                                  )),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pushNamed(context, 'register');
-                              },
-                              child: Text(
-                                'Sign Up',
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xff4c505b),
-                                    fontSize: 18),
-                              ),
-                              style: ButtonStyle(),
-                            ),
-                            TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  'Forgot Password',
-                                  style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    color: Color(0xff4c505b),
-                                    fontSize: 18,
+                          SizedBox(
+                            height: 30,
+                          ),
+                          TextFormField(
+                            style: TextStyle(),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(Icons.lock,color: Colors.purple),
+                                fillColor: Colors.grey.shade300,
+                                filled: true,
+                                hintText: "Password",
+                               border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(  width: 2,
+                                    color: Colors.purple,
                                   ),
                                 )),
-                          ],
-                        )
-                      ],
+                            controller: controller.passwordController,
+                            onSaved: (value) {
+                              controller.password = value!;
+                            },
+                            validator: (value) {
+                              controller.isValid(value, 'Enter password');},
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Sign in',
+                                style: TextStyle(color: Colors.purple,
+                                    fontSize: 27, fontWeight: FontWeight.w700),
+                              ),
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundColor: Colors.purple.shade900,
+                                child: IconButton(
+                                    color: Colors.white,
+                                    onPressed: () {
+                                      controller.signupformvalid();
+                                    },
+                                    icon: Icon(
+                                      Icons.arrow_forward,
+                                    )),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                 Get.toNamed(Routes.signup);
+                                },
+                                child: Text(
+                                  'Sign Up',
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xff4c505b),
+                                      fontSize: 18),
+                                ),
+                                style: ButtonStyle(),
+                              ),
+                              TextButton(
+                                  onPressed: () {
+                                    Get.toNamed(Routes.forgetpass);
+                                  },
+                                  child: Text(
+                                    'Forgot Password',
+                                    style: TextStyle(
+                                      decoration: TextDecoration.underline,
+                                      color: Color(0xff4c505b),
+                                      fontSize: 18,
+                                    ),
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   )
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
     );
-
-
   }
 }
 
