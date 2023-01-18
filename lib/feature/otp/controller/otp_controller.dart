@@ -19,7 +19,7 @@ class OtpController extends GetxController {
       Get.toNamed(Routes.apiform);
     } catch (e) {
       Get.snackbar("Wrong OTP", "Otp that you entered was wrong.",
-          backgroundColor: Colors.redAccent,
+          backgroundColor: Colors.indigo,
           colorText: Colors.white,
           snackPosition: SnackPosition.TOP);
       print('Wrong OTP');

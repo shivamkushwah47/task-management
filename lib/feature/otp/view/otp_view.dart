@@ -13,204 +13,172 @@ class OtpView extends GetView<OtpController> {
     // TODO: implement build
     return Scaffold(
 
+      resizeToAvoidBottomInset : false,
 
-      body: SafeArea(
+      body: GestureDetector(
+        onTap: () => Get.focusScope!.unfocus(),
         child: Container(
-          margin: EdgeInsets.only(left: 15, right: 15),
-          // alignment: Alignment.center,
-          child: SingleChildScrollView(
-            child: Column(
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+          child: Column(
+            children: [
+              SizedBox(
+                height: Get.height,
+                child: Stack(
                   children: [
-                    Text(
-                      "OTP",
-                      style: TextStyle(color: Colors.purple,fontSize: 28, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-
-
-                SizedBox(
-                  height: 10,
-                ),
-                Image.asset(
-                  "assets/Image/otp.png",
-                  width: 250,
-                ),
-
-
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "VERIFICATION CODE ",
-                  style: TextStyle(color: Colors.purple,fontSize: 19, fontWeight: FontWeight.bold
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "We have sent the verification code to your Mobile Number ",
-                  style: TextStyle(color: Colors.grey,fontSize: 16, fontWeight: FontWeight.w400
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-
-                SizedBox(
-                  height: 25,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      // decoration: BoxDecoration(
-                      //     border: Border.all(),
-                      //     borderRadius: const BorderRadius.horizontal(
-                      //         left: Radius.circular(20), right: Radius.circular(20))
-                      // ),
-                      child:Text(SignupController.phoneController.value.text,
-
-                          style: TextStyle(fontSize: 20,)),),
-                    // SizedBox(
-                    //   width: 10,
-                    // ),
-                    IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(
-                          Icons.edit,
-                          color: Colors.green,
-                          size: 25,
-                        ))
-                  ],
-                ),
-                // SizedBox(
-                //   height: 25,
-                // ),
-                // Pinput(
-                //   length: 6,
-                //   showCursor: true,
-                //   onChanged: (value) {
-                //     controller.code = value;
-                //   },
-                //   onCompleted: (pin) => print(pin),
-                // ),
-
-
-                SizedBox(
-                  height: 25,
-                ),
-
-                /// pinput package we will use here
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: SizedBox(
-                    child: Pinput(
-                      length: 6,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      onChanged: (value){
-                        controller.code = value;
-                      },
-
-                      defaultPinTheme: PinTheme(
-                        height: 60.0,
-                        width: 60.0,
-                        textStyle: GoogleFonts.urbanist(
-                          fontSize: 24.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
+                    Positioned(
+                      child: Container(
+                        width: Get.width,
+                        height: Get.height * 0.45,
+                        decoration: const BoxDecoration(
+                          gradient:
+                          LinearGradient(colors: [Colors.blue, Colors.indigo]),
+                          borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(30),
+                              bottomRight: Radius.circular(30)),
+                          color: Colors.red,
                         ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white70,
-                          border: Border.all(
-                            color: Colors.purple.withOpacity(0.5),
-                            width: 2.0,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: Get.height * 0.15,
+                              child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  CircleAvatar(backgroundColor: Colors.white,
+                                    child: IconButton(
+                                        onPressed: () {},
+                                        icon: const Icon(
 
-                          ),
+                                          Icons.arrow_back_ios_new_rounded,
+                                          color: Colors.black,
+
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
+                                    child: const Text(
+                                      'OTP',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/Image/otp.png',
+                              height: 90,
+                            )
+                          ],
                         ),
                       ),
-
-
-                      focusedPinTheme: PinTheme(
-                        height: 60.0,
-                        width: 60.0,
-                        textStyle: GoogleFonts.urbanist(
-                          fontSize: 24.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w700,
-                        ),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                          border: Border.all(
-                            color: Colors.black,
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-
-
                     ),
-                  ),
+                    Positioned(
+                      bottom: Get.height * .08,
+                      left: Get.width * .05,
+                      width: Get.width * .9,
+                      height: Get.height * .6,
+                      child: Card(
+                          elevation: 10,
+
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(30.0),
+                            child: Column(
+                              children: [
+                                Form(child: Column(
+                                  children: [
+                                    Text("OTP Verification",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
+                                      child: Text("Enter the OTP sent to your mobile number",style: TextStyle(fontSize: 12,color: Colors.grey)),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                                      child: SizedBox(
+                                        child: Pinput(
+                                          length: 6,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.center,
+                                          onChanged: (value){
+                                            controller.code = value;
+                                          },
+
+                                          defaultPinTheme: PinTheme(
+                                            height: 60.0,
+                                            width: 60.0,
+                                            textStyle: GoogleFonts.urbanist(
+                                              fontSize: 24.0,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white70,
+                                              border: Border.all(
+                                                color: Colors.indigo.withOpacity(0.5),
+                                                width: 2.0,
+
+                                              ),
+                                            ),
+                                          ),
+
+
+                                          focusedPinTheme: PinTheme(
+                                            height: 60.0,
+                                            width: 60.0,
+                                            textStyle: GoogleFonts.urbanist(
+                                              fontSize: 24.0,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: Colors.white,
+                                              border: Border.all(
+                                                color: Colors.black,
+                                                width: 1.0,
+                                              ),
+                                            ),
+                                          ),
+
+
+                                        ),
+                                      ),
+                                    ),
+
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
+                                      child: Text("Didn't Receive OTP?",style: TextStyle(fontSize: 12,color: Colors.grey)),
+                                    ),
+
+                                    Padding(
+                                      padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                                      child:   TextButton(onPressed: (){}, child: Text("Resend OTP",style: TextStyle(color: Colors.blue,fontSize: 15),)),
+                                    ),
+                                    SizedBox(width: Get.width*0.6,
+                                        child: ElevatedButton(onPressed: (){controller.otpverify();}, style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),child: Text("VERIFY OTP")))
+
+                                  ],
+                                ))
+                              ],
+                            ),
+                          )),
+                    )
+                  ],
                 ),
-
-
-
-
-                // SizedBox(
-                //   height: 20,
-                // ),
-                // InkWell(
-                //   onTap: () {},
-                //   child: Text(
-                //     "Resend OTP",
-                //     style: TextStyle(
-                //         fontSize: 18,
-                //         color: Colors.black,
-                //         fontWeight: FontWeight.bold),
-                //   ),
-                // ),
-                SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: StadiumBorder()),
-                      onPressed: () {
-                        controller.otpverify();
-                      },
-                      child: Text(
-
-                        "SUBMIT",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500),
-                      )),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
+
+
   }
 }
 
