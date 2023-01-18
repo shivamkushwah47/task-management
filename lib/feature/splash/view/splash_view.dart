@@ -14,9 +14,9 @@ class SplashView extends GetView<SplashController> {
       home: Scaffold(
         body: AnimatedSplashScreen(
 
-          splash: Image.asset("assets/Icon/Task Management gif.gif"
+          splash: Image.asset("assets/Icon/splash.gif"
             ,),
-          splashIconSize: 250,
+          splashIconSize: 350,
           nextScreen: IntroView(),
           splashTransition: SplashTransition.slideTransition,
           backgroundColor: Colors.white,
