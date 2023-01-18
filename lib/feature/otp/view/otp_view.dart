@@ -175,6 +175,12 @@ class OtpView extends GetView<OtpController> {
             ],
           ),
         ),
+
+
+
+
+
+
       ),
     );
 
