@@ -91,11 +91,11 @@ class OtpView extends GetView<OtpController> {
                               children: [
                                 Form(child: Column(
                                   children: [
-                                    Text("OTP Verification",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                                    Text("OTP Verification",style: TextStyle(fontSize: Get.height*0.03,fontWeight: FontWeight.bold),),
 
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(0, 30, 0, 30),
-                                      child: Text("Enter the OTP sent to your mobile number",style: TextStyle(fontSize: 12,color: Colors.grey)),
+                                      child: Text("Enter the OTP sent to your mobile number",style: TextStyle(fontSize: Get.height*0.015,color: Colors.grey)),
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -153,12 +153,12 @@ class OtpView extends GetView<OtpController> {
 
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(0, 25, 0, 0),
-                                      child: Text("Didn't Receive OTP?",style: TextStyle(fontSize: 12,color: Colors.grey)),
+                                      child: Text("Didn't Receive OTP?",style: TextStyle(fontSize:Get.height*0.015,color: Colors.grey)),
                                     ),
 
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                                      child:   TextButton(onPressed: (){}, child: Text("Resend OTP",style: TextStyle(color: Colors.blue,fontSize: 15),)),
+                                      child:   TextButton(onPressed: (){}, child: Text("Resend OTP",style: TextStyle(color: Colors.blue,fontSize: Get.height*0.018),)),
                                     ),
                                     SizedBox(width: Get.width*0.6,
                                         child: ElevatedButton(onPressed: (){controller.otpverify();}, style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo),child: Text("VERIFY OTP")))
