@@ -7,8 +7,11 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:visiter_app/feature/register/Controller/register_cotroller.dart';
+import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
+
+
   @override
 
   Widget build(BuildContext context)
@@ -157,7 +160,7 @@ class RegisterView extends GetView<RegisterController> {
                                             color: Colors.blue,
                                           ),
                                         )),
-                                    controller: controller.phoneController,
+                                    controller: SignupController.phoneController,
                                     onSaved: (value) {
                                       controller.phone = value!;
                                     },
@@ -249,7 +252,28 @@ class RegisterView extends GetView<RegisterController> {
                                           style:
                                           TextStyle(color: Colors.white),
                                         )),
-                                  )
+                                  ),
+                                  SizedBox(
+                                    height: 54,
+                                    width: 284,
+                                    child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.blue,
+                                            elevation: 3,
+                                            shape: StadiumBorder(),
+                                            padding: EdgeInsets.all(
+                                                8) //content padding inside button
+                                        ),
+                                        onPressed: () {
+                                          controller.logout();
+                                        },
+                                        child: Text("LogOut",
+                                            style: TextStyle(
+                                                fontSize: 22,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w700))),
+                                  ),
+
                                 ],
                               ),
                             ),

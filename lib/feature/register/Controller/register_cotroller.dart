@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class RegisterController extends GetxController {
 
@@ -9,6 +13,8 @@ class RegisterController extends GetxController {
   late TextEditingController phoneController = TextEditingController();
   late TextEditingController passwordController = TextEditingController();
   late TextEditingController confirmpassController = TextEditingController();
+
+  dynamic argumenData = Get.arguments;
 
 
   final GlobalKey<FormState> SignUpFormKey = GlobalKey<FormState>();
@@ -22,29 +28,23 @@ class RegisterController extends GetxController {
   var isPasswordHidden= true.obs;
 
 
-  // addUser() {
-  //   var name = name.text;
-  //   var email = emailIdController.text;
-  //   var phone = phoneCont.value.text;
-  //   var password = passwordController.text;
-  //   var isValide = SignupFormKey.currentState?.validate();
-  //   if (isValide == true) {
-  //     Map<String, dynamic> userData = {
-  //       "name": name,
-  //       "email": email,
-  //       "phone": phone,
-  //       "password": password,
-  //     };
-  //
-  //     FirebaseFirestore.instance.collection("users").add(userData);
-  //     print("user created by firebase");
-  //   }
-  // }
+  addUser() {
+    var name = nameController.text;
+    var email = emailController.text;
+    var phone = SignupController.phoneController.text;
+    var password = passwordController.text;
+    var isValide = SignUpFormKey.currentState?.validate();
+    if (isValide == true) {
+      Map<String, dynamic> userData = {
+        "name": name,
+        "email": email,
+        "phone": phone,
+        "password": password,
+      };
 
-
-  @override
-  void onInit() {
-    super.onInit();
+      FirebaseFirestore.instance.collection("users").add(userData);
+      print("user created by firebase");
+    }
   }
 
 
@@ -100,7 +100,9 @@ class RegisterController extends GetxController {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
       //final response = await _signUpRepo.signupAPI(NameController.text,EmailController.text,PasswordController.text,PhoneController.text);
-      print("Response print");
+      print("You are connected with internet");
+      addUser();
+
     }
     else{
       print('net is off');
@@ -112,7 +114,7 @@ class RegisterController extends GetxController {
   validate() {
     if (SignUpFormKey.currentState!.validate()) {
       print("form validated");
-
+      internet();
     }
   }
   isvalid(value,pval){
@@ -120,5 +122,8 @@ class RegisterController extends GetxController {
       return 'Enter $pval';
     }
   }
-
+  Future<void> logout() async {
+    await GoogleSignIn().disconnect();
+    FirebaseAuth.instance.signOut();
+  }
 }

@@ -65,7 +65,7 @@ class SignupController extends GetxController {
       print(result.email);
       print(result.photoUrl);
 
-      Get.toNamed(Routes.details, arguments: result.email);
+      Get.toNamed(Routes.register, arguments: result.email);
     } catch (error) {
       print("Error");
       print(error);
@@ -79,7 +79,7 @@ class SignupController extends GetxController {
 
   verifybyphone() async {
     await _auth.verifyPhoneNumber(
-        phoneNumber: "+91${phoneController.text}",
+        phoneNumber: "+91${SignupController.phoneController.text}",
         verificationCompleted: (phoneAuthCredential) async {
 
         },

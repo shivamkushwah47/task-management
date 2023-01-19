@@ -10,8 +10,6 @@ class LoginView extends GetView<LoginController> {
     // TODO: implement build
 
     return Scaffold(
-
-
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),
@@ -37,16 +35,22 @@ class LoginView extends GetView<LoginController> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: Get.height * 0.15,
+                              height: Get.height * 0.17,
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_back_ios_new_rounded,
-                                        color: Colors.white,
-                                      )),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.arrow_back_ios_new_rounded,
+                                            color: Colors.black,
+                                          )),
+                                    ),
+                                  ),
                                   const Text(
                                     'LOGIN',
                                     style: TextStyle(
@@ -57,8 +61,8 @@ class LoginView extends GetView<LoginController> {
                                 ],
                               ),
                             ),
-                Image.asset('assets/Image/login screen.png',
-
+                            Image.asset(
+                              'assets/Image/login screen.png',
                               height: 90,
                             )
                           ],
@@ -66,10 +70,10 @@ class LoginView extends GetView<LoginController> {
                       ),
                     ),
                     Positioned(
-                      bottom: Get.height * .08,
+                      bottom: Get.height * .04,
                       left: Get.width * .05,
                       width: Get.width * .9,
-                      height: Get.height * .62,
+                      height: Get.height * .6,
                       child: Card(
                           elevation: 10,
                           shape: RoundedRectangleBorder(
@@ -80,182 +84,135 @@ class LoginView extends GetView<LoginController> {
                             child: Column(
                               children: [
                                 Form(
+                                    key: controller.loginFormKey,
+                                    autovalidateMode: AutovalidateMode.onUserInteraction,
                                     child: Column(
-
-                                  key: controller.loginFormKey,
-                                  children: [
-
-
-                                    SizedBox(
-                                      height: Get.height*0.07,
-                                      child: TextFormField(
-                                        style: TextStyle(
-                                            color: Colors.black,
+                                      children: [
+                                        SizedBox(height: Get.height*0.06,),
+                                        SizedBox(
+                                          height: Get.height * 0.07,
+                                          child: TextFormField(
+                                            style: TextStyle(
+                                              color: Colors.black,
                                             ),
-                                        decoration: InputDecoration(
-                                            prefixIcon: Icon(Icons.email,
-                                                color: Colors.blue),
-                                            fillColor: Colors.grey.shade100,
-                                            filled: true,
-                                            hintText: "Enter Email",
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              borderSide: BorderSide(
-                                                width: 2,
-                                                color: Colors.blue,
-                                              ),
-                                            )),
-                                        controller: controller.emailController,
-                                        onSaved: (value) {
-                                          controller.email = value!;
-                                        },
-                                        validator: (value) {
-                                          controller.isValid(
-                                              value, 'Please Enter user Id');
-                                        },
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                    SizedBox(
-                                      height: Get.height*0.07,
-                                      child:  Obx(()=>(
-                                        TextFormField(style: TextStyle(),
-                                          obscureText: controller.isPasswordHidden.value,
-                                          decoration: InputDecoration(
-                                              prefixIcon: Icon(Icons.lock,
-                                                  color: Colors.blue),
-                                              fillColor: Colors.grey.shade100,
-                                              filled: true,
-                                              hintText: "Password",
-                                              border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30),
-                                                borderSide: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.blue,
+                                            decoration: InputDecoration(
+                                                prefixIcon: Icon(Icons.email,
+                                                    color: Colors.blue),
+                                                fillColor: Colors.grey.shade100,
+                                                filled: true,
+                                                hintText: "Enter Email",
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30),
+                                                  borderSide: BorderSide(
+                                                    width: 2,
+                                                    color: Colors.blue,
+                                                  ),
+                                                )),
+                                            controller:
+                                                controller.emailController,
+                                            onSaved: (value) {
+                                              controller.email = value!;
+                                            },
+                                            validator: (value) {
+                                              controller.isValid(value,
+                                                  'Please Enter user Id');
+                                            },
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 30,
+                                        ),
+                                        SizedBox(
+                                          height: Get.height * 0.07,
+                                            child: Obx(() => (TextFormField(
+                                                style: TextStyle(),
+                                                obscureText: controller
+                                                    .isPasswordHidden.value,
+                                                decoration: InputDecoration(
+                                                  prefixIcon: Icon(Icons.lock,
+                                                      color: Colors.blue),
+                                                  fillColor:
+                                                      Colors.grey.shade100,
+                                                  filled: true,
+                                                  hintText: "Password",
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            30),
+                                                    borderSide: BorderSide(
+                                                      width: 2,
+                                                      color: Colors.blue,
+                                                    ),
+                                                  ),
+                                                  suffixIcon: InkWell(
+                                                      child: Icon(
+                                                        controller
+                                                                .isPasswordHidden
+                                                                .value
+                                                            ? Icons.visibility_off
+                                                            : Icons
+                                                                .visibility,
+                                                      ),
+                                                      onTap: () {
+                                                        controller
+                                                                .isPasswordHidden
+                                                                .value =
+                                                            !controller
+                                                                .isPasswordHidden
+                                                                .value;
+                                                      }),
                                                 ),
-
-
-                                              ),
-                                            suffixIcon: InkWell(
-                                          child: Icon(controller.isPasswordHidden.value
-                                          ? Icons.visibility
-                                              :Icons.visibility_off,
-                                          ),
-                                            onTap: () {
-                                              controller.isPasswordHidden.value=!controller.isPasswordHidden.value;
-
-
-                                            }),
-
-                                    ),
-                                          controller: controller.passwordController,
-                                          onSaved: (value) {
-                                            controller.password = value!;
-                                          },
-                                          validator: (value) {
-                                            controller.isValid(
-                                                value, 'Enter password');
-                                          },
-
-
-                                        ))
-                                      ),
-                                    ),
-                                    TextButton(
-                                        onPressed: () {
-                                          Get.toNamed(Routes.forgetpass);
-                                        },
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsets.fromLTRB(110, 0, 0, 0),
-                                          child: Text(
-                                            'Forgot Password',
-                                            style: TextStyle(
-                                              color: Color(0xff4c505b),
-                                              fontSize: 16,
-                                            ),
-                                          ),
-                                        )),
-
-                                    SizedBox(
-                                      width: Get.width-160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            controller.loginformvalid();
-                                          },
-                                          child: Text(
-                                            'LOGIN',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          )),
-                                    )
-                                  ],
-                                )),
-                                Row(children: <Widget>[
-                                  Expanded(
-                                    child: new Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 10.0, right: 15.0),
-                                        child: Divider(
-                                          color: Colors.black,
-                                          height: 50,
-                                        )),
-                                  ),
-                                  Text("or "),
-                                  Expanded(
-                                    child: new Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 15.0, right: 10.0),
-                                        child: Divider(
-                                          color: Colors.black,
-                                          height: 50,
-                                        )),
-                                  ),
-                                ]),
-
+                                                controller: controller
+                                                    .passwordController,
+                                                onSaved: (value) {
+                                                  controller.password = value!;
+                                                },
+                                                validator: (value) {
+                                                  controller.isValid(
+                                                      value, 'Enter password');
+                                                },
+                                              ))),
+                                        ),
                                 SizedBox(
-                                  height: Get.height*0.05,
-
-                                  child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.white,
-                                        minimumSize: const Size.fromHeight(50),
-                                        shape: StadiumBorder(),
-                                        side: BorderSide(
-                                            width: 1.4,
-                                            color: Colors.indigoAccent), // NEW
-                                      ),
-                                      onPressed: () {
-                                        controller.checkconn();
-                                        controller.googleLogin();
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            "assets/Image/google_bg.png",
-                                            width: 30,
-                                            height: 30,
-                                          ),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          Text(
-                                            'Log in with Google',
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.purple,
-                                            ),
-                                          ),
-                                        ],
-                                      )),
+                                  height: 10,
                                 ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    InkWell(
+                                      child: Text(
+                                        "Forgot password",
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.indigoAccent),
+                                      ),
+                                      onTap: (){
+                                        Get.toNamed(Routes.forgotpass);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 20,
+                                ),
+                                        SizedBox(
+                                          width: Get.width - 150,
+                                          child: ElevatedButton(
+                                              onPressed: () {
+                                                controller.loginformvalid();
+                                              },
+                                              child: Text(
+                                                'LOGIN',
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              )),
+                                        )
+                                      ],
+                                    )),
+
+
                                 SizedBox(
                                   height: 30,
                                 ),
@@ -263,7 +220,7 @@ class LoginView extends GetView<LoginController> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text('Do not have a account? '),
+                                      Text('Do not have an account? '),
                                       TextButton(
                                           onPressed: () {
                                             Get.toNamed(Routes.signup);

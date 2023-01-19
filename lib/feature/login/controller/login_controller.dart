@@ -135,7 +135,7 @@ class LoginController extends GetxController {
       print(result.email);
       print(result.photoUrl);
 
-      Get.toNamed(Routes.details, arguments: result.email);
+      Get.toNamed(Routes.register, arguments: result.email);
     } catch (error) {
       print("Error");
       print(error);

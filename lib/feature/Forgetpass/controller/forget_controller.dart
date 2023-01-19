@@ -24,7 +24,7 @@ class ForgetController extends GetxController {
   login() {
     getStorage.write("id", 1);
     getStorage.write("name", "shivam singh");
-    Get.offAllNamed(Routes.dashboard);
+
   }
 
   @override
