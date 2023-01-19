@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:visiter_app/core/routes.dart';
@@ -18,9 +19,14 @@ class LoginController extends GetxController {
   RxBool autologin = false.obs;
   RxBool ispasshidden = true.obs;
   bool formSatus = true;
+  var isPasswordHidden= true.obs;
 
   var email = '';
   var password = '';
+
+
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void onInit() {
@@ -66,17 +72,17 @@ class LoginController extends GetxController {
     return null;
   }
 
-  signupformvalid() {
+ loginformvalid() {
     if (loginFormKey.currentState!.validate()) {
       if (isEmail(emailController.text)) {
         print("Login Form vaidated");
-        checkconnl();
+        checkconn();
         return true;
       }
     }
   }
 
-  void checkconnl() async {
+  void checkconn() async {
     var connectionresult = await (Connectivity().checkConnectivity());
     if (connectionresult == ConnectivityResult.none) {
       print("No internet Connection");
@@ -104,6 +110,41 @@ class LoginController extends GetxController {
     FirebaseAuth.instance.signOut().then((value) {
       print("Logout successfully");
     });
+  }
+
+
+
+
+  googleLogin() async {
+    print("googleLogin method Called");
+    GoogleSignIn _googleSignIn = GoogleSignIn();
+    try {
+      var result = await _googleSignIn.signIn();
+      if (result == null) {
+        return;
+      }
+      final userData = await result.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: userData.accessToken, idToken: userData.idToken);
+      var finalResult =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      print(finalResult);
+      print("Values is");
+      print("Result $result");
+      print(result.displayName);
+      print(result.email);
+      print(result.photoUrl);
+
+      Get.toNamed(Routes.details, arguments: result.email);
+    } catch (error) {
+      print("Error");
+      print(error);
+    }
+  }
+
+  Future<void> logout() async {
+    await GoogleSignIn().disconnect();
+    FirebaseAuth.instance.signOut();
   }
 
 }
