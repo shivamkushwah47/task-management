@@ -156,6 +156,8 @@ class OtpView extends GetView<OtpController> {
                                       child: Text("Didn't Receive OTP?",style: TextStyle(fontSize:Get.height*0.015,color: Colors.grey)),
                                     ),
 
+
+
                                     Padding(
                                       padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
                                       child:   TextButton(onPressed: (){}, child: Text("Resend OTP",style: TextStyle(color: Colors.blue,fontSize: Get.height*0.018),)),
