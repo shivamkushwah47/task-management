@@ -10,160 +10,119 @@ class IntroView extends GetView<IntroController> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // Align(
-            //   alignment: Alignment.bottomRight,
-            //   child: IconButton(
-            //       onPressed: () {},
-            //       color: Colors.black87,
-            //       icon: Icon(Icons.arrow_back_ios)),
-            // ),
-            // InkWell(
-            //   child: Text(
-            //     "Skip",
-            //     style: TextStyle(fontSize: 20, color: Colors.black87),
-            //   ),
-            //   onTap: () => Get.toNamed(Routes.dashboard),
-            // )
-          ],
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
       body: Container(
-        margin: const EdgeInsets.all(15),
-        child: IntroductionScreen(
-          pages: [
-            PageViewModel(
-                title: "WORK TOGETHER",
-                image: Image.asset('assets/Image/introduction1.png'),
-                bodyWidget: Column(
-                  children: [
-                    Text(
-                      'Simply Collaborate with your team wherever you are',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: StadiumBorder()),
-                      child: Text("GET STARTED",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () { Get.toNamed(Routes.login);},
-                    )
-                  ],
-                ),
+        height: Get.height,
+        width: Get.width,
+        margin:EdgeInsets.fromLTRB(10, 90, 10, 0),
+        child: Center(
+          child: IntroductionScreen(
+            pages: [
+              PageViewModel(
+                  title: 'Simply Collaborate with your team wherever you are',
+                  image: Image.asset('assets/Image/1onboarding.png'),
+                  bodyWidget: Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height*0.01,
+                      ),
+                      SizedBox(
+                        width: Get.width*0.6,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo,
+                              shape:BeveledRectangleBorder()),
+                          child: Text("GET STARTED",
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                          onPressed: () { Get.toNamed(Routes.login);},
+                        ),
+                      )
+                    ],
+                  ),
 
-                decoration: PageDecoration( titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
-            PageViewModel(
-                title: "GET ORGANIZED",
-                image: Image.asset('assets/Image/introduction2.jpg'),
+                  decoration: PageDecoration( titleTextStyle: TextStyle(color: Colors.black,fontSize: Get.height*0.03, fontWeight: FontWeight.w500),
+                  )),
+              PageViewModel(
+                  title: 'Stay on top of your work',
+                  image: Image.asset('assets/Image/2onboarding.png'),
 
-                bodyWidget: Column(
-                  children: [
-                    Text(
-                      'Stay on top of your work',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
+                  bodyWidget: Column(
+                    children: [
 
+                      SizedBox(
+                        height: Get.height*0.01,
+                      ),
+                      SizedBox(
+                        width: Get.width*0.6,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo,
+                              shape:BeveledRectangleBorder()),
+                          child: Text("GET STARTED",
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                          onPressed: () { Get.toNamed(Routes.login);},
+                        ),
+                      )
+                    ],
+                  ),
+                  decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.black,fontSize: Get.height*0.03, fontWeight: FontWeight.w500),)),
+              PageViewModel(
 
-                    SizedBox(
-                      height: 92,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: StadiumBorder()),
-                      child: Text("GET STARTED",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {Get.toNamed(Routes.login);},
-                    )
-                  ],
-                ),
-                decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
-            PageViewModel(
+                  title: 'My task keeps it simple and lets you focus on your work',
+                  image: Image.asset('assets/Image/3onboarding.png'),
+                  bodyWidget: Column(
+                    children: [
+                      SizedBox(
+                        height: Get.height*0.01,
+                      ),
+                      SizedBox(
+                        width: Get.width*0.6,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.indigo,
+                              shape:BeveledRectangleBorder()),
+                          child: Text("GET STARTED",
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                          onPressed: () { Get.toNamed(Routes.login);},
+                        ),
+                      )
+                    ],
+                  ),
+                  decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.black,fontSize: Get.height*0.03, fontWeight: FontWeight.w500),)),
+            ],
+            dotsDecorator: const DotsDecorator(
 
-                title: "SIMPLY",
-                image: Image.asset('assets/Image/introduction3.jpg'),
-                bodyWidget: Column(
-                  children: [
-                    Text(
-                      'Ubi task keeps it simple and lets you focus on your work',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.black),
-                    ),
-                    SizedBox(
-                      height: 70,
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.purple,
-                          shape: StadiumBorder()),
-                      child: Text("GET STARTED",
-                          style: TextStyle(color: Colors.white, fontSize: 20)),
-                      onPressed: () {Get.toNamed(Routes.login);},
-                    )
-                  ],
-                ),
-                decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.purple,fontSize: 22, fontWeight: FontWeight.bold),)),
-          ],
-          onDone: () {
-            // For skip the Inroduction Screen
-            Get.toNamed(Routes.login);
-          },
-          autoScrollDuration: 3000,
-          showDoneButton: true,
-          showNextButton: true,
-          showSkipButton: true,
-          showBackButton: false,
-          skip: Text(
-            '',
-            style: TextStyle(color: Colors.black),
-          ),
-          next:
-              const Text("", style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600)),
-          done: const Text("",
-              style: TextStyle(color: Colors.black, fontSize: 16)),
-          dotsDecorator: const DotsDecorator(
-            size: Size(18.0, 10.0),
-            //size of dots
-            color: Colors.grey,
-            //color of dots
-            activeSize: Size(18.0, 10.0),
-            activeColor: Color(0xff4C00B0),
-            //color of active dot
+              color: Colors.grey,
+              activeColor: Colors.indigo,
               activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(20.0)
+                ),
+              ),
+              shape: RoundedRectangleBorder(
+                //shape of active dot
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
-            shape: RoundedRectangleBorder(
-              //shape of active dot
-              borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            ),
+
+            onDone: () {
+              Get.toNamed(Routes.login);
+            },
+            autoScrollDuration: 3000,
+            showDoneButton: false,
+            showNextButton: false,
+            showSkipButton: false,
+            showBackButton: false,
+
+            skip: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple,
+                  shape: StadiumBorder()),
+              child: Text("GET STARTED",
+                  style: TextStyle(color: Colors.white, fontSize: 20)),
+              onPressed: () { Get.toNamed(Routes.login);},
             ),
           ),
-
-
         ),
-
-
-
-
-
-
       ),
-
-
-
-
-
-
     );
   }
 }
