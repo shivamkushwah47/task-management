@@ -92,7 +92,7 @@ class SignupView extends GetView<SignupController> {
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: <Widget>[
-                                        SizedBox(height: Get.height*0.06,),
+                                        SizedBox(height: Get.height*0.04,),
                                         IntlPhoneField(
 
                                           decoration: const InputDecoration(
@@ -121,7 +121,7 @@ class SignupView extends GetView<SignupController> {
                                           width: Get.width-160,
                                           child: ElevatedButton(
                                               onPressed: () {
-
+                                                controller.verifybyphone();
                                               },
                                               child: Text(
                                                 'REQUEST OTP',
@@ -158,13 +158,12 @@ class SignupView extends GetView<SignupController> {
                                 SizedBox(height: Get.height*0.03,),
 
                                 SizedBox(
-                                  height: Get.height*0.05,
+
+                                  width: Get.width - 140,
 
                                   child: ElevatedButton(
                                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.white,
-                                        minimumSize: const Size.fromHeight(50),
-                                        shape: StadiumBorder(),
                                         side: BorderSide(
                                             width: 1.4,
                                             color: Colors.indigoAccent), // NEW
@@ -179,22 +178,40 @@ class SignupView extends GetView<SignupController> {
                                         children: [
                                           Image.asset(
                                             "assets/Image/google_bg.png",
-                                            width: 30,
-                                            height: 30,
+                                            width: 25,
+                                            height: 25,
                                           ),
                                           SizedBox(
-                                            width: 10,
+                                            width: 8,
                                           ),
                                           Text(
                                             'Signup with Google',
                                             style: TextStyle(
-                                              fontSize: 18,
+                                              // fontSize: Get.height*0.02,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.indigoAccent,
                                             ),
                                           ),
                                         ],
                                       )),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text('Already have an account? '),
+                                    TextButton(
+                                        onPressed: () {
+                                          Get.toNamed(Routes.login);
+                                        },
+                                        child: Text(
+                                          'Login',
+                                          style:
+                                          TextStyle(color: Colors.blue),
+                                        ))
+                                  ],
                                 ),
                               ],
                             ),
