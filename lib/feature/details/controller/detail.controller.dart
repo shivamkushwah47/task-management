@@ -17,7 +17,7 @@ class DetailController extends GetxController{
   validate() {
     if (SignupFormKey.currentState!.validate()) {
       print("form validated");
-      addUser();
+
     }
   }
   isvalid(value,pval){

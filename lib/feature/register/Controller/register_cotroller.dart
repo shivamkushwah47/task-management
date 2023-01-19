@@ -2,21 +2,24 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class OtpDetailController extends GetxController {
-  //late TextEditingController name, phone, email, password ,confirmpass;
-  late TextEditingController name = TextEditingController();
-  late TextEditingController email = TextEditingController();
-  late TextEditingController phone = TextEditingController();
-  late TextEditingController password = TextEditingController();
-  late TextEditingController confirmpass = TextEditingController();
+class RegisterController extends GetxController {
+
+  late TextEditingController nameController = TextEditingController();
+  late TextEditingController emailController = TextEditingController();
+  late TextEditingController phoneController = TextEditingController();
+  late TextEditingController passwordController = TextEditingController();
+  late TextEditingController confirmpassController = TextEditingController();
 
 
   final GlobalKey<FormState> SignUpFormKey = GlobalKey<FormState>();
 
-  // var fname = '';
-  // var pnumber = '';
-  // var lemail = '';
-  // var Epassword = '';
+  var name = '';
+  var phone = '';
+  var email = '';
+  var password = '';
+  var confirmPassword = '';
+
+  var isPasswordHidden= true.obs;
 
 
   // addUser() {
@@ -39,44 +42,11 @@ class OtpDetailController extends GetxController {
   // }
 
 
-  // addUser() {
-  //   //var name = .value;
-  //   var email = fname.val;
-  //   var phone = phoneCont.value.text;
-  //   var password = passwordController.text;
-  //  // var isValide = SignupFormKey.currentState?.validate();
-  //  // if (isValide == true)
-  //   {
-  //     Map<String, dynamic> userData = {
-  //       "name": name,
-  //       "email": email,
-  //       "phone": phone,
-  //       "password": password,
-  //     };
-  //
-  //     FirebaseFirestore.instance.collection("users").add(userData);
-  //     print("user created by firebase");
-  //   }
-  // }
-
   @override
   void onInit() {
     super.onInit();
-    // name = TextEditingController();
-    // phone = TextEditingController();
-    // email = TextEditingController();
-    // password = TextEditingController();
-    // confirmpass= TextEditingController();
   }
 
-
-  @override
-  void onClose() {
-    // name.dispose();
-    // phone.dispose();
-    // email.dispose();
-    // password.dispose();
-  }
 
   // String? validateEmail(String value) {
   //   Pattern pattern =
@@ -136,6 +106,18 @@ class OtpDetailController extends GetxController {
       print('net is off');
       Get.snackbar("Warning"," No Internet",snackPosition: SnackPosition.TOP,backgroundColor: Colors.purple,);
 
+    }
+  }
+
+  validate() {
+    if (SignUpFormKey.currentState!.validate()) {
+      print("form validated");
+
+    }
+  }
+  isvalid(value,pval){
+    if(value == null || value.isEmpty){
+      return 'Enter $pval';
     }
   }
 

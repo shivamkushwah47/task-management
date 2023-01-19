@@ -69,7 +69,7 @@ class LoginView extends GetView<LoginController> {
                       bottom: Get.height * .08,
                       left: Get.width * .05,
                       width: Get.width * .9,
-                      height: Get.height * .6,
+                      height: Get.height * .62,
                       child: Card(
                           elevation: 10,
                           shape: RoundedRectangleBorder(
@@ -95,7 +95,7 @@ class LoginView extends GetView<LoginController> {
                                         decoration: InputDecoration(
                                             prefixIcon: Icon(Icons.email,
                                                 color: Colors.blue),
-                                            fillColor: Colors.grey.shade300,
+                                            fillColor: Colors.grey.shade100,
                                             filled: true,
                                             hintText: "Enter Email",
                                             border: OutlineInputBorder(
@@ -127,7 +127,7 @@ class LoginView extends GetView<LoginController> {
                                           decoration: InputDecoration(
                                               prefixIcon: Icon(Icons.lock,
                                                   color: Colors.blue),
-                                              fillColor: Colors.grey.shade300,
+                                              fillColor: Colors.grey.shade100,
                                               filled: true,
                                               hintText: "Password",
                                               border: OutlineInputBorder(
@@ -227,7 +227,7 @@ class LoginView extends GetView<LoginController> {
                                         shape: StadiumBorder(),
                                         side: BorderSide(
                                             width: 1.4,
-                                            color: Colors.purple), // NEW
+                                            color: Colors.indigoAccent), // NEW
                                       ),
                                       onPressed: () {
                                         controller.checkconn();

@@ -7,7 +7,7 @@ class Routes {
   static String intro = "/introduction_view.dart";
   static String otp = "/otp_view.dart";
   static String details = "/details_view.dart";
-  static String detailsec = "/detail1_view.dart";
+  static String register = "/register_view.dart";
   static String navigationbar = "/navigation_view.dart";
-  static String apiform = "/otp_detail_view.dart";
+  static String apiform = "/register_view.dart";
 }
