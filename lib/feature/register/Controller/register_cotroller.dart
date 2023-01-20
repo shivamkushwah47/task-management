@@ -16,7 +16,7 @@ class RegisterController extends GetxController {
   
   final EmailValidator = MultiValidator([
     RequiredValidator(errorText: "Email is required"),
-    PatternValidator(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', errorText: 'passwords must have at least one special character')
+    PatternValidator(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', errorText: 'Enter valid email')
 
   ]);
 

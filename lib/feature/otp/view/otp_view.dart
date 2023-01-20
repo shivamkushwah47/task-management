@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
 import 'package:visiter_app/feature/otp/controller/otp_controller.dart';
-import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class OtpView extends GetView<OtpController> {
   @override
@@ -43,25 +42,25 @@ class OtpView extends GetView<OtpController> {
                               height: Get.height * 0.15,
                               child: Row(crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  CircleAvatar(backgroundColor: Colors.white,
-                                    child: IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-
-                                          Icons.arrow_back_ios_new_rounded,
-                                          color: Colors.black,
-
-                                        )),
-                                  ),
                                   Padding(
-                                    padding: EdgeInsets.fromLTRB(18, 0, 0, 0),
-                                    child: const Text(
-                                      'OTP',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 22,
-                                          fontWeight: FontWeight.w600),
+                                    padding: EdgeInsetsDirectional.fromSTEB(11, 0, 15, 0),
+                                    child: CircleAvatar(backgroundColor: Colors.white,
+                                      child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+
+                                            Icons.arrow_back_ios_new_rounded,
+                                            color: Colors.black,
+
+                                          )),
                                     ),
+                                  ),
+                                  const Text(
+                                    'OTP',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 27,
+                                        fontWeight: FontWeight.w600),
                                   )
                                 ],
                               ),

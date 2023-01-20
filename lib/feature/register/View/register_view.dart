@@ -42,12 +42,20 @@ class RegisterView extends GetView<RegisterController> {
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_back_ios_new_rounded,
-                                        color: Colors.white,
-                                      )),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(11, 0, 15, 0),
+
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+
+                                      child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.arrow_back_ios_new_rounded,
+                                            color: Colors.black,
+                                          )),
+                                    ),
+                                  ),
                                   const Text(
                                     'REGISTER',
                                     style: TextStyle(

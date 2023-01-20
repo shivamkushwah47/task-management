@@ -43,7 +43,7 @@ class SignupView extends GetView<SignupController> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.all(8.0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(11, 0, 15, 0),
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
                                       child: IconButton(

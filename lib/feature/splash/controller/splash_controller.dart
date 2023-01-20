@@ -8,7 +8,7 @@ class SplashController extends GetxController {
 
   @override
   void onInit() {
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 4), () {
       Get.offAllNamed(Routes.intro);
     });
     super.onInit();
