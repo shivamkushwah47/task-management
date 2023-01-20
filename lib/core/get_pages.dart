@@ -2,6 +2,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
 import 'package:visiter_app/feature/Introduction/view/introduction_view.dart';
+import 'package:visiter_app/feature/admin_create_task/binding/create_task_binding.dart';
+import 'package:visiter_app/feature/admin_create_task/view/create_task_view.dart';
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
 import 'package:visiter_app/feature/login/view/login_view.dart';
 import 'package:visiter_app/feature/otp/binding/otp_binding.dart';
@@ -23,4 +25,5 @@ List<GetPage> allpages = [
   GetPage(name: Routes.forgotpass, page: () => ForgotView(), binding: ForgotBinding()),
   GetPage(name: Routes.otp, page: () => OtpView(), binding: OtpBinding()),
   GetPage(name: Routes.register, page: () => RegisterView(), binding: RegisterBinding()),
+  GetPage(name: Routes.CreateTask, page: () => CreateTaskView(), binding: CreateTaskBinding()),
 ];
