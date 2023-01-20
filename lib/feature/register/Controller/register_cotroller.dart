@@ -2,11 +2,24 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class RegisterController extends GetxController {
+  final passwordValidator = MultiValidator([
+    RequiredValidator(errorText: 'password is required'),
+    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+    PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: 'passwords must have at least one special character')
+  ]);
+  
+  final EmailValidator = MultiValidator([
+    RequiredValidator(errorText: "Email is required"),
+    PatternValidator(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', errorText: 'passwords must have at least one special character')
+
+  ]);
+
 
   late TextEditingController nameController = TextEditingController();
   late TextEditingController emailController = TextEditingController();
@@ -17,7 +30,7 @@ class RegisterController extends GetxController {
   dynamic argumenData = Get.arguments;
 
 
-  final GlobalKey<FormState> SignUpFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> RegisterFormKey = GlobalKey<FormState>();
 
   var name = '';
   var phone = '';
@@ -33,7 +46,7 @@ class RegisterController extends GetxController {
     var email = emailController.text;
     var phone = SignupController.phoneController.text;
     var password = passwordController.text;
-    var isValide = SignUpFormKey.currentState?.validate();
+    var isValide = RegisterFormKey.currentState?.validate();
     if (isValide == true) {
       Map<String, dynamic> userData = {
         "name": name,
@@ -90,11 +103,11 @@ class RegisterController extends GetxController {
 
 
   SignUpAPI() {
-    final isvalide = SignUpFormKey.currentState?.validate();
+    final isvalide = RegisterFormKey.currentState?.validate();
     if (isvalide!) {
       internet();
     }
-    SignUpFormKey.currentState!.save();
+    RegisterFormKey.currentState!.save();
   }
   internet()async{
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -112,7 +125,7 @@ class RegisterController extends GetxController {
   }
 
   validate() {
-    if (SignUpFormKey.currentState!.validate()) {
+    if (RegisterFormKey.currentState!.validate()) {
       print("form validated");
       internet();
     }
@@ -125,5 +138,11 @@ class RegisterController extends GetxController {
   Future<void> logout() async {
     await GoogleSignIn().disconnect();
     FirebaseAuth.instance.signOut();
+  }
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    logout();
+    super.onClose();
   }
 }

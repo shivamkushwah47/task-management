@@ -64,6 +64,7 @@ dependencies:
   bordered_text: ^2.0.0
   text_field_suffix_button: ^0.1.0
   google_fonts: ^3.0.1
+  form_field_validator: ^1.1.0
 
 
 dev_dependencies:
