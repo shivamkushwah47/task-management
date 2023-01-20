@@ -9,4 +9,5 @@ class Routes {
   static String register = "/register_view.dart";
   static String navigationbar = "/navigation_view.dart";
   static String apiform = "/register_view.dart";
+  static String create = "/create_view.dart";
 }
