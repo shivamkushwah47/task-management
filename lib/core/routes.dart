@@ -8,5 +8,4 @@ class Routes {
   static String otp = "/otp_view.dart";
   static String register = "/register_view.dart";
   static String navigationbar = "/navigation_view.dart";
-  static String apiform = "/register_view.dart";
 }

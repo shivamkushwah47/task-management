@@ -32,7 +32,7 @@ class IntroView extends GetView<IntroController> {
                               backgroundColor: Colors.indigo,
                               shape:BeveledRectangleBorder()),
                           child: Text("GET STARTED",
-                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
                           onPressed: () { Get.toNamed(Routes.login);},
                         ),
                       )
@@ -58,7 +58,7 @@ class IntroView extends GetView<IntroController> {
                               backgroundColor: Colors.indigo,
                               shape:BeveledRectangleBorder()),
                           child: Text("GET STARTED",
-                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
                           onPressed: () { Get.toNamed(Routes.login);},
                         ),
                       )
@@ -81,7 +81,7 @@ class IntroView extends GetView<IntroController> {
                               backgroundColor: Colors.indigo,
                               shape:BeveledRectangleBorder()),
                           child: Text("GET STARTED",
-                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.035)),
+                              style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
                           onPressed: () { Get.toNamed(Routes.login);},
                         ),
                       )

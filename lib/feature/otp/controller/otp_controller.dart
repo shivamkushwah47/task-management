@@ -16,7 +16,7 @@ class OtpController extends GetxController {
       PhoneAuthCredential credential = PhoneAuthProvider.credential(
           verificationId: this.verificationData, smsCode: code);
       await _auth.signInWithCredential(credential);
-      Get.toNamed(Routes.apiform);
+      Get.toNamed(Routes.register);
     } catch (e) {
       Get.snackbar("Wrong OTP", "Otp that you entered was wrong.",
           backgroundColor: Colors.indigo,

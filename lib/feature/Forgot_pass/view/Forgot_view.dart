@@ -40,12 +40,19 @@ class ForgotView extends GetView<ForgotController> {
                               height: Get.height * 0.15,
                               child: Row(crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.arrow_back_ios_new_rounded,
-                                        color: Colors.white,
-                                      )),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(11, 0, 15, 0),
+
+                                    child: CircleAvatar(
+                                      backgroundColor: Colors.white,
+                                      child: IconButton(
+                                          onPressed: () {},
+                                          icon: const Icon(
+                                            Icons.arrow_back_ios_new_rounded,
+                                            color: Colors.black,
+                                          )),
+                                    ),
+                                  ),
                                   const Text(
                                     'FORGOT PASSWORD',
                                     style: TextStyle(
@@ -85,7 +92,7 @@ class ForgotView extends GetView<ForgotController> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.all(8.0),
-                                      child: Text("Don't worry It Happens.Please enter the address associated with your account.",style: TextStyle(color: Colors.grey, fontSize: Get.height*0.025),),
+                                      child: Text("Don't worry It Happens.Please enter the\naddress associated with your account.",style: TextStyle(color: Colors.grey, fontSize: Get.height*0.0165),),
                                     ),
                                     SizedBox(height:Get.height*0.05),
                                     TextFormField(
