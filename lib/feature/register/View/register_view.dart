@@ -137,7 +137,7 @@ class RegisterView extends GetView<RegisterController> {
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      controller: controller.emailController,
+                                      controller: controller.argumenData,
                                       onSaved: (value) {
                                         controller.email = value!;
                                       },
@@ -165,7 +165,7 @@ class RegisterView extends GetView<RegisterController> {
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      readOnly: true,
+                                      readOnly: RegisterController.giveaccess,
                                       controller:
                                           SignupController.phoneController,
                                       onSaved: (value) {
@@ -210,13 +210,11 @@ class RegisterView extends GetView<RegisterController> {
                                                           .value;
                                                 }),
                                           ),
-                                          controller:
-                                              controller.passwordController,
-                                          onSaved: (value) {
+                                          initialValue: controller.argumenData,
+                                          onChanged: (value) {
                                             controller.password = value!;
                                           },
-                                          validator:
-                                              controller.passwordValidator,
+                                          validator: controller.passwordValidator,
                                         ))),
                                     SizedBox(
                                       height: Get.height * 0.02,
@@ -256,7 +254,7 @@ class RegisterView extends GetView<RegisterController> {
                                       width: Get.width - 160,
                                       child: ElevatedButton(
                                           onPressed: () {
-                                            controller.validate();
+
                                           },
                                           child: Text(
                                             'SIGNUP',
@@ -265,9 +263,50 @@ class RegisterView extends GetView<RegisterController> {
                                           )),
                                     ),
 
+                                    SizedBox(height: Get.height*0.4,),
+                                    SizedBox(
+
+                                      width: Get.width - 140,
+
+                                      child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.white,
+                                            side: BorderSide(
+                                                width: 1.4,
+                                                color: Colors.indigoAccent), // NEW
+                                          ),
+                                          onPressed: () {
+                                            print("hello");
+                                            controller.createUser(context);
+                                          },
+                                          child: Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: [
+                                              Image.asset(
+                                                "assets/Image/google_bg.png",
+                                                width: 25,
+                                                height: 25,
+                                              ),
+                                              SizedBox(
+                                                width: 8,
+                                              ),
+                                              Text(
+                                                'Signup with Google',
+                                                style: TextStyle(
+                                                  // fontSize: Get.height*0.02,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: Colors.indigoAccent,
+                                                ),
+                                              ),
+                                            ],
+                                          )),
+                                    ),
                                   ],
                                 ),
+
                               ),
+
                             ),
                           )),
                     )
