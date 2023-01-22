@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,8 +7,10 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:intl_phone_field/helpers.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:visiter_app/core/components/loader.dart';
 import 'package:visiter_app/core/routes.dart';
 
 class LoginController extends GetxController {
@@ -95,11 +98,41 @@ class LoginController extends GetxController {
  //    }
  //  }
 
-  loginformvalidate() {
+  login(context) async{
     if (loginFormKey.currentState!.validate()) {
       print("form validated");
+      Loader.showLoader(context);
+      if(!(await InternetConnectionChecker().hasConnection)){
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      }else{
+        
+      }
 
     }
+  }
+
+  forgotPassword(context) async{
+      Loader.showLoader(context);
+      if(!(await InternetConnectionChecker().hasConnection)){
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      }else{
+          Get.back();
+          Get.toNamed(Routes.forgotpass);
+      }
+
+
   }
 
   void checkconn() async {
