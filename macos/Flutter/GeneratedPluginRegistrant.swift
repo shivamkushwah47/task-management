@@ -12,7 +12,7 @@ import firebase_core
 import geolocator_apple
 import path_provider_macos
 import share_plus
-import shared_preferences_foundation
+import shared_preferences_macos
 import smart_auth
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
