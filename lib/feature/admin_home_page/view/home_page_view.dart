@@ -331,6 +331,9 @@ class HomePageView extends GetView<HomePageController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
+
+
+
                           child: Container(
                             height: Get.height * 0.09,
                             padding: EdgeInsets.all(10),

@@ -57,7 +57,7 @@ class InProgressView extends GetView<InProgressController> {
                             ),
                           ),
                           Image.asset(
-                            'assets/Image/Todo.png',
+                            'assets/Image/todo.png',
                             height: Get.height*0.115,
                           )
                         ],
@@ -78,6 +78,10 @@ class InProgressView extends GetView<InProgressController> {
                         ),
 
                         child:
+
+
+
+
                         Column(
                           children: [
                             Padding(

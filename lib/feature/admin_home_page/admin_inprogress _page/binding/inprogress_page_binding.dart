@@ -9,5 +9,9 @@ class InProgressBinding extends Bindings {
     // TODO: implement dependencies
     Get.put(InProgressController());
 
+
+
+
+
   }
 }

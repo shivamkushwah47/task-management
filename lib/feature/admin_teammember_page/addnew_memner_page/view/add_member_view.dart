@@ -9,5 +9,8 @@ class AddMemberView extends GetView<AddMemberController> {
     // TODO: implement build
 return Scaffold(
 
+
+
+
 );  }
 }

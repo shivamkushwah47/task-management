@@ -57,7 +57,7 @@ return Scaffold(
                         ),
                       ),
                       Image.asset(
-                        'assets/Image/teammenber.png',
+                        'assets/Image/Teammenber.png',
                         height: Get.height*0.115,
                       )
                     ],
@@ -96,6 +96,9 @@ return Scaffold(
 
 
                           margin: EdgeInsets.only(top: 10),
+
+
+
 
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,7 +149,7 @@ return Scaffold(
                                     ),
                                     Expanded(child: Container()),
                                     Image.asset(
-                                      'assets/Image/profileimage.png',
+                                      'assets/Image/Profileimage.png',
                                       height: Get.height*0.07,
                                     ),
                                     IconButton(onPressed:(){} , icon: Icon(Icons.more_vert_outlined),iconSize: 30,color: Colors.black,),

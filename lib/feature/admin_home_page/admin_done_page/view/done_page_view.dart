@@ -57,7 +57,7 @@ class DoneView extends GetView<DoneController> {
                             ),
                           ),
                           Image.asset(
-                            'assets/Image/Todo.png',
+                            'assets/Image/todo.png',
                             height: Get.height*0.115,
                           )
                         ],
@@ -100,6 +100,11 @@ class DoneView extends GetView<DoneController> {
                                 children: [
                                   Expanded(
                                     child: Container(
+
+
+
+
+
                                       height: Get.height * 0.09,
                                       //padding: EdgeInsets.all(10),
                                       decoration: BoxDecoration(

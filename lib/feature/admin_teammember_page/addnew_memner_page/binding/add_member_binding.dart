@@ -10,5 +10,8 @@ class AddMemberBinding extends Bindings {
     // TODO: implement dependencies
     Get.put(AddMemberController());
 
+
+
+
   }
 }
