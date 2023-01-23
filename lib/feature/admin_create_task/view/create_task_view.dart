@@ -181,6 +181,9 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     ),
                                     Container(width: 90,
                                       child: TextFormField(
+                                        onTap: (){
+                                          controller.date();
+                                        },
                                         //  controller: _Datecontroller,
                                         cursorColor: Colors.white,
                                         style: GoogleFonts.montserrat(
