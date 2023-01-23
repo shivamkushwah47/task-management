@@ -47,7 +47,9 @@ class SignupView extends GetView<SignupController> {
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
                                       child: IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Get.back();
+                                          },
                                           icon: const Icon(
                                             Icons.arrow_back_ios_new_rounded,
                                             color: Colors.black,
@@ -84,136 +86,137 @@ class SignupView extends GetView<SignupController> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Form(
-                                  key: controller.myformkey,
-                                  child: Container(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        SizedBox(height: Get.height*0.04,),
-                                        IntlPhoneField(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Form(
+                                    key: controller.signupformkey,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          SizedBox(height: Get.height*0.04,),
+                                          IntlPhoneField(
 
-                                          decoration: const InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
+                                            decoration: const InputDecoration(
+                                              enabledBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
+                                              ),
+
+                                              counterText: '',
+                                              hintText: 'Phone Number',
+                                              focusedBorder: OutlineInputBorder(
+                                                borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
+
+
+                                              ),
                                             ),
-
-                                            counterText: '',
-                                            hintText: 'Phone Number',
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
-
-
-                                            ),
+                                            controller: SignupController.phoneController,
+                                            initialCountryCode: 'IN',
+                                            onChanged: (phone) {
+                                              print(phone.completeNumber);
+                                              controller.phonevalue=phone.toString();
+                                            },
+                                            validator: (value) =>
+                                                controller.isSignupValid(value, 'Enter phone'),
                                           ),
-                                          controller: SignupController.phoneController,
-                                          initialCountryCode: 'IN',
-                                          onChanged: (phone) {
-                                            print(phone.completeNumber);
-                                            SignupController.phonevalue=phone.toString();
-                                          },
-                                          validator: (p0) {},
-                                        ),
-                                        SizedBox(height: Get.height*0.07,),
-                                        SizedBox(
-                                          width: Get.width-160,
-                                          child: ElevatedButton(
-                                              onPressed: () {
-                                                controller.verifybyphone();
-                                              },
-                                              child: Text(
-                                                'REQUEST OTP',
-                                                style:
-                                                TextStyle(color: Colors.white),
-                                              )),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: Get.height*0.03,),
-                                Row(children: <Widget>[
-                                  Expanded(
-                                    child: new Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 10.0, right: 15.0),
-                                        child: Divider(
-                                          color: Colors.black,
-                                          height: 50,
-                                        )),
-                                  ),
-                                  Text("or "),
-                                  Expanded(
-                                    child: new Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 15.0, right: 10.0),
-                                        child: Divider(
-                                          color: Colors.black,
-                                          height: 50,
-                                        )),
-                                  ),
-                                ]),
-                                SizedBox(height: Get.height*0.03,),
-
-                                SizedBox(
-
-                                  width: Get.width - 140,
-
-                                  child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.white,
-                                        side: BorderSide(
-                                            width: 1.4,
-                                            color: Colors.indigoAccent), // NEW
-                                      ),
-                                      onPressed: () {
-                                        controller.checkconn();
-                                        controller.googleLogin();
-                                      },
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            "assets/Image/google_bg.png",
-                                            width: 25,
-                                            height: 25,
-                                          ),
+                                          SizedBox(height: Get.height*0.07,),
                                           SizedBox(
-                                            width: 8,
-                                          ),
-                                          Text(
-                                            'Signup with Google',
-                                            style: TextStyle(
-                                              // fontSize: Get.height*0.02,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.indigoAccent,
-                                            ),
-                                          ),
+                                            width: Get.width-160,
+                                            child: ElevatedButton(
+                                                onPressed: () {
+                                                  controller.SignupValidate(context);
+                                                },
+                                                child: Text(
+                                                  'REQUEST OTP',
+                                                  style:
+                                                  TextStyle(color: Colors.white),
+                                                )),
+                                          )
                                         ],
-                                      )),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Already have an account? '),
-                                    TextButton(
+                                      ),
+                                    ),
+                                  SizedBox(height: Get.height*0.03,),
+                                  Row(children: <Widget>[
+                                    Expanded(
+                                      child: new Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 10.0, right: 15.0),
+                                          child: Divider(
+                                            color: Colors.black,
+                                            height: 50,
+                                          )),
+                                    ),
+                                    Text("or "),
+                                    Expanded(
+                                      child: new Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 15.0, right: 10.0),
+                                          child: Divider(
+                                            color: Colors.black,
+                                            height: 50,
+                                          )),
+                                    ),
+                                  ]),
+                                  SizedBox(height: Get.height*0.03,),
+
+                                  SizedBox(
+
+                                    width: Get.width - 140,
+
+                                    child: ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.white,
+                                          side: BorderSide(
+                                              width: 1.4,
+                                              color: Colors.indigoAccent), // NEW
+                                        ),
                                         onPressed: () {
-                                          Get.toNamed(Routes.login);
+                                          controller.googleLogin(context);
                                         },
-                                        child: Text(
-                                          'Login',
-                                          style:
-                                          TextStyle(color: Colors.blue),
-                                        ))
-                                  ],
-                                ),
-                              ],
+                                        child: Row(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: [
+                                            Image.asset(
+                                              "assets/Image/google_bg.png",
+                                              width: 25,
+                                              height: 25,
+                                            ),
+                                            SizedBox(
+                                              width: 8,
+                                            ),
+                                            Text(
+                                              'Signup with Google',
+                                              style: TextStyle(
+                                                // fontSize: Get.height*0.02,
+                                                fontWeight: FontWeight.w600,
+                                                color: Colors.indigoAccent,
+                                              ),
+                                            ),
+                                          ],
+                                        )),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('Already have an account? '),
+                                      TextButton(
+                                          onPressed: () {
+                                            Get.toNamed(Routes.login);
+                                          },
+                                          child: Text(
+                                            'Login',
+                                            style:
+                                            TextStyle(color: Colors.blue),
+                                          ))
+                                    ],
+                                  ),
+                                  SizedBox(height: Get.height*0.3)
+                                ],
+                              ),
                             ),
                           )),
                     )

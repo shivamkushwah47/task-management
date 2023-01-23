@@ -1,19 +1,26 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
+
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:visiter_app/Core/routes.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:visiter_app/core/routes.dart';
+import 'package:visiter_app/core/components/loader.dart';
+import 'package:visiter_app/core/components/snackbar.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
+import 'package:visiter_app/feature/register/Controller/register_cotroller.dart';
 
 class SignupController extends GetxController {
   final countryPicker = const FlCountryCodePicker();
-  final myformkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> signupformkey = GlobalKey<FormState>();
   static TextEditingController phoneController = TextEditingController();
   static String verificationId = "";
-  static var phonevalue= "";
+  var phonevalue= "";
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
 
 
   String? isvalid(String value) {
@@ -23,53 +30,102 @@ class SignupController extends GetxController {
     return null;
   }
 
-  validatenum() {
-    final isValid = myformkey.currentState!.validate();
-    if (!isValid) {
-      return;
-    }
-    myformkey.currentState!.save();
-  }
-
-  //For checking Internet Connection
-  checkconn()async{
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi) {
-      // I am connected to a mobile network.
-      googleLogin();
-    }else if (connectivityResult == ConnectivityResult.none) {
-      Get.snackbar("NoInternet", "Please turn on internet connection",
-          backgroundColor: Colors.redAccent,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM);
+  isSignupValid(value,msg){
+    if(value == null || value.isEmpty){
+      return 'Enter $msg';
     }
   }
 
-  googleLogin() async {
-    print("googleLogin method Called");
-    GoogleSignIn _googleSignIn = GoogleSignIn();
-    try {
-      var result = await _googleSignIn.signIn();
-      if (result == null) {
-        return;
+  SignupValidate(context) async{
+    if (signupformkey.currentState!.validate()) {
+      print("form validated");
+      Loader.showLoader(context);
+      if(!(await InternetConnectionChecker().hasConnection)){
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      }else{
+        FireBase.checkUserByNum(SignupController.phoneController.text).then((value) {
+          if (FireBase.isPhoneExist) {
+            Get.back();
+            const Snackbar(title: 'Warning', msg: 'This phone is already exist ')
+                .snack1();
+          }else{
+            verifybyphone(SignupController.phoneController, context);
+          }
+        });
       }
-      final userData = await result.authentication;
-      final credential = GoogleAuthProvider.credential(
-          accessToken: userData.accessToken, idToken: userData.idToken);
-      var finalResult =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-      print(finalResult);
-      print("Values is");
-      print("Result $result");
-      print(result.displayName);
-      print(result.email);
-      print(result.photoUrl);
 
-      Get.toNamed(Routes.register, arguments: result.email);
-    } catch (error) {
-      print("Error");
-      print(error);
+
     }
+  }
+
+  verifybyphone(phone, context) async {
+    Loader.showLoader(context);
+    await _auth.verifyPhoneNumber(
+        phoneNumber: "+91${phone.text}",
+        verificationCompleted: (phoneAuthCredential) async {},
+        verificationFailed: (FirebaseAuthException exception) {
+          Get.back();
+          AwesomeDialog(
+              context: context,
+              dialogType: DialogType.error,
+              title: 'Error',
+              desc: '${exception.message}')
+              .show();
+          print("verificationFailed");
+        },
+        codeSent: (verificationID, resendingToken) async {
+          Get.back();
+          verificationId = verificationID;
+          Get.offNamed(Routes.otp, arguments: verificationId);
+
+        },
+        codeAutoRetrievalTimeout: (verificationID) async {});
+  }
+
+  googleLogin(context) async {
+    Loader.showLoader(context);
+    if(!(await InternetConnectionChecker().hasConnection)){
+      Get.back();
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.warning,
+        title: 'Warning!!',
+        desc: 'Check internet connection',
+      ).show();
+    }else{
+      print("googleLogin method Called");
+      GoogleSignIn _googleSignIn = GoogleSignIn();
+      try {
+        var result = await _googleSignIn.signIn();
+        if (result == null) {
+          return;
+        }
+        final userData = await result.authentication;
+        final credential = GoogleAuthProvider.credential(
+            accessToken: userData.accessToken, idToken: userData.idToken);
+        var finalResult =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+        print(finalResult);
+        print("Values is");
+        print("Result $result");
+        print(result.displayName);
+        print(result.email);
+        print(result.photoUrl);
+        RegisterController.giveaccess = false;
+        Get.offAndToNamed(Routes.googleRegister, arguments: result.email);
+      } catch (error) {
+        print("Error");
+        print(error);
+      }
+
+    }
+
   }
 
   Future<void> logout() async {
@@ -77,23 +133,5 @@ class SignupController extends GetxController {
     FirebaseAuth.instance.signOut();
   }
 
-  verifybyphone() async {
-    await _auth.verifyPhoneNumber(
-        phoneNumber: "+91${SignupController.phoneController.text}",
-        verificationCompleted: (phoneAuthCredential) async {
-
-        },
-        verificationFailed: (verificationFailed) {
-
-          print(verificationFailed);
-        },
-        codeSent: (verificationID, resendingToken) async {
-
-          verificationId = verificationID;
-          Get.toNamed(Routes.otp, arguments: verificationId);
-
-        },
-        codeAutoRetrievalTimeout: (verificationID) async {});
-  }
 
 }

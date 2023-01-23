@@ -9,4 +9,6 @@ class Routes {
   static String CreateTask = "/create_task_view.dart";
   static String HomePage = "/home_page_view.dart";
   static String AllTask = "/ALL_Task_view.dart";
+  static String bottombar = "/bottambar_view.dart";
+  static String googleRegister = "/google_register_view.dart";
 }

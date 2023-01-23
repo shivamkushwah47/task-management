@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:visiter_app/feature/register/Controller/register_cotroller.dart';
-import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
+import 'package:visiter_app/feature/google_register/controller/google_register_controller.dart';
 
-class RegisterView extends GetView<RegisterController> {
+class GoogleRegisterView extends GetView<GoogleRegisterController> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
@@ -83,7 +83,7 @@ class RegisterView extends GetView<RegisterController> {
                             padding: const EdgeInsets.all(20.0),
                             child: SingleChildScrollView(
                               child: Form(
-                                key: controller.RegisterFormKey,
+                                key: controller.GoogleFormKey,
                                 child: Column(
                                   children: [
                                     TextFormField(
@@ -98,12 +98,13 @@ class RegisterView extends GetView<RegisterController> {
                                           hintText: "Enter Name",
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                            BorderRadius.circular(30),
                                             borderSide: BorderSide(
                                               width: 2,
                                               color: Colors.blue,
                                             ),
                                           )),
+                                      controller: controller.nameController,
                                       onChanged: (value) {
                                         controller.name = value;
                                       },
@@ -114,26 +115,25 @@ class RegisterView extends GetView<RegisterController> {
                                       height: Get.height * 0.02,
                                     ),
                                     TextFormField(
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      ),
-                                      decoration: InputDecoration(
-                                          prefixIcon: Icon(Icons.email,
-                                              color: Colors.blue),
-                                          fillColor: Colors.grey.shade100,
-                                          filled: true,
-                                          hintText: "Enter Email",
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
-                                            borderSide: BorderSide(
-                                              width: 2,
-                                              color: Colors.blue,
-                                            ),
-                                          )),
-                                      onChanged: (value) {
-                                        controller.email = value;
-                                      },
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                        decoration: InputDecoration(
+                                            prefixIcon: Icon(Icons.email,
+                                                color: Colors.blue),
+                                            fillColor: Colors.grey.shade100,
+                                            filled: true,
+                                            hintText: "Enter Email",
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                              BorderRadius.circular(30),
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.blue,
+                                              ),
+                                            )),
+                                        readOnly: true,
+                                        initialValue: controller.googleArgument,
                                         validator: controller.EmailValidator
                                     ),
                                     SizedBox(
@@ -152,15 +152,15 @@ class RegisterView extends GetView<RegisterController> {
                                           hintText: "Enter Phone",
                                           border: OutlineInputBorder(
                                             borderRadius:
-                                                BorderRadius.circular(30),
+                                            BorderRadius.circular(30),
                                             borderSide: BorderSide(
                                               width: 2,
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      readOnly: true,
-                                      controller:
-                                          SignupController.phoneController,
+                                      onChanged: (value) {
+                                        controller.phone = value;
+                                      },
                                       validator: (value) =>
                                           controller.isvalid(value, 'phone'),
                                     ),
@@ -168,74 +168,74 @@ class RegisterView extends GetView<RegisterController> {
                                       height: Get.height * 0.02,
                                     ),
                                     Obx(() => (TextFormField(
-                                          style: TextStyle(),
-                                          obscureText:
-                                              controller.isPasswordHidden.value,
-                                          decoration: InputDecoration(
-                                            prefixIcon: Icon(Icons.lock,
-                                                color: Colors.blue),
-                                            fillColor: Colors.grey.shade100,
-                                            filled: true,
-                                            hintText: "Password",
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              borderSide: BorderSide(
-                                                width: 2,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
-                                            suffixIcon: InkWell(
-                                                child: Icon(
-                                                  controller.isPasswordHidden
-                                                          .value
-                                                      ? Icons.visibility_off
-                                                      : Icons.visibility,
-                                                ),
-                                                onTap: () {
-                                                  controller.isPasswordHidden
-                                                          .value =
-                                                      !controller
-                                                          .isPasswordHidden
-                                                          .value;
-                                                }),
+                                      style: TextStyle(),
+                                      obscureText:
+                                      controller.isPasswordHidden.value,
+                                      decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.lock,
+                                            color: Colors.blue),
+                                        fillColor: Colors.grey.shade100,
+                                        filled: true,
+                                        hintText: "Password",
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                            width: 2,
+                                            color: Colors.blue,
                                           ),
-                                          onChanged: (value) {
-                                            controller.password = value;
-                                          },
-                                          validator: controller.passwordValidator,
-                                        ))),
+                                        ),
+                                        suffixIcon: InkWell(
+                                            child: Icon(
+                                              controller.isPasswordHidden
+                                                  .value
+                                                  ? Icons.visibility_off
+                                                  : Icons.visibility,
+                                            ),
+                                            onTap: () {
+                                              controller.isPasswordHidden
+                                                  .value =
+                                              !controller
+                                                  .isPasswordHidden
+                                                  .value;
+                                            }),
+                                      ),
+                                      onChanged: (value) {
+                                        controller.password = value;
+                                      },
+                                      validator: controller.passwordValidator,
+                                    ))),
                                     SizedBox(
                                       height: Get.height * 0.02,
                                     ),
                                     Obx(() => (TextFormField(
-                                          style: TextStyle(),
-                                          obscureText:
-                                              controller.isPasswordHidden.value,
-                                          decoration: InputDecoration(
-                                            prefixIcon: Icon(Icons.lock,
-                                                color: Colors.blue),
-                                            fillColor: Colors.grey.shade100,
-                                            filled: true,
-                                            hintText: "Confirm Password",
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(30),
-                                              borderSide: BorderSide(
-                                                width: 2,
-                                                color: Colors.blue,
-                                              ),
-                                            ),
+                                      style: TextStyle(),
+                                      obscureText:
+                                      controller.isPasswordHidden.value,
+                                      decoration: InputDecoration(
+                                        prefixIcon: Icon(Icons.lock,
+                                            color: Colors.blue),
+                                        fillColor: Colors.grey.shade100,
+                                        filled: true,
+                                        hintText: "Confirm Password",
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(30),
+                                          borderSide: BorderSide(
+                                            width: 2,
+                                            color: Colors.blue,
                                           ),
-                                          controller:
-                                              controller.confirmpassController,
-                                          onSaved: (value) {
-                                            controller.confirmPassword = value!;
-                                          },
-                                          validator: (val) => MatchValidator(
-                                                  errorText:
-                                                      'passwords do not match').validateMatch(val.toString(), controller.password),
-                                        ))),
+                                        ),
+                                      ),
+                                      controller:
+                                      controller.confirmpassController,
+                                      onSaved: (value) {
+                                        controller.confirmPassword = value!;
+                                      },
+                                      validator: (val) => MatchValidator(
+                                          errorText:
+                                          'passwords do not match').validateMatch(val.toString(), controller.password),
+                                    ))),
                                     SizedBox(
                                       height: Get.height * 0.08,
                                     ),
@@ -243,12 +243,12 @@ class RegisterView extends GetView<RegisterController> {
                                       width: Get.width - 160,
                                       child: ElevatedButton(
                                           onPressed: () {
-                                            controller.createUser(context);
+                                             controller.createUser(context);
                                           },
                                           child: Text(
                                             'SIGNUP',
                                             style:
-                                                TextStyle(color: Colors.white),
+                                            TextStyle(color: Colors.white),
                                           )),
                                     ),
 

@@ -1,17 +1,16 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:visiter_app/core/components/loader.dart';
+import 'package:visiter_app/core/components/snackbar.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
-import 'package:visiter_app/core/routes.dart';
-import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
-class RegisterController extends GetxController {
+
+class GoogleRegisterController extends GetxController {
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password is required'),
     MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
@@ -22,34 +21,34 @@ class RegisterController extends GetxController {
   final EmailValidator = MultiValidator([
     RequiredValidator(errorText: "Email is required"),
     PatternValidator(
-  r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
         errorText: 'Enter valid email')
   ]);
 
-  static var giveaccess = true;
+
   late TextEditingController nameController = TextEditingController();
   late TextEditingController emailController = TextEditingController();
   late TextEditingController phoneController = TextEditingController();
   late TextEditingController passwordController = TextEditingController();
   late TextEditingController confirmpassController = TextEditingController();
 
-  dynamic argumenData = Get.arguments;
+  dynamic googleArgument = Get.arguments;
 
-  final GlobalKey<FormState> RegisterFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> GoogleFormKey = GlobalKey<FormState>();
 
   var name = '';
-  var phone = SignupController.phoneController.text;
-  var email = '';
+  var phone = '';
   var password = '';
   var confirmPassword = '';
 
   var isPasswordHidden = true.obs;
 
-
   createUser(context) async {
-    if (RegisterFormKey.currentState!.validate()) {
+    if (GoogleFormKey.currentState!.validate()) {
       print("form validated");
+      Loader.showLoader(context);
       if (!(await InternetConnectionChecker().hasConnection)) {
+        Get.back();
         AwesomeDialog(
           context: context,
           dialogType: DialogType.warning,
@@ -57,7 +56,17 @@ class RegisterController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       } else {
-        FireBase.addUser(context, name, email, phone, password, "admin");
+        FireBase.checkUserByEmail(googleArgument).then((value) {
+          if (FireBase.isEmailExist) {
+            Get.back();
+            const Snackbar(title: 'Warning', msg: 'This Email is already exist ')
+                .snack1();
+          }else{
+            FireBase.addUser(context,name, googleArgument, phone, password, "admin");
+          }
+        });
+
+
       }
     }
   }
