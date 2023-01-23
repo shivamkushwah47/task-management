@@ -112,7 +112,7 @@ class HomePageView extends GetView<HomePageController> {
                         padding: EdgeInsets.all(20),
                         margin: EdgeInsets.only(
                             left: 0, right: 22, top: 0, bottom: 0),
-                        width: Get.width * 0.42,
+                        width: Get.width * 0.4,
                         height: Get.height * 0.3,
                         child: Column(
                           // crossAxisAlignment: CrossAxisAlignment.start,

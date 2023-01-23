@@ -111,7 +111,7 @@ class LoginController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       }else{
-        
+        Get.toNamed(Routes.bottombar);
       }
 
     }
