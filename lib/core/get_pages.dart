@@ -6,8 +6,16 @@ import 'package:visiter_app/feature/admin_AllTask_page/binding/All_Task_Binding.
 import 'package:visiter_app/feature/admin_AllTask_page/view/ALL_Task_view.dart';
 import 'package:visiter_app/feature/admin_create_task/binding/create_task_binding.dart';
 import 'package:visiter_app/feature/admin_create_task/view/create_task_view.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_done_page/binding/done_page_binding.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_done_page/view/done_page_view.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_inprogress%20_page/binding/inprogress_page_binding.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_inprogress%20_page/view/inprogress_page_view.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_todo_pages/binding/todo_page_binding.dart';
+import 'package:visiter_app/feature/admin_home_page/admin_todo_pages/view/todo_page_view.dart';
 import 'package:visiter_app/feature/admin_home_page/binding/home_page_binding.dart';
 import 'package:visiter_app/feature/admin_home_page/view/home_page_view.dart';
+import 'package:visiter_app/feature/admin_teammember_page/binding/team_page_binding.dart';
+import 'package:visiter_app/feature/admin_teammember_page/view/team_page_view.dart';
 import 'package:visiter_app/feature/bottambar/view/bottambar_view.dart';
 import 'package:visiter_app/feature/google_register/binding/google_register_binding.dart';
 import 'package:visiter_app/feature/google_register/view/google_register_view.dart';
@@ -38,4 +46,8 @@ List<GetPage> allpages = [
   GetPage(name: Routes.AllTask, page: () => AllTaskView(), binding: AllTaskBinding()),
   GetPage(name: Routes.bottombar, page: () => BottombarView(), binding: BottombarBinding()),
   GetPage(name: Routes.googleRegister, page: () => GoogleRegisterView(), binding: GoogleRegisterBinding()),
+  GetPage(name: Routes.TodoPage, page: () => TodoView(), binding: TodoBinding()),
+  GetPage(name: Routes.InProgressPage, page: () => InProgressView(), binding: InProgressBinding()),
+  GetPage(name: Routes.donePage, page: () => DoneView(), binding: DoneBinding()),
+  GetPage(name: Routes.TeamMember, page: () => TeamView(), binding: TeamBinding()),
 ];
