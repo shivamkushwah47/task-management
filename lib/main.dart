@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.TeamMember,
+      initialRoute: Routes.splash,
       getPages: allpages,
     );
   }
