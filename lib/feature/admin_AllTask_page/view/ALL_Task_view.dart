@@ -32,13 +32,7 @@ return Scaffold(body: SafeArea(
 
             onPressed: () {},
             icon: const Icon(
-
-
-
               Icons.search,size: 35,
-
-
-
             )),
 
       ],

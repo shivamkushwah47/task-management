@@ -5,11 +5,15 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
 import 'package:visiter_app/feature/admin_home_page/controller/home_page-controller.dart';
 
+import '../../../core/firebase/firebase.dart';
+
 class HomePageView extends GetView<HomePageController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return Obx(() => controller.loader.value
+        ? const Center(child: CircularProgressIndicator())
+        : Scaffold(
 
       // appBar: AppBar(
       //   elevation: 0,
@@ -67,7 +71,7 @@ class HomePageView extends GetView<HomePageController> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Name Surname',
+                          Text(FireBase.userInfo['name'],
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: Get.height * 0.024)),
@@ -469,6 +473,7 @@ class HomePageView extends GetView<HomePageController> {
           ),
         ),
       ),
+    ),
     );
   }
 }

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 // import '../../mydetail/controller/detailController.dart';
 // import '../../profile/profile_controller.dart';
 import '../../Forgot_pass/controller/Forgot_controller.dart';
+import '../../admin_home_page/controller/home_page-controller.dart';
 import '../../register/Controller/register_cotroller.dart';
 import '../controller/bottombar_controller.dart';
 
@@ -17,9 +18,10 @@ class BottombarBinding extends Bindings{
     // Get.lazyPut(()=>LoginRepoImpl());
 
     Get.put(BottombarController());
+    // Get.put(HomePageController());
     Get.put(RegisterController());
     Get.put(ForgotController());
-    // Get.lazyPut(()=>AttendanceController());
+    Get.lazyPut(()=>HomePageController());
     // Get.lazyPut(()=>ProfileController());
     // Get.lazyPut(()=>DetailController());
     // Get.lazyPut(()=>DetailRepoImpl());

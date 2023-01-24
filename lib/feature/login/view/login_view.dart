@@ -111,7 +111,7 @@ class LoginView extends GetView<LoginController> {
                                                 ),
                                               )),
                                           controller:
-                                              controller.emailController,
+                                              controller.phone,
                                           onSaved: (value) {
                                             controller.email = value!;
                                           },
@@ -153,7 +153,7 @@ class LoginView extends GetView<LoginController> {
                                                 }),
                                           ),
                                           controller:
-                                              controller.passwordController,
+                                              controller.pass,
                                           onSaved: (value) {
                                             controller.password = value!;
                                           },
@@ -188,7 +188,7 @@ class LoginView extends GetView<LoginController> {
                                         width: Get.width - 150,
                                         child: ElevatedButton(
                                             onPressed: () {
-                                              controller.login(context);
+                                              controller.login(context,controller.phone.text, controller.pass.text);
                                             },
                                             child: Text(
                                               'LOGIN',
