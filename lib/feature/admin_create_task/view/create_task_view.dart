@@ -127,8 +127,6 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 ),
                               ),
                             ),
-
-
                           ],
                         ),
                       ),
@@ -139,7 +137,6 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       width: Get.width * .9,
                       height: Get.height * .55,
                       child: Container(
-
                           child: Padding(
                             padding: const EdgeInsets.all(0.0),
                             child: Column(

@@ -197,6 +197,13 @@ class SignupView extends GetView<SignupController> {
                                           ],
                                         )),
                                   ),
+
+
+
+
+
+
+
                                   SizedBox(
                                     width: 10,
                                   ),
@@ -221,6 +228,21 @@ class SignupView extends GetView<SignupController> {
                             ),
                           )),
                     )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   ],
                 ),
               ),
