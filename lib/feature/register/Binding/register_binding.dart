@@ -9,6 +9,7 @@ class RegisterBinding extends Bindings{
   void dependencies() {
     Get.put(RegisterController());
 
+
   }
 
 }

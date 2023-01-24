@@ -13,6 +13,8 @@ class CreateTaskView extends GetView<CreateTaskController> {
     // TODO: implement build
     return Scaffold(
 
+
+
       resizeToAvoidBottomInset : false,
 
       body: GestureDetector(
@@ -50,7 +52,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         onPressed: () {},
                                         icon: const Icon(
 
-                                          Icons.drag_handle_outlined,
+                                          Icons.menu,
                                           color: Colors.white,
 
                                         )),
@@ -178,6 +180,9 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     ),
                                     Container(width: 90,
                                       child: TextFormField(
+                                        onTap: (){
+                                          controller.date();
+                                        },
                                         //  controller: _Datecontroller,
                                         cursorColor: Colors.white,
                                         style: GoogleFonts.montserrat(

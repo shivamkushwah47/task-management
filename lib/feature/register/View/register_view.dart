@@ -1,17 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:visiter_app/feature/register/Controller/register_cotroller.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
@@ -23,6 +18,7 @@ class RegisterView extends GetView<RegisterController> {
                 height: Get.height,
                 child: Stack(
                   children: [
+
                     Positioned(
                       child: Container(
                         width: Get.width,
@@ -109,9 +105,8 @@ class RegisterView extends GetView<RegisterController> {
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      controller: controller.nameController,
-                                      onSaved: (value) {
-                                        controller.name = value!;
+                                      onChanged: (value) {
+                                        controller.name = value;
                                       },
                                       validator: (value) =>
                                           controller.isvalid(value, 'Name'),
@@ -137,9 +132,8 @@ class RegisterView extends GetView<RegisterController> {
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      controller: controller.argumenData,
-                                      onSaved: (value) {
-                                        controller.email = value!;
+                                      onChanged: (value) {
+                                        controller.email = value;
                                       },
                                         validator: controller.EmailValidator
                                     ),
@@ -165,12 +159,9 @@ class RegisterView extends GetView<RegisterController> {
                                               color: Colors.blue,
                                             ),
                                           )),
-                                      readOnly: RegisterController.giveaccess,
+                                      readOnly: true,
                                       controller:
                                           SignupController.phoneController,
-                                      onSaved: (value) {
-                                        controller.phone = value!;
-                                      },
                                       validator: (value) =>
                                           controller.isvalid(value, 'phone'),
                                     ),
@@ -210,9 +201,8 @@ class RegisterView extends GetView<RegisterController> {
                                                           .value;
                                                 }),
                                           ),
-                                          initialValue: controller.argumenData,
                                           onChanged: (value) {
-                                            controller.password = value!;
+                                            controller.password = value;
                                           },
                                           validator: controller.passwordValidator,
                                         ))),
@@ -248,13 +238,13 @@ class RegisterView extends GetView<RegisterController> {
                                                       'passwords do not match').validateMatch(val.toString(), controller.password),
                                         ))),
                                     SizedBox(
-                                      height: Get.height * 0.02,
+                                      height: Get.height * 0.08,
                                     ),
                                     SizedBox(
                                       width: Get.width - 160,
                                       child: ElevatedButton(
                                           onPressed: () {
-
+                                            controller.createUser(context);
                                           },
                                           child: Text(
                                             'SIGNUP',
@@ -264,44 +254,6 @@ class RegisterView extends GetView<RegisterController> {
                                     ),
 
                                     SizedBox(height: Get.height*0.4,),
-                                    SizedBox(
-
-                                      width: Get.width - 140,
-
-                                      child: ElevatedButton(
-                                          style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.white,
-                                            side: BorderSide(
-                                                width: 1.4,
-                                                color: Colors.indigoAccent), // NEW
-                                          ),
-                                          onPressed: () {
-                                            print("hello");
-                                            controller.createUser(context);
-                                          },
-                                          child: Row(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: [
-                                              Image.asset(
-                                                "assets/Image/google_bg.png",
-                                                width: 25,
-                                                height: 25,
-                                              ),
-                                              SizedBox(
-                                                width: 8,
-                                              ),
-                                              Text(
-                                                'Signup with Google',
-                                                style: TextStyle(
-                                                  // fontSize: Get.height*0.02,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: Colors.indigoAccent,
-                                                ),
-                                              ),
-                                            ],
-                                          )),
-                                    ),
                                   ],
                                 ),
 

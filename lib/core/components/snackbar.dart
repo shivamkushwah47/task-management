@@ -11,9 +11,10 @@ class Snackbar{
   snack1(){
     Get.snackbar(title, msg,
         backgroundColor:Colors.white,
-        colorText: GlobalColor.themecolor
+        colorText: GlobalColor.customMaterialColor
     );
   }
+
   snack2(){
     Get.snackbar(title, msg,
         backgroundColor:GlobalColor.themecolor,

@@ -14,6 +14,7 @@ class SplashView extends GetView<SplashController> {
       home: Scaffold(
         body: AnimatedSplashScreen(
 
+
           splash: Image.asset("assets/Icon/splash.gif"
             ,),
           splashIconSize: 350,

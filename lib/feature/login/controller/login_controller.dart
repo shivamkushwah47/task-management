@@ -1,21 +1,25 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:intl_phone_field/helpers.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:visiter_app/core/components/loader.dart';
 import 'package:visiter_app/core/routes.dart';
+
+import '../../../core/firebase/firebase.dart';
 
 class LoginController extends GetxController {
 
   final getStorage = GetStorage();
+  late final phone = TextEditingController();
+  final pass = TextEditingController();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  late TextEditingController emailController = TextEditingController();
-  late TextEditingController passwordController = TextEditingController();
+  // late TextEditingController emailController = TextEditingController();
+  // late TextEditingController passwordController = TextEditingController();
 
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password is required'),
@@ -95,36 +99,68 @@ class LoginController extends GetxController {
  //    }
  //  }
 
-  loginformvalidate() {
+  Future login(context,phone,pass) async{
     if (loginFormKey.currentState!.validate()) {
       print("form validated");
+      Loader.showLoader(context);
+      if(!(await InternetConnectionChecker().hasConnection)){
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      }else{
+        // Get.toNamed(Routes.bottombar);
+        FireBase.getData(context, phone, pass);
+      }
 
     }
   }
 
-  void checkconn() async {
-    var connectionresult = await (Connectivity().checkConnectivity());
-    if (connectionresult == ConnectivityResult.none) {
-      print("No internet Connection");
-      Get.snackbar("noInternet", "Please turn on internet connection",
-          backgroundColor: Colors.redAccent,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM
-      );
-    } else if (connectionresult == ConnectivityResult.wifi||connectionresult == ConnectivityResult.mobile) {
-      signInEmailPass();
+  forgotPassword(context) async{
+      Loader.showLoader(context);
+      if(!(await InternetConnectionChecker().hasConnection)){
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      }else{
+          Get.back();
+          Get.toNamed(Routes.forgotpass);
+      }
 
-    }
-  }
 
-  signInEmailPass() {
-    FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text).then((value) {
-       print("Login successfully");
-    }).onError((error, stackTrace) {
-      print("Error: ${error.toString()}");
-    });
   }
+  //
+  // void checkconn() async {
+  //   var connectionresult = await (Connectivity().checkConnectivity());
+  //   if (connectionresult == ConnectivityResult.none) {
+  //     print("No internet Connection");
+  //     Get.snackbar("noInternet", "Please turn on internet connection",
+  //         backgroundColor: Colors.redAccent,
+  //         colorText: Colors.white,
+  //         snackPosition: SnackPosition.BOTTOM
+  //     );
+  //   } else if (connectionresult == ConnectivityResult.wifi||connectionresult == ConnectivityResult.mobile) {
+  //     signInEmailPass();
+  //
+  //   }
+  // }
+  //
+  // signInEmailPass() {
+  //   FirebaseAuth.instance.signInWithEmailAndPassword(
+  //       email: emailController.text, password: passwordController.text).then((value) {
+  //      print("Login successfully");
+  //   }).onError((error, stackTrace) {
+  //     print("Error: ${error.toString()}");
+  //   });
+  // }
+
 
   EmailPassSignout(){
     FirebaseAuth.instance.signOut().then((value) {

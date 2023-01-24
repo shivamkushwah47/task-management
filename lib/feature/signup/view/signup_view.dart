@@ -13,6 +13,7 @@ class SignupView extends GetView<SignupController> {
     return  Scaffold(
 
 
+
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),
@@ -91,7 +92,6 @@ class SignupView extends GetView<SignupController> {
                                 children: [
                                   Form(
                                     key: controller.signupformkey,
-                                    child: Container(
                                       child: Column(
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
@@ -115,7 +115,7 @@ class SignupView extends GetView<SignupController> {
                                             initialCountryCode: 'IN',
                                             onChanged: (phone) {
                                               print(phone.completeNumber);
-                                              SignupController.phonevalue=phone.toString();
+                                              controller.phonevalue=phone.toString();
                                             },
                                             validator: (value) =>
                                                 controller.isSignupValid(value, 'Enter phone'),
@@ -136,7 +136,6 @@ class SignupView extends GetView<SignupController> {
                                         ],
                                       ),
                                     ),
-                                  ),
                                   SizedBox(height: Get.height*0.03,),
                                   Row(children: <Widget>[
                                     Expanded(
@@ -173,8 +172,7 @@ class SignupView extends GetView<SignupController> {
                                               color: Colors.indigoAccent), // NEW
                                         ),
                                         onPressed: () {
-                                          controller.checkconn();
-                                          controller.googleLogin();
+                                          controller.googleLogin(context);
                                         },
                                         child: Row(
                                           mainAxisAlignment:

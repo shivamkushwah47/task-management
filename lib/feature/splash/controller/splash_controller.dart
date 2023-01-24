@@ -14,4 +14,6 @@ class SplashController extends GetxController {
     super.onInit();
   }
 
+
+
 }

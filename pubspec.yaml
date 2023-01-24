@@ -51,7 +51,7 @@ dependencies:
   shared_preferences: ^2.0.15
   geocoding: ^2.0.5
   geolocator: ^9.0.2
-  intl: ^0.18.0
+  intl: ^0.17.0
   introduction_screen: ^3.1.2
   email_validator: ^2.1.17
   share_plus: ^6.3.0
@@ -66,6 +66,10 @@ dependencies:
   google_fonts: ^3.0.1
   form_field_validator: ^1.1.0
   internet_connection_checker: ^1.0.0+1
+  convex_bottom_bar: ^3.1.0+1
+  hive: ^2.2.3
+  path_provider: ^2.0.11
+  calendar_appbar: ^0.0.6
 
 
 

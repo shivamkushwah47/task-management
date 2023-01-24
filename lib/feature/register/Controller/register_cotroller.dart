@@ -7,6 +7,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
@@ -17,6 +18,7 @@ class RegisterController extends GetxController {
     PatternValidator(r'(?=.*?[#?!@$%^&*-])',
         errorText: 'passwords must have at least one special character')
   ]);
+
 
   final EmailValidator = MultiValidator([
     RequiredValidator(errorText: "Email is required"),
@@ -37,61 +39,13 @@ class RegisterController extends GetxController {
   final GlobalKey<FormState> RegisterFormKey = GlobalKey<FormState>();
 
   var name = '';
-  var phone = '';
+  var phone = SignupController.phoneController.text;
   var email = '';
   var password = '';
   var confirmPassword = '';
 
   var isPasswordHidden = true.obs;
 
-  addUser(context) {
-    var name = nameController.text;
-    var email = emailController.text;
-    var phone = SignupController.phoneController.text;
-    var password = passwordController.text;
-    var isValide = RegisterFormKey.currentState?.validate();
-    if (isValide == true) {
-      Map<String, dynamic> userData = {
-        "name": name,
-        "email": email,
-        "phone": phone,
-        "password": password,
-      };
-
-      FirebaseFirestore.instance
-          .collection('mytask/mytask/users/')
-          .add(userData)
-          .then((value) => {
-      AwesomeDialog(
-      context: context,
-      dialogType: DialogType.success,
-      title: 'Success',
-      desc: 'You have successfully signup go back to login',
-      dismissOnTouchOutside: false,
-      btnOkOnPress: () => Get.offAllNamed(Routes.login),
-      ).show()
-      });
-      print("user created by firebase");
-    }
-  }
-
-  internet() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      //final response = await _signUpRepo.signupAPI(NameController.text,EmailController.text,PasswordController.text,PhoneController.text);
-      print("You are connected with internet");
-
-    } else {
-      print('net is off');
-      Get.snackbar(
-        "Warning",
-        " No Internet",
-        snackPosition: SnackPosition.TOP,
-        backgroundColor: Colors.purple,
-      );
-    }
-  }
 
   createUser(context) async {
     if (RegisterFormKey.currentState!.validate()) {
@@ -104,7 +58,7 @@ class RegisterController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       } else {
-        addUser(context);
+        FireBase.addUser(context, name, email, phone, password, "admin");
       }
     }
   }
