@@ -16,6 +16,8 @@ import 'package:visiter_app/feature/splash/binding/splash_binding.dart';
 import 'package:visiter_app/feature/splash/view/splash_view.dart';
 import '../feature/Forgot_pass/binding/Forgot_binding.dart';
 import '../feature/Forgot_pass/view/Forgot_view.dart';
+import '../feature/profile/binding/profile_binding.dart';
+import '../feature/profile/view/profile_view.dart';
 
 List<GetPage> allpages = [
   GetPage(name: Routes.splash, page: () => SplashView(), binding: SplashBinding()),
@@ -26,4 +28,5 @@ List<GetPage> allpages = [
   GetPage(name: Routes.otp, page: () => OtpView(), binding: OtpBinding()),
   GetPage(name: Routes.register, page: () => RegisterView(), binding: RegisterBinding()),
   GetPage(name: Routes.CreateTask, page: () => CreateTaskView(), binding: CreateTaskBinding()),
+  GetPage(name: Routes.profile, page: () => ProfileView(), binding: ProfileBinding()),
 ];
