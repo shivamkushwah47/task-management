@@ -6,6 +6,8 @@ import '../../admin_AllTask_page/view/ALL_Task_view.dart';
 import '../../admin_home_page/view/home_page_view.dart';
 import '../../register/View/register_view.dart';
 
+
+
 class BottombarController extends GetxController{
  // var currentIndex=0.obs;
 

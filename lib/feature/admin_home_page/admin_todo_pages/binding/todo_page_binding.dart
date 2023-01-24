@@ -8,9 +8,5 @@ class TodoBinding extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.put(TodoController());
-
-
-
-
   }
 }

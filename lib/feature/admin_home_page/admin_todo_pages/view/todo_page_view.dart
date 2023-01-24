@@ -10,7 +10,6 @@ class TodoView extends GetView<TodoController> {
   Widget build(BuildContext context) {
     // TODO: implement build
 return Scaffold(
-
     resizeToAvoidBottomInset: false,
     body: Container(
     child: Column(
@@ -47,7 +46,7 @@ return Scaffold(
       )),
     ),
     const Text(
-    'TO Do',
+    'To Do',
     style: TextStyle(
     color: Colors.white,
     fontSize: 23,

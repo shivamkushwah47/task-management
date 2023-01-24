@@ -9,9 +9,5 @@ class DoneBinding extends Bindings {
     // TODO: implement dependencies
     Get.put(DoneController());
 
-
-
-
-
   }
 }

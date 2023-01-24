@@ -13,6 +13,8 @@ class CreateTaskView extends GetView<CreateTaskController> {
     // TODO: implement build
     return Scaffold(
 
+
+
       resizeToAvoidBottomInset : false,
 
       body: GestureDetector(

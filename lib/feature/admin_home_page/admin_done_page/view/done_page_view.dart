@@ -100,11 +100,6 @@ class DoneView extends GetView<DoneController> {
                                 children: [
                                   Expanded(
                                     child: Container(
-
-
-
-
-
                                       height: Get.height * 0.09,
                                       //padding: EdgeInsets.all(10),
                                       decoration: BoxDecoration(

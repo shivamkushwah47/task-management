@@ -11,6 +11,7 @@ import 'package:visiter_app/core/firebase/firebase.dart';
 
 
 class GoogleRegisterController extends GetxController {
+
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password is required'),
     MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),

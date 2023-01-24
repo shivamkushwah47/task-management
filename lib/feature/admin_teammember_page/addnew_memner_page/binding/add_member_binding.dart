@@ -11,7 +11,5 @@ class AddMemberBinding extends Bindings {
     Get.put(AddMemberController());
 
 
-
-
   }
 }

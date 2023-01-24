@@ -9,6 +9,7 @@ class GoogleRegisterView extends GetView<GoogleRegisterController> {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),
         child: Container(

@@ -9,9 +9,5 @@ class TeamBinding extends Bindings {
     // TODO: implement dependencies
     Get.put(TeamController());
 
-
-
-
-
   }
 }

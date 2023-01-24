@@ -97,9 +97,6 @@ return Scaffold(
 
                           margin: EdgeInsets.only(top: 10),
 
-
-
-
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [

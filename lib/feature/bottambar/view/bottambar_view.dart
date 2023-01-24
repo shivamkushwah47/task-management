@@ -12,6 +12,8 @@ import '../../register/View/register_view.dart';
 import '../controller/bottombar_controller.dart';
 
 
+
+
 class  BottombarView extends GetView<BottombarController>{
   BottombarView({super.key});
   @override

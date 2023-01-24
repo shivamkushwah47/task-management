@@ -79,9 +79,6 @@ class InProgressView extends GetView<InProgressController> {
 
                         child:
 
-
-
-
                         Column(
                           children: [
                             Padding(

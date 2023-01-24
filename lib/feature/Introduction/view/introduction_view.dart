@@ -42,6 +42,7 @@ class IntroView extends GetView<IntroController> {
                   decoration: PageDecoration( titleTextStyle: TextStyle(color: Colors.black,fontSize: Get.height*0.03, fontWeight: FontWeight.w500),
                   )),
               PageViewModel(
+
                   title: 'Stay on top of your work',
                   image: Image.asset('assets/Image/2onboarding.png'),
 

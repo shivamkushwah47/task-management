@@ -11,6 +11,4 @@ class HomePageBinding extends Bindings {
 
   }
 
-
-
 }

@@ -22,10 +22,6 @@ import 'package:visiter_app/feature/google_register/view/google_register_view.da
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
 import 'package:visiter_app/feature/login/view/login_view.dart';
 
-
-
-
-
 import 'package:visiter_app/feature/otp/binding/otp_binding.dart';
 import 'package:visiter_app/feature/otp/view/otp_view.dart';
 import 'package:visiter_app/feature/register/Binding/register_binding.dart';

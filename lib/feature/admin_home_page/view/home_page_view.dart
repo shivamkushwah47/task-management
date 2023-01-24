@@ -138,9 +138,7 @@ class HomePageView extends GetView<HomePageController> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 20, 0, 10),
                                   child: Text("UI Design",
-                                      style: TextStyle(
-                                          fontSize: Get.height * 0.029,
-                                          fontWeight: FontWeight.bold,
+                                      style: TextStyle(fontSize: Get.height * 0.025, fontWeight: FontWeight.bold,
                                           color: Colors.white)),
                                 ),
                               ],
@@ -197,7 +195,7 @@ class HomePageView extends GetView<HomePageController> {
                                       0, 20, 0, 10),
                                   child: Text("UI Design",
                                       style: TextStyle(
-                                          fontSize: Get.height * 0.029,
+                                          fontSize: Get.height * 0.025,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white)),
                                 ),
@@ -326,7 +324,7 @@ class HomePageView extends GetView<HomePageController> {
 
                   margin: EdgeInsets.only(top: 10),
 
-                  child: GestureDetector(onTap:() {Get.offAllNamed(Routes.signup);},
+                  child: GestureDetector(onTap:() {Get.offAllNamed(Routes.InProgressPage);},
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -406,7 +404,7 @@ class HomePageView extends GetView<HomePageController> {
 
                   margin: EdgeInsets.only(top: 10),
 
-                  child: GestureDetector(onTap: (){Get.toNamed(Routes.TodoPage);
+                  child: GestureDetector(onTap: (){Get.toNamed(Routes.donePage);
                   },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,

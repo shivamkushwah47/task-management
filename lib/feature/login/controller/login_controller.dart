@@ -156,6 +156,7 @@ class LoginController extends GetxController {
     });
   }
 
+
   EmailPassSignout(){
     FirebaseAuth.instance.signOut().then((value) {
       print("Logout successfully");

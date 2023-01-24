@@ -14,6 +14,7 @@ class Snackbar{
         colorText: GlobalColor.customMaterialColor
     );
   }
+
   snack2(){
     Get.snackbar(title, msg,
         backgroundColor:GlobalColor.themecolor,

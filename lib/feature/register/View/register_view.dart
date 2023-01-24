@@ -18,6 +18,7 @@ class RegisterView extends GetView<RegisterController> {
                 height: Get.height,
                 child: Stack(
                   children: [
+
                     Positioned(
                       child: Container(
                         width: Get.width,
