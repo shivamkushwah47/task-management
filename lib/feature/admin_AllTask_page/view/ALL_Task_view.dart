@@ -11,6 +11,7 @@ class AllTaskView extends GetView<AllTaskController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+
     return Scaffold(
 
         appBar: CalendarAppBar(

@@ -10,12 +10,16 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:visiter_app/core/components/loader.dart';
 import 'package:visiter_app/core/routes.dart';
 
+import '../../../core/firebase/firebase.dart';
+
 class LoginController extends GetxController {
 
   final getStorage = GetStorage();
+  late final phone = TextEditingController();
+  final pass = TextEditingController();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  late TextEditingController emailController = TextEditingController();
-  late TextEditingController passwordController = TextEditingController();
+  // late TextEditingController emailController = TextEditingController();
+  // late TextEditingController passwordController = TextEditingController();
 
   final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'password is required'),
@@ -95,7 +99,7 @@ class LoginController extends GetxController {
  //    }
  //  }
 
-  login(context) async{
+  Future login(context,phone,pass) async{
     if (loginFormKey.currentState!.validate()) {
       print("form validated");
       Loader.showLoader(context);
@@ -108,7 +112,8 @@ class LoginController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       }else{
-        Get.toNamed(Routes.bottombar);
+        // Get.toNamed(Routes.bottombar);
+        FireBase.getData(context, phone, pass);
       }
 
     }
@@ -131,30 +136,30 @@ class LoginController extends GetxController {
 
 
   }
-
-  void checkconn() async {
-    var connectionresult = await (Connectivity().checkConnectivity());
-    if (connectionresult == ConnectivityResult.none) {
-      print("No internet Connection");
-      Get.snackbar("noInternet", "Please turn on internet connection",
-          backgroundColor: Colors.redAccent,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.BOTTOM
-      );
-    } else if (connectionresult == ConnectivityResult.wifi||connectionresult == ConnectivityResult.mobile) {
-      signInEmailPass();
-
-    }
-  }
-
-  signInEmailPass() {
-    FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text, password: passwordController.text).then((value) {
-       print("Login successfully");
-    }).onError((error, stackTrace) {
-      print("Error: ${error.toString()}");
-    });
-  }
+  //
+  // void checkconn() async {
+  //   var connectionresult = await (Connectivity().checkConnectivity());
+  //   if (connectionresult == ConnectivityResult.none) {
+  //     print("No internet Connection");
+  //     Get.snackbar("noInternet", "Please turn on internet connection",
+  //         backgroundColor: Colors.redAccent,
+  //         colorText: Colors.white,
+  //         snackPosition: SnackPosition.BOTTOM
+  //     );
+  //   } else if (connectionresult == ConnectivityResult.wifi||connectionresult == ConnectivityResult.mobile) {
+  //     signInEmailPass();
+  //
+  //   }
+  // }
+  //
+  // signInEmailPass() {
+  //   FirebaseAuth.instance.signInWithEmailAndPassword(
+  //       email: emailController.text, password: passwordController.text).then((value) {
+  //      print("Login successfully");
+  //   }).onError((error, stackTrace) {
+  //     print("Error: ${error.toString()}");
+  //   });
+  // }
 
 
   EmailPassSignout(){
