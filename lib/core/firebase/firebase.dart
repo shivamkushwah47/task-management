@@ -10,6 +10,7 @@ import '../components/loader.dart';
 import '../components/snackbar.dart';
 
 class FireBase {
+
   static bool isPhoneExist = false;
   static bool isEmailExist = false;
 

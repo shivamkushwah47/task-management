@@ -10,6 +10,10 @@ import '../../admin_home_page/controller/home_page-controller.dart';
 import '../../register/Controller/register_cotroller.dart';
 import '../controller/bottombar_controller.dart';
 
+
+
+
+
 class BottombarBinding extends Bindings{
   @override
   void dependencies() {

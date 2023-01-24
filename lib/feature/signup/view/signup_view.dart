@@ -13,6 +13,7 @@ class SignupView extends GetView<SignupController> {
     return  Scaffold(
 
 
+
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),

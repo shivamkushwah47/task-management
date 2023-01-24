@@ -21,6 +21,7 @@ class ForgotController extends GetxController {
   var password = '';
 
 
+
   @override
   void onInit() {
     super.onInit();

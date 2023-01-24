@@ -10,5 +10,7 @@ class CreateTaskBinding extends Bindings {
     Get.lazyPut(()=>CreateTaskController());
     Get.put(CreateTaskController());
 
+
+
   }
 }

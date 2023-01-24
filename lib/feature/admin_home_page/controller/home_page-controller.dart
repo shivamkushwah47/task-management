@@ -12,3 +12,7 @@ class HomePageController extends GetxController {
   }
   RxBool loader=true.obs;
 }
+class HomePageController extends GetxController {
+}
+
+

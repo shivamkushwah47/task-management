@@ -11,5 +11,6 @@ class SplashBinding extends Bindings {
 
     Get.put(SplashController());
     Get.put(IntroController());
+
   }
 }

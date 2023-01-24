@@ -11,4 +11,16 @@ class Routes {
   static String AllTask = "/ALL_Task_view.dart";
   static String bottombar = "/bottambar_view.dart";
   static String googleRegister = "/google_register_view.dart";
+  static String TodoPage = "/todo_page_view.dart";
+  static String InProgressPage = "/inprogress_page_view.dart";
+  static String donePage = "/done_page_view.dart";
+  static String TeamMember = "/team_page_view.dart";
+
+
+
+
+
+
+
+
 }

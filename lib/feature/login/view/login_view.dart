@@ -174,6 +174,7 @@ class LoginView extends GetView<LoginController> {
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.indigoAccent),
                                             ),
+
                                             onTap: () {
                                               controller
                                                   .forgotPassword(context);

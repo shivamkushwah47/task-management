@@ -7,6 +7,7 @@ class GoogleRegisterBinding extends Bindings{
     // TODO: implement dependencies
 
     Get.put(GoogleRegisterController());
+
   }
 
 }
