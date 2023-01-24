@@ -17,6 +17,7 @@ class OtpView extends GetView<OtpController> {
                 child: Column(
                   children: [
                     SizedBox(
+
                       height: Get.height,
                       child: Stack(
                         children: [

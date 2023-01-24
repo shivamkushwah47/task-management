@@ -13,6 +13,8 @@ class CreateTaskView extends GetView<CreateTaskController> {
     // TODO: implement build
     return Scaffold(
 
+
+
       resizeToAvoidBottomInset : false,
 
       body: GestureDetector(
@@ -50,7 +52,7 @@ mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         onPressed: () {},
                                         icon: const Icon(
 
-                                          Icons.drag_handle_outlined,
+                                          Icons.menu,
                                           color: Colors.white,
 
                                         )),

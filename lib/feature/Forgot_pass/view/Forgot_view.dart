@@ -63,6 +63,7 @@ class ForgotView extends GetView<ForgotController> {
                                 ],
                               ),
                             ),
+
                             Image.asset(
                               'assets/Image/forgot_password.png',
                               height: 90,

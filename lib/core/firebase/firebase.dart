@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:visiter_app/core/routes.dart';
 
 class FireBase {
+
   static bool isPhoneExist = false;
   static bool isEmailExist = false;
 

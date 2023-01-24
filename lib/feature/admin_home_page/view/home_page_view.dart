@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
+import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/feature/admin_home_page/controller/home_page-controller.dart';
 
 class HomePageView extends GetView<HomePageController> {
@@ -112,7 +113,7 @@ class HomePageView extends GetView<HomePageController> {
                         padding: EdgeInsets.all(20),
                         margin: EdgeInsets.only(
                             left: 0, right: 22, top: 0, bottom: 0),
-                        width: Get.width * 0.42,
+                        width: Get.width * 0.4,
                         height: Get.height * 0.3,
                         child: Column(
                           // crossAxisAlignment: CrossAxisAlignment.start,
@@ -137,9 +138,7 @@ class HomePageView extends GetView<HomePageController> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 20, 0, 10),
                                   child: Text("UI Design",
-                                      style: TextStyle(
-                                          fontSize: Get.height * 0.029,
-                                          fontWeight: FontWeight.bold,
+                                      style: TextStyle(fontSize: Get.height * 0.025, fontWeight: FontWeight.bold,
                                           color: Colors.white)),
                                 ),
                               ],
@@ -196,7 +195,7 @@ class HomePageView extends GetView<HomePageController> {
                                       0, 20, 0, 10),
                                   child: Text("UI Design",
                                       style: TextStyle(
-                                          fontSize: Get.height * 0.029,
+                                          fontSize: Get.height * 0.025,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white)),
                                 ),
@@ -246,72 +245,76 @@ class HomePageView extends GetView<HomePageController> {
 
                   margin: EdgeInsets.only(top: 10),
 
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: Get.height * 0.09,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.blueAccent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(children: [
-                            CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 25,
-                                child: const Icon(Icons.abc,
-                                    color: Colors.indigo)),
-                            SizedBox(
-                              width: Get.width * 0.06,
+                  child: GestureDetector(onTap: (){Get.toNamed(Routes.TodoPage);
+                  },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: Get.height * 0.09,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.blueAccent,
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'Todo',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: Get.height * 0.025,
-                                    fontWeight: FontWeight.w500,
+                            child: Row(children: [
+                              CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 25,
+                                  child: const Icon(Icons.abc,
+                                      color: Colors.indigo)),
+                              SizedBox(
+                                width: Get.width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    'Todo',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: Get.height * 0.025,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "10 Task",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "10 Task",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "-",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "-",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "1 Started",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "1 Started",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ]),
+                                    ],
+                                  )
+                                ],
+                              ),
+
+                            ]),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -321,72 +324,77 @@ class HomePageView extends GetView<HomePageController> {
 
                   margin: EdgeInsets.only(top: 10),
 
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: Get.height * 0.09,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.purpleAccent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(children: [
-                            CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 25,
-                                child: const Icon(Icons.abc,
-                                    color: Colors.indigo)),
-                            SizedBox(
-                              width: Get.width * 0.06,
+                  child: GestureDetector(onTap:() {Get.offAllNamed(Routes.InProgressPage);},
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+
+
+
+                          child: Container(
+                            height: Get.height * 0.09,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.purpleAccent,
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'In Progress',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: Get.height * 0.025,
-                                    fontWeight: FontWeight.w500,
+                            child: Row(children: [
+                              CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 25,
+                                  child: const Icon(Icons.abc,
+                                      color: Colors.indigo)),
+                              SizedBox(
+                                width: Get.width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    'In Progress',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: Get.height * 0.025,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "10 Task",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "10 Task",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "-",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "-",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "8 In Progress",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "8 In Progress",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ]),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Container(
@@ -396,72 +404,75 @@ class HomePageView extends GetView<HomePageController> {
 
                   margin: EdgeInsets.only(top: 10),
 
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                          height: Get.height * 0.09,
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.orangeAccent,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(children: [
-                            CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 25,
-                                child: const Icon(Icons.abc,
-                                    color: Colors.indigo)),
-                            SizedBox(
-                              width: Get.width * 0.06,
+                  child: GestureDetector(onTap: (){Get.toNamed(Routes.donePage);
+                  },
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: Get.height * 0.09,
+                            padding: EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.orangeAccent,
+                              borderRadius: BorderRadius.circular(10),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Text(
-                                  'Done',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: Get.height * 0.025,
-                                    fontWeight: FontWeight.w500,
+                            child: Row(children: [
+                              CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 25,
+                                  child: const Icon(Icons.abc,
+                                      color: Colors.indigo)),
+                              SizedBox(
+                                width: Get.width * 0.06,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    'Done',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: Get.height * 0.025,
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
-                                ),
-                                Row(
-                                  children: [
-                                    Text(
-                                      "10 Task",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                  Row(
+                                    children: [
+                                      Text(
+                                        "10 Task",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "-",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "-",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                    Text(
-                                      "8 Done",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: Get.height * 0.015,
-                                        fontWeight: FontWeight.w600,
+                                      Text(
+                                        "8 Done",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.w600,
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          ]),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ]),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ],

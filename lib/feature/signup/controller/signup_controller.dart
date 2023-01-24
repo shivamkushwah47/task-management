@@ -23,6 +23,7 @@ class SignupController extends GetxController {
 
 
 
+
   String? isvalid(String value) {
     if (value.length < 10) {
       return "Password must be of 6 character";

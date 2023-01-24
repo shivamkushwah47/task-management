@@ -10,4 +10,5 @@ class HomePageBinding extends Bindings {
     Get.put(HomePageController());
 
   }
+
 }

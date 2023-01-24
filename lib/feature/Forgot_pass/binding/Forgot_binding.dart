@@ -11,6 +11,7 @@ class ForgotBinding extends Bindings{
     Get.put(ForgotController());
 
 
+
   }
 
 }

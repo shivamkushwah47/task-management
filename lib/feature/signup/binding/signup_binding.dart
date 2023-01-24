@@ -10,6 +10,7 @@ class SignupBinding extends Bindings{
     Get.put(SignupController());
 
 
+
   }
 
 }
