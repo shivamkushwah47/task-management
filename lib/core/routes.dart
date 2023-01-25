@@ -16,6 +16,8 @@ class Routes {
   static String InProgressPage = "/inprogress_page_view.dart";
   static String donePage = "/done_page_view.dart";
   static String TeamMember = "/team_page_view.dart";
+  static String AddTeamMember = "/add_member_view.dart";
+  static String Notification = "/admin_notification_view.dart";
 
 
 

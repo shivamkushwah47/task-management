@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
-import 'package:visiter_app/core/routes.dart';
-import 'package:visiter_app/feature/admin_teammember_page/controller/team_page_controller.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:visiter_app/feature/admin_notification_page/controller/afdmin_notification_controller.dart';
 
-class TeamView extends GetView<TeamController> {
+class NotificationView extends GetView<NotificationController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -47,7 +46,7 @@ return Scaffold(
                                   )),
                             ),
                             const Text(
-                              'Team Member',
+                              'To Do',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 23,
@@ -58,7 +57,7 @@ return Scaffold(
                         ),
                       ),
                       Image.asset(
-                        'assets/Image/Teammenber.png',
+                        'assets/Image/todo.png',
                         height: Get.height*0.115,
                       )
                     ],
@@ -82,15 +81,11 @@ return Scaffold(
                     Column(
                       children: [
                         Padding(
-                          padding:EdgeInsetsDirectional.fromSTEB(5, 0,5, 0) ,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.end,
-                            children: [ TextButton(
-
-                              onPressed: (){
-                                Get.toNamed(Routes.AddTeamMember);
-                              },
-                              child: const Text('Add New Member',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.indigo)),
-                            ),
+                          padding:EdgeInsetsDirectional.fromSTEB(5, 0,5, 8) ,
+                          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("Created Task",style: TextStyle(fontSize: Get.height*0.025,fontWeight: FontWeight.bold)),
+                              Text("Priority",style: TextStyle(fontSize: Get.height*0.015,fontWeight: FontWeight.bold)),
                             ],
                           ),
                         ),
@@ -105,7 +100,7 @@ return Scaffold(
                             children: [
                               Expanded(
                                 child: Container(
-                                  height: Get.height * 0.095,
+                                  height: Get.height * 0.09,
                                   //padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(
                                     color: Colors.black12,
@@ -121,15 +116,20 @@ return Scaffold(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Text(
-                                          'Name',
+                                          'Login page',
                                           style: TextStyle(
                                             color: Colors.black,
                                             fontSize: Get.height * 0.017,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
+
+
+
+
+
                                         Text(
-                                          "Email Id",
+                                          "Description",
                                           style: TextStyle(
                                             color: Colors.grey,
                                             fontSize: Get.height * 0.012,
@@ -137,7 +137,7 @@ return Scaffold(
                                           ),
                                         ),
                                         Text(
-                                          "Phone Number",
+                                          "30/01/2023",
                                           style: TextStyle(
                                             color: Colors.grey,
                                             fontSize: Get.height * 0.012,
@@ -148,10 +148,6 @@ return Scaffold(
                                       ],
                                     ),
                                     Expanded(child: Container()),
-                                    Image.asset(
-                                      'assets/Image/Profileimage.png',
-                                      height: Get.height*0.07,
-                                    ),
                                     IconButton(onPressed:(){} , icon: Icon(Icons.more_vert_outlined),iconSize: 30,color: Colors.black,),
                                     SizedBox(width:Get.width*0.02,)
                                   ]),

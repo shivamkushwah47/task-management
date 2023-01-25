@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
@@ -14,6 +15,10 @@ import 'package:visiter_app/feature/admin_home_page/admin_todo_pages/binding/tod
 import 'package:visiter_app/feature/admin_home_page/admin_todo_pages/view/todo_page_view.dart';
 import 'package:visiter_app/feature/admin_home_page/binding/home_page_binding.dart';
 import 'package:visiter_app/feature/admin_home_page/view/home_page_view.dart';
+import 'package:visiter_app/feature/admin_notification_page/binding/admin_notification_binding.dart';
+import 'package:visiter_app/feature/admin_notification_page/view/admin_notification_view.dart';
+import 'package:visiter_app/feature/admin_teammember_page/addnew_memner_page/binding/add_member_binding.dart';
+import 'package:visiter_app/feature/admin_teammember_page/addnew_memner_page/view/add_member_view.dart';
 import 'package:visiter_app/feature/admin_teammember_page/binding/team_page_binding.dart';
 import 'package:visiter_app/feature/admin_teammember_page/view/team_page_view.dart';
 import 'package:visiter_app/feature/bottambar/view/bottambar_view.dart';
@@ -54,4 +59,6 @@ List<GetPage> allpages = [
   GetPage(name: Routes.InProgressPage, page: () => InProgressView(), binding: InProgressBinding()),
   GetPage(name: Routes.donePage, page: () => DoneView(), binding: DoneBinding()),
   GetPage(name: Routes.TeamMember, page: () => TeamView(), binding: TeamBinding()),
+  GetPage(name: Routes.AddTeamMember, page: () => AddMemberView(), binding: AddMemberBinding()),
+  GetPage(name: Routes.Notification, page: () => NotificationView(), binding: NotificationBinding()),
 ];
