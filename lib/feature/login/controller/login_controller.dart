@@ -112,7 +112,7 @@ class LoginController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       }else{
-        // Get.toNamed(Routes.bottombar);
+        Get.back();
         FireBase.getData(context, phone, pass);
       }
 

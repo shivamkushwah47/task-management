@@ -16,38 +16,95 @@ class HomePageView extends GetView<HomePageController> {
         ? const Center(child: CircularProgressIndicator())
         : Scaffold(
 
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   /* backgroundColor: Colors.transparent,*/
-      //   titleSpacing: 50,
-      //   leading: CircleAvatar(
-      //       radius: 25,
-      //       backgroundImage: AssetImage('assets/Image/forgot_password.png')),
-      //   actions: [
-      //     SizedBox(
-      //       width: 10,
-      //     ),
-      //     Column(
-      //       crossAxisAlignment: CrossAxisAlignment.start,
-      //       children: [
-      //         Text('Name Surname',
-      //             style: TextStyle(
-      //                 fontWeight: FontWeight.bold,
-      //                 fontSize: Get.height * 0.024)),
-      //         Text(
-      //           "Designation",
-      //           style: TextStyle(color: Colors.grey),
-      //         ),
-      //       ],
-      //     ),
-      //     IconButton(
-      //         onPressed: () {},
-      //         icon: const Icon(
-      //           Icons.notifications,
-      //           size: 25,
-      //         )),
-      //   ],
-      // ),
+              backgroundColor: Colors.white,
+
+      drawer:Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text (FireBase.userInfo['name']),
+              accountEmail: Text("abc@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/dp.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("Notification"),
+
+
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Delete Account"),
+
+            ),
+
+
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Log out"),
+
+            )
+          ],
+        ),
+      ),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
+        centerTitle: true,
+        title:  Row(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CircleAvatar(
+                radius: 25,
+                backgroundImage:
+                AssetImage('assets/Image/forgot_password.png')),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(FireBase.userInfo['name'],
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * 0.028)),
+                Text(
+                  "Designation",
+                  style: TextStyle(color: Colors.grey,
+                      fontSize: Get.height * 0.018
+                  ),
+                )
+              ],
+            ),
+
+            CircleAvatar(
+              backgroundColor: Colors.indigo,
+              child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.notifications,
+                    size: 25,
+                  )),
+            ),
+          ],
+        ),
+        elevation: 0,
+        flexibleSpace: Container(
+
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Colors.white,
+                    Colors.white
+                  ])
+          ),
+        ),
+      ),
+
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
@@ -58,39 +115,8 @@ class HomePageView extends GetView<HomePageController> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            size: 35,
-                          )),
-                      CircleAvatar(
-                          radius: 25,
-                          backgroundImage:
-                              AssetImage('assets/Image/forgot_password.png')),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(FireBase.userInfo['name'],
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: Get.height * 0.024)),
-                          Text(
-                            "Designation",
-                            style: TextStyle(color: Colors.grey),
-                          )
-                        ],
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.indigo,
-                        child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.notifications,
-                              size: 25,
-                            )),
-                      ),
+
+
                     ],
                   ),
                 ),
