@@ -130,7 +130,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                 Positioned(
                   top: Get.height * .35,
                   width: Get.width * 1,
-                  height: Get.height * .65,
+                  height: Get.height * .690,
                   child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
@@ -276,7 +276,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 30, 0, 50),
+                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                               child: TextFormField(
                                 // controller: _Titlecontroller,
                                 cursorColor: Colors.black,
@@ -306,7 +306,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                             ),
                             Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                               child: Text(
                                 "Are you ready to create a task",
                                 style: TextStyle(fontWeight: FontWeight.bold),
