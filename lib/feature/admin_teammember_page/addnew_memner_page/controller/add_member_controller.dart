@@ -1,6 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:visiter_app/core/components/loader.dart';
+import 'package:visiter_app/core/components/snackbar.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 
 class AddMemberController extends GetxController {
   final GlobalKey<FormState> AddTeamkey= GlobalKey<FormState>();
@@ -26,6 +31,42 @@ class AddMemberController extends GetxController {
   var phone = '';
   var password = '';
   var confirmPassword = '';
+
+  dynamic googleArgument = Get.arguments;
+
+  addmember(context) async {
+    if (AddTeamkey.currentState!.validate()) {
+      print("form validated");
+      Loader.showLoader(context);
+      if (!(await InternetConnectionChecker().hasConnection)) {
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      } else {
+        FireBase.checkUserByEmail(googleArgument).then((value) {
+          if (FireBase.isEmailExist) {
+            Get.back();
+            const Snackbar(title: 'Warning', msg: 'This Email is already exist ')
+                .snack1();
+          }
+
+         //else
+          // {
+          //   FireBase.addUser(context,name, , phone, password, "admin");
+          // }
+        });
+
+
+
+      }
+    }
+  }
+
+
   isvalid(value, pval) {
     if (value == null || value.isEmpty) {
       return 'Enter $pval';
