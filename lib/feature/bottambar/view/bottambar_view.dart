@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import '../../../core/global/colors.dart';
-import '../controller/bottombar_controller.dart';
+import 'package:visiter_app/core/global/colors.dart';
+import 'package:visiter_app/feature/bottambar/controller/bottombar_controller.dart';
+
 
 
 
@@ -19,6 +20,7 @@ class  BottombarView extends GetView<BottombarController>{
         backgroundColor: Colors.white,
         body: controller.adminallpages[controller.selectedindex.value],
         bottomNavigationBar: ConvexAppBar(
+          style: TabStyle.fixedCircle,
           backgroundColor: Colors.white,
           color:GlobalColor.themecolor,
             activeColor: Colors.indigo,

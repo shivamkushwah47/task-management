@@ -10,12 +10,10 @@ import '../components/loader.dart';
 import '../components/snackbar.dart';
 
 class FireBase {
-
   static bool isPhoneExist = false;
   static bool isEmailExist = false;
 
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
-
 
   static Future checkUserByNum(phone) async {
     await firestore
@@ -31,7 +29,6 @@ class FireBase {
     });
   }
 
-
   static Future checkUserByEmail(email) async {
     await firestore
         .collection('mytask/mytask/users/')
@@ -46,35 +43,33 @@ class FireBase {
     });
   }
 
-  static Future addUser(context, name, email, phone, password, role) async{
+  static Future addUser(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
 
     Map<String, dynamic> userData = {
-        "name": name,
-        "email": email,
-        "phone": phone,
-        "password": password,
-        "role": role,
-        'id': id,
-      };
+      "name": name,
+      "email": email,
+      "phone": phone,
+      "password": password,
+      "role": role,
+      'id': id,
+    };
 
-      await FirebaseFirestore.instance
-          .collection('mytask/mytask/users/')
-          .add(userData)
-          .then((value) => {
-        AwesomeDialog(
-          context: context,
-          dialogType: DialogType.success,
-          title: 'Success',
-          desc: 'You have successfully signup go back to login',
-          dismissOnTouchOutside: false,
-          btnOkOnPress: () => Get.offAllNamed(Routes.login),
-        ).show()
-      });
-      print("user created by firebase");
-    }
-
-
+    await FirebaseFirestore.instance
+        .collection('mytask/mytask/users/')
+        .add(userData)
+        .then((value) => {
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.success,
+                title: 'Success',
+                desc: 'You have successfully signup go back to login',
+                dismissOnTouchOutside: false,
+                btnOkOnPress: () => Get.offAllNamed(Routes.login),
+              ).show()
+            });
+    print("user created by firebase");
+  }
 
   static bool isMatch = false;
   static RxMap userInfo = {}.obs;
@@ -87,7 +82,7 @@ class FireBase {
     firestore.collection('mytask/mytask/users/').get().then((snapshot) {
       // ignore: avoid_function_literals_in_foreach_calls
       snapshot.docs.forEach(
-            (e) async {
+        (e) async {
           var data = e.data();
           if ((data['phone'] == phone || data['email'] == phone) &&
               data['password'] == pass) {
@@ -99,7 +94,6 @@ class FireBase {
               'phone': data['phone'],
               'password': data['password'],
               'role': data['role'],
-
             });
 
             await prefs.setBool('isLogin', true);
@@ -115,13 +109,37 @@ class FireBase {
           Get.offAllNamed(Routes.signup);
         }
       } else {
-        const Snackbar(title: 'Warning', msg: 'Invalid credentials')
-            .snack1();
+        const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
       }
     });
   }
 
+  //create task function
+  static Future createTask(
+      context, title, desc, asignee, priority, summarry) async {
+    var id = DateTime.now().millisecondsSinceEpoch.toString();
 
+    Map<String, dynamic> CreateTaskData = {
+      "title": title,
+      "description": desc,
+      "asignee": asignee,
+      "priority": priority,
+      "summary": summarry,
+      'id': id,
+
+    };
+
+    await FirebaseFirestore.instance
+        .collection('mytask/mytask/todo/')
+        .add(CreateTaskData)
+        .then((value) => {
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.success,
+                title: 'Success',
+                desc: 'Your task has been successfully created',
+              ).show()
+            });
+    print("your task created");
   }
-
-
+}
