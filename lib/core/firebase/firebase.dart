@@ -57,7 +57,7 @@ class FireBase {
 
     await FirebaseFirestore.instance
         .collection('mytask/mytask/users/')
-        .add(userData)
+        .doc(id).set(userData)
         .then((value) => {
               AwesomeDialog(
                 context: context,
@@ -131,7 +131,7 @@ class FireBase {
 
     await FirebaseFirestore.instance
         .collection('mytask/mytask/todo/')
-        .add(CreateTaskData)
+        .doc(id).set(CreateTaskData)
         .then((value) => {
               AwesomeDialog(
                 context: context,

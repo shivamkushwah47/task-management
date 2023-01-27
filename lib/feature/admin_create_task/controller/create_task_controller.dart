@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -10,6 +11,9 @@ import 'package:visiter_app/core/firebase/firebase.dart';
 
 class CreateTaskController extends GetxController {
   var selectedDate = DateTime.now().obs;
+
+  final GlobalKey<FormState> taskFormKey = GlobalKey<FormState>();
+  final requiredValidator = RequiredValidator(errorText: 'this field is required');
 
   @override
   void onInit() {
@@ -88,26 +92,33 @@ class CreateTaskController extends GetxController {
   }
 
   Future gotoCreateTask(context) async {
-    Loader.showLoader(context);
-    if (!(await InternetConnectionChecker().hasConnection)) {
-      Get.back();
-      AwesomeDialog(
-        context: context,
-        dialogType: DialogType.warning,
-        title: 'Warning!!',
-        desc: 'Check internet connection',
-      ).show();
-    } else {
-      Get.back();
-      await FireBase.createTask(context, titlecontroller.text, desccontroller.text,
-          selecteduser, selectedPriority, summarycontroller.text)
-          .then((value)  {
-        titlecontroller.clear();
-        desccontroller.clear();
-        summarycontroller.clear();
-      });
+
+    if (taskFormKey.currentState!.validate()) {
+      Loader.showLoader(context);
+      if (!(await InternetConnectionChecker().hasConnection)) {
+        Get.back();
+        AwesomeDialog(
+          context: context,
+          dialogType: DialogType.warning,
+          title: 'Warning!!',
+          desc: 'Check internet connection',
+        ).show();
+      } else {
+        Get.back();
+        await FireBase.createTask(
+            context, titlecontroller.text, desccontroller.text,
+            selecteduser, selectedPriority, summarycontroller.text)
+            .then((value) {
+          titlecontroller.clear();
+          desccontroller.clear();
+          summarycontroller.clear();
+        });
+      }
     }
   }
+
+
+  //end
 }
 // chooseDate() async {
 //   DateTime? picked Date = await showDatePicker (

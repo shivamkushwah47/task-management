@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -9,172 +10,157 @@ class TodoView extends GetView<TodoController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-return Scaffold(
-    resizeToAvoidBottomInset: false,
-    body: Container(
-    child: Column(
-    children: [
-    SizedBox(
-    height: Get.height,
-    child: Stack(
-    children: [
-    Positioned(
-    child: Container(
-    width: Get.width,
-    height: Get.height * 0.45,
-    decoration: const BoxDecoration(
-    gradient: LinearGradient(
-    colors: [Colors.blue, Colors.indigo]),
-    borderRadius: BorderRadius.only(
-    bottomLeft: Radius.circular(30),
-    bottomRight: Radius.circular(30)),
-    color: Colors.red,
-    ),
-    child: Column(
-    children: [
-    SizedBox(
-    height: Get.height * 0.15,
-    child: Row(
-    children: [
-    Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5, 0, 10, 0),
-      child: IconButton(
-      onPressed: () {},
-      icon: const Icon(
-      Icons.menu,size: 30,
-      color: Colors.white,
-      )),
-    ),
-    const Text(
-    'To Do',
-    style: TextStyle(
-    color: Colors.white,
-    fontSize: 23,
-    fontWeight: FontWeight.w600),
-    ),
-
-    ],
-    ),
-    ),
-    Image.asset(
-    'assets/Image/todo.png',
-    height: Get.height*0.115,
-    )
-    ],
-    ),
-    ),
-    ),
-    Positioned(
-
-    bottom: Get.height * .05,
-    width: Get.width * 1,
-    height: Get.height * .6,
-    child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0) ,
-    decoration: const BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.only(
-    topLeft: Radius.circular(30),
-    topRight: Radius.circular(30)),
-    ),
-
-    child:
-    Column(
-      children: [
-        Padding(
-          padding:EdgeInsetsDirectional.fromSTEB(5, 0,5, 8) ,
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Created Task",style: TextStyle(fontSize: Get.height*0.025,fontWeight: FontWeight.bold)),
-              Text("Priority",style: TextStyle(fontSize: Get.height*0.015,fontWeight: FontWeight.bold)),
-            ],
-          ),
-        ),
-        Container(
-          width: Get.width * 0.95,
-
-
-          margin: EdgeInsets.only(top: 10),
-
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Container(
-                  height: Get.height * 0.09,
-                  //padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Colors.black12,
-                    borderRadius: BorderRadius.circular(10),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        child: Column(
+          children: [
+            SizedBox(
+              height: Get.height,
+              child: Stack(
+                children: [
+                  Positioned(
+                    child: Container(
+                      width: Get.width,
+                      height: Get.height * 0.45,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.blue, Colors.indigo]),
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                        color: Colors.red,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: Get.height * 0.15,
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5, 0, 10, 0),
+                                  child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.menu,
+                                        size: 30,
+                                        color: Colors.white,
+                                      )),
+                                ),
+                                const Text(
+                                  'To Do',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Image.asset(
+                            'assets/Image/todo.png',
+                            height: Get.height * 0.115,
+                          )
+                        ],
+                      ),
+                    ),
                   ),
-                  child: Row(children: [
-
-                    SizedBox(
-                      width: Get.width * 0.06,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          'Login page',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: Get.height * 0.017,
-                            fontWeight: FontWeight.w500,
-                          ),
+                  Positioned(
+                      top: Get.height * .35,
+                      width: Get.width * 1,
+                      height: 450,
+                      child: Container(
+                        padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              topRight: Radius.circular(30)),
                         ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(5, 0, 5, 8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Created Task",
+                                      style: TextStyle(
+                                          fontSize: Get.height * 0.025,
+                                          fontWeight: FontWeight.bold)),
+                                  Text("Priority",
+                                      style: TextStyle(
+                                          fontSize: Get.height * 0.015,
+                                          fontWeight: FontWeight.bold)),
+                                ],
+                              ),
+                            ),
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection("mytask/mytask/todo")
+                                  .snapshots(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (snapshot.hasError) {
+                                  return const Text('Something went wrong');
+                                }
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                if (snapshot.connectionState ==
+                                    ConnectionState.active) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Expanded(
+                                      child: ListView.builder(
+                                          itemCount: snapshot.data!.docs.length,
+                                          itemBuilder: (context, index) {
+                                            Map<String, dynamic> todomap =
+                                                snapshot.data!.docs[index]
+                                                        .data()
+                                                    as Map<String, dynamic>;
 
+                                            return ListTile(
+                                              tileColor: Colors.grey,
+                                              onTap: () {
 
-
-
-
-                        Text(
-                          "Description",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: Get.height * 0.012,
-                            fontWeight: FontWeight.w600,
-                          ),
+                                              },
+                                              title: Text(todomap["title"]),
+                                              subtitle: Text(todomap["description"]),
+                                              trailing: IconButton(
+                                                icon: Icon(Icons.more_vert),
+                                                onPressed: () {  },
+                                              ),
+                                            );
+                                          }),
+                                    );
+                                  } else {
+                                    return Text(
+                                      "No Data",
+                                      style: TextStyle(color: Colors.blue),
+                                    );
+                                  }
+                                } else {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                              },
+                            )
+                          ],
                         ),
-                        Text(
-                          "30/01/2023",
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontSize: Get.height * 0.012,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    Expanded(child: Container()),
-                    IconButton(onPressed:(){} , icon: Icon(Icons.more_vert_outlined),iconSize: 30,color: Colors.black,),
-                    SizedBox(width:Get.width*0.02,)
-                  ]),
-                ),
+                      ))
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
-    ),
-
-
-
-    )
-    )
-
-
-
-    ],
-    ),
-    ),
-    ],
-    ),
-    ),
-
-
-
-
-    );  }
+      ),
+    );
+  }
 }
