@@ -25,18 +25,27 @@ class HomePageView extends GetView<HomePageController> {
                       accountName: Text(FireBase.userInfo['name']),
                       accountEmail: Text("abc@gmail.com"),
                       currentAccountPicture: CircleAvatar(
-                        backgroundImage: AssetImage("assets/dp.png"),
+                        backgroundImage: AssetImage("assets/Icon/appicon.png"),
                       ),
                     ),
                     ListTile(
+                      onTap: (){
+
+                      },
                       leading: Icon(Icons.notifications),
                       title: Text("Notification"),
                     ),
                     ListTile(
+                      onTap: (){
+
+                      },
                       leading: Icon(Icons.lock),
                       title: Text("Delete Account"),
                     ),
                     ListTile(
+                      onTap: (){
+                       controller.Logout();
+                      },
                       leading: Icon(Icons.logout),
                       title: Text("Log out"),
                     )
