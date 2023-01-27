@@ -9,13 +9,13 @@ import '../../register/View/register_view.dart';
 
 
 class BottombarController extends GetxController{
- // var currentIndex=0.obs;
+ var currentIndex=0.obs;
 
- // void changeIndex( var _index){
- //  print(_index);
- //  currentIndex.value= _index;
- //
- // }
+ void changeIndex( var _index){
+  print(_index);
+  currentIndex.value= _index;
+
+ }
  RxInt selectedindex = 0.obs;
  selectIndex(value) {
   selectedindex.value = value;

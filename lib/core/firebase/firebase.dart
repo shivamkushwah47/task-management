@@ -47,13 +47,15 @@ class FireBase {
   }
 
   static Future addUser(context, name, email, phone, password, role) async{
+    var id = DateTime.now().millisecondsSinceEpoch.toString();
 
-      Map<String, dynamic> userData = {
+    Map<String, dynamic> userData = {
         "name": name,
         "email": email,
         "phone": phone,
         "password": password,
-        "role": role
+        "role": role,
+        'id': id,
       };
 
       await FirebaseFirestore.instance
