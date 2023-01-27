@@ -22,6 +22,8 @@ import 'package:visiter_app/feature/admin_teammember_page/addnew_memner_page/vie
 import 'package:visiter_app/feature/admin_teammember_page/binding/team_page_binding.dart';
 import 'package:visiter_app/feature/admin_teammember_page/view/team_page_view.dart';
 import 'package:visiter_app/feature/bottambar/view/bottambar_view.dart';
+import 'package:visiter_app/feature/change_your_pass/binding/change_pwd_binding.dart';
+import 'package:visiter_app/feature/change_your_pass/view/change_your_pass_view.dart';
 import 'package:visiter_app/feature/google_register/binding/google_register_binding.dart';
 import 'package:visiter_app/feature/google_register/view/google_register_view.dart';
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
@@ -31,6 +33,8 @@ import 'package:visiter_app/feature/otp/binding/otp_binding.dart';
 import 'package:visiter_app/feature/otp/view/otp_view.dart';
 import 'package:visiter_app/feature/register/Binding/register_binding.dart';
 import 'package:visiter_app/feature/register/View/register_view.dart';
+import 'package:visiter_app/feature/setting/binding/setting_binding.dart';
+import 'package:visiter_app/feature/setting/view/setting_view.dart';
 import 'package:visiter_app/feature/signup/binding/signup_binding.dart';
 import 'package:visiter_app/feature/signup/view/signup_view.dart';
 import 'package:visiter_app/feature/splash/binding/splash_binding.dart';
@@ -61,4 +65,6 @@ List<GetPage> allpages = [
   GetPage(name: Routes.TeamMember, page: () => TeamView(), binding: TeamBinding()),
   GetPage(name: Routes.AddTeamMember, page: () => AddMemberView(), binding: AddMemberBinding()),
   GetPage(name: Routes.Notification, page: () => NotificationView(), binding: NotificationBinding()),
+  GetPage(name: Routes.Settings, page: () => SettingView(), binding: SettingBinding()),
+  GetPage(name: Routes.ChangePass, page: () => ChangePassView(), binding: ChangepassBinding()),
 ];

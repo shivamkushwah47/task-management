@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../controller/change_pwd_controller.dart';
 
 
-class ChangePass extends GetView<ChangeYourPassController> {
+class ChangePassView extends GetView<ChangeYourPassController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
