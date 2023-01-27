@@ -63,7 +63,7 @@ return Scaffold(
                           ),
                         ),
                         Image.asset(
-                          'assets/Image/Teammenber.png',
+                          'assets/Image/addnewmember.png',
                           height: Get.height*0.115,
                         )
                       ],
@@ -106,7 +106,7 @@ return Scaffold(
                                 fillColor: Colors.black,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
                               controller: controller.nameController,
@@ -121,7 +121,7 @@ return Scaffold(
                               cursorColor: Colors.black,
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 15,
+                                fontSize: 15,fontWeight: FontWeight.bold
                               ),
                               decoration: InputDecoration(
                                 labelText: "Email",
@@ -135,7 +135,7 @@ return Scaffold(
                                 fillColor: Colors.black,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
                                 validator: controller.EmailValidator
@@ -160,7 +160,7 @@ return Scaffold(
                                 fillColor: Colors.black,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
                               validator: controller.passwordValidator,
@@ -185,7 +185,7 @@ return Scaffold(
                                 fillColor: Colors.black,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,
+                                  fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
                             ),
