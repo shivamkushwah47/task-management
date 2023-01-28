@@ -71,6 +71,39 @@ class FireBase {
     print("user created by firebase");
   }
 
+
+  //add Team
+
+  static Future addTeam(context, name, email, phone, password, role) async {
+    var id = DateTime.now().millisecondsSinceEpoch.toString();
+
+    Map<String, dynamic> userData = {
+      "name": name,
+      "email": email,
+      "phone": phone,
+      "password": password,
+      "role": role,
+      'id': id,
+    };
+
+    await FirebaseFirestore.instance
+        .collection('mytask/mytask/users/')
+        .doc(id).set(userData)
+        .then((value) => {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.success,
+        title: 'Success',
+        desc: 'You have successfully added a New Member',
+        dismissOnTouchOutside: false,
+        btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+      ).show()
+    });
+    print("Team Member added in firebase");
+  }
+
+
+
   static bool isMatch = false;
   static RxMap userInfo = {}.obs;
 

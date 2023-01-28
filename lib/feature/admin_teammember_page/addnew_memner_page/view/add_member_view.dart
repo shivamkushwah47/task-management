@@ -85,7 +85,7 @@ return Scaffold(
                 Positioned(
                   child: Container(
                     width: Get.width,
-                    height: Get.height * 0.40,
+                    height: Get.height * 0.30,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                           colors: [Colors.blue, Colors.indigo]),
@@ -96,15 +96,6 @@ return Scaffold(
                     ),
                     child: Column(
                       children: [
-                        SizedBox(
-                          height: Get.height * 0.06,
-                          child: Row(
-                            children: [
-
-
-                            ],
-                          ),
-                        ),
                         Image.asset(
                           'assets/Image/addnewmember.png',
                           height: Get.height*0.115,
@@ -114,11 +105,10 @@ return Scaffold(
                   ),
                 ),
                 Positioned(
-
                     bottom: Get.height * .20,
                     width: Get.width * 1,
-                    height: Get.height * .6,
-                    child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0) ,
+                    height: Get.height * .59,
+                    child: Container(padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0) ,
                       decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(
@@ -135,7 +125,7 @@ return Scaffold(
                               cursorColor: Colors.black,
                               style: TextStyle(
                                 color: Colors.black,
-                                fontSize: 15,
+                                fontSize: Get.height*0.025,
                               ),
                               decoration: InputDecoration(
                                 labelText: "Name",
@@ -149,7 +139,7 @@ return Scaffold(
                                 fillColor: Colors.black,
                                 labelStyle: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 15,fontWeight: FontWeight.bold
+                                  fontSize: Get.height*0.025,fontWeight: FontWeight.bold
                                 ),
                               ),
                               controller: controller.nameController,
@@ -159,7 +149,7 @@ return Scaffold(
                               validator: (value) =>
                                   controller.isvalid(value, 'Name'),
                             ),
-                            SizedBox(height: Get.height*0.005,),
+                            // SizedBox(height: Get.height*0.005,),
                             TextFormField(
                               cursorColor: Colors.black,
                               style: TextStyle(
@@ -181,10 +171,13 @@ return Scaffold(
                                   fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
+                                onChanged: (value) {
+                                  controller.email = value;
+                                },
                                 validator: controller.EmailValidator
 
                             ),
-                            SizedBox(height: Get.height*0.015,),
+                            // SizedBox(height: Get.height*0.015,),
                             TextFormField(
                               cursorColor: Colors.black,
                               style: TextStyle(
@@ -206,10 +199,13 @@ return Scaffold(
                                   fontSize: 15,fontWeight: FontWeight.bold
                                 ),
                               ),
+                              onChanged: (value) {
+                                controller.password = value;
+                              },
                               validator: controller.passwordValidator,
 
                             ),
-                            SizedBox(height: Get.height*0.015,),
+                            // SizedBox(height: Get.height*0.015,),
                             TextFormField(
                               cursorColor: Colors.black,
                               style: TextStyle(
