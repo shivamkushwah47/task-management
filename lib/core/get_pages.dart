@@ -28,9 +28,10 @@ import 'package:visiter_app/feature/google_register/binding/google_register_bind
 import 'package:visiter_app/feature/google_register/view/google_register_view.dart';
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
 import 'package:visiter_app/feature/login/view/login_view.dart';
-
 import 'package:visiter_app/feature/otp/binding/otp_binding.dart';
 import 'package:visiter_app/feature/otp/view/otp_view.dart';
+import 'package:visiter_app/feature/reasy_to_task/binding/ready_tak_binding.dart';
+import 'package:visiter_app/feature/reasy_to_task/view/ready_task_view.dart';
 import 'package:visiter_app/feature/register/Binding/register_binding.dart';
 import 'package:visiter_app/feature/register/View/register_view.dart';
 import 'package:visiter_app/feature/setting/binding/setting_binding.dart';
@@ -67,4 +68,5 @@ List<GetPage> allpages = [
   GetPage(name: Routes.Notification, page: () => NotificationView(), binding: NotificationBinding()),
   GetPage(name: Routes.Settings, page: () => SettingView(), binding: SettingBinding()),
   GetPage(name: Routes.ChangePass, page: () => ChangePassView(), binding: ChangepassBinding()),
+  GetPage(name: Routes.readyToTask, page: () => ReadyToTaskView(), binding: ReadyToTaskBinding()),
 ];

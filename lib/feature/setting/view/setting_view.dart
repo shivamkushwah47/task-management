@@ -6,14 +6,11 @@ import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/setting/controller/seting_controller.dart';
 
-import '../../../core/global/colors.dart';
 
 class SettingView extends GetView<SettingController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    //  throw UnimplementedError();
-
     return Scaffold(
 
 
@@ -134,7 +131,8 @@ class SettingView extends GetView<SettingController> {
                             height:Get.height*0.035 ,
                           ),
                           GestureDetector(
-                            onTap: (){Get.offAllNamed(Routes.profile);
+                            onTap: (){
+                              Get.toNamed(Routes.profile);
                             },
                             child: Row(
                               mainAxisAlignment:
@@ -191,8 +189,10 @@ class SettingView extends GetView<SettingController> {
                           SizedBox(
                             height: Get.height*0.035,
                           ),
+
                           GestureDetector(
-                            onTap: (){Get.offAllNamed(Routes.ChangePass);
+                            onTap: (){
+                              Get.toNamed(Routes.ChangePass);
                             },
                             child: Row(
 

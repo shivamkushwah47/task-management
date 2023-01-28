@@ -361,7 +361,7 @@ class HomePageView extends GetView<HomePageController> {
 
                           child: GestureDetector(
                             onTap: () {
-                              Get.offAllNamed(Routes.InProgressPage);
+                              Get.toNamed(Routes.InProgressPage);
                             },
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
