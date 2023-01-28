@@ -12,9 +12,7 @@ class AllTaskView extends GetView<AllTaskController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-
     return Scaffold(
-
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,

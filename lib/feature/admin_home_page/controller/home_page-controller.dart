@@ -6,7 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 
+
 class HomePageController extends GetxController {
+
   Future<void> onInit() async {
     var db=await Hive.openBox('mytask');
     FireBase.userInfo.value=db.get('userInfo');
@@ -18,7 +20,7 @@ class HomePageController extends GetxController {
   Logout()async{
     final pref = await SharedPreferences.getInstance();
     await pref.clear().then((value) {
-      Get.offAndToNamed(Routes.login);
+      Get.offAllNamed(Routes.login);
     });
 
   }
