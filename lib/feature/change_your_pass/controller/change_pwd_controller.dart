@@ -49,6 +49,8 @@ class ChangeYourPassController extends GetxController {
 
 
   createNewPass(context,id,password) async {
+
+    print(id);
     if (ChangeYourPassFormKey.currentState!.validate()) {
       print("form validated");
       if (!(await InternetConnectionChecker().hasConnection)) {

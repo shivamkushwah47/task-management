@@ -23,7 +23,7 @@ class HomePageView extends GetView<HomePageController> {
                   children: [
                     UserAccountsDrawerHeader(
                       accountName: Text(FireBase.userInfo['name']),
-                      accountEmail: Text("abc@gmail.com"),
+                      accountEmail: Text(FireBase.userInfo['id']),
                       currentAccountPicture: CircleAvatar(
                         backgroundImage: AssetImage("assets/Icon/appicon.png"),
                       ),
@@ -37,6 +37,7 @@ class HomePageView extends GetView<HomePageController> {
                     ),
                     ListTile(
                       onTap: (){
+                        controller.deleteUser(FireBase.userInfo['id'],context);
 
                       },
                       leading: Icon(Icons.lock),
