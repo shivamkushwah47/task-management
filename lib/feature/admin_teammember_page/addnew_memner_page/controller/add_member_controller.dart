@@ -56,8 +56,8 @@ class AddMemberController extends GetxController {
           }
          else
           {
+          
             FireBase.addTeam(context, name, email, phone, password, "user");
-
           }
         });
 
