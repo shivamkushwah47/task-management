@@ -85,65 +85,67 @@ class ReadyToTaskView extends GetView<ReadyToTaskController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text("Task Title",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 22,
                                             fontWeight: FontWeight.bold)),
-                                    Text("HIGH",
+                                    Text(controller.tempMap['priority'],
                                         style: TextStyle(
-                                            color: Colors.red,
+                                            color: controller
+                                                        .tempMap['priority'] ==
+                                                    "High"
+                                                ? Colors.red
+                                                : controller.tempMap[
+                                                            'priority'] ==
+                                                        "Medium"
+                                                    ? Colors.yellow[700]
+                                                    : Colors.green,
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold)),
-
                                   ],
                                 ),
-                                SizedBox(height: 5,),
-
-                                Text(
-                                    "The title",
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(controller.tempMap['title'],
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 18)),
                                 Row(children: <Widget>[
                                   Expanded(
                                     child: new Container(
-
                                         child: Divider(
-                                          color: Colors.grey,
-                                          height: 30,
-                                        )),
+                                      color: Colors.grey,
+                                      height: 30,
+                                    )),
                                   ),
-
-
                                 ]),
                                 Text("Description",
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 22,
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(height: 5,),
-
-                                Text(
-                                    "this is dummy text for create task description",
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Text(controller.tempMap['description'],
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 18)),
                                 Row(children: <Widget>[
                                   Expanded(
                                     child: new Container(
-
                                         child: Divider(
-                                          color: Colors.grey,
-                                          height: 30,
-                                        )),
+                                      color: Colors.grey,
+                                      height: 30,
+                                    )),
                                   ),
-
-
                                 ]),
-
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text("Task Start Date",
                                         style: TextStyle(
@@ -162,23 +164,17 @@ class ReadyToTaskView extends GetView<ReadyToTaskController> {
                                         readOnly: true,
                                         decoration: InputDecoration(
                                           labelText: " Start Date",
-                                          suffixIcon: GestureDetector(
-                                            onTap: () {
-                                              controller.chooseDate();
-                                              // _selectDate(context);
-                                            },
-                                            child: Icon(
-                                              Icons.calendar_month_outlined,
-                                              color: Colors.black,
-                                            ),
+                                          suffixIcon: Icon(
+                                            Icons.calendar_month_outlined,
+                                            color: Colors.black,
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide:
-                                            BorderSide(color: Colors.black),
+                                                BorderSide(color: Colors.black),
                                           ),
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide:
-                                            BorderSide(color: Colors.black),
+                                                BorderSide(color: Colors.black),
                                           ),
                                           fillColor: Colors.black,
                                           labelStyle: GoogleFonts.montserrat(
@@ -187,23 +183,26 @@ class ReadyToTaskView extends GetView<ReadyToTaskController> {
                                           ),
                                         ),
                                         initialValue:
-                                        controller.selectedDate.toString(),
+                                            controller.selectedDate.toString(),
                                       ),
                                     ),
-
                                   ],
                                 ),
-                                SizedBox(height: 50,),
+                                SizedBox(
+                                  height: 50,
+                                ),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: Get.width * 0.3,
                                       child: ElevatedButton(
-
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: Colors.white,
-                                            shape: BeveledRectangleBorder(side: BorderSide(color: Colors.indigo))),
+                                            shape: BeveledRectangleBorder(
+                                                side: BorderSide(
+                                                    color: Colors.indigo))),
                                         child: Text("CANCEL",
                                             style: TextStyle(
                                                 color: Colors.black,

@@ -1,47 +1,57 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:visiter_app/core/components/loader.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
-
-import '../../../core/firebase/firebase.dart';
+import 'package:email_validator/email_validator.dart';
 
 class LoginController extends GetxController {
-
   final getStorage = GetStorage();
   late final phone = TextEditingController();
   final pass = TextEditingController();
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+
   // late TextEditingController emailController = TextEditingController();
   // late TextEditingController passwordController = TextEditingController();
 
-  final passwordValidator = MultiValidator([
-    RequiredValidator(errorText: 'password is required'),
-    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
-    PatternValidator(r'(?=.*?[#?!@$%^&*-])', errorText: 'passwords must have at least one special character')
-  ]);
+  // final passwordValidator = MultiValidator([
+  //   RequiredValidator(errorText: 'password is required'),
+  //   MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),
+  //   PatternValidator(r'(?=.*?[#?!@$%^&*-])',
+  //       errorText: 'passwords must have at least one special character')
+  // ]);
 
-  final EmailValidator = MultiValidator([
-    RequiredValidator(errorText: "Email is required"),
-    PatternValidator(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+", errorText: 'please enter valid email')
+  // final EmailValidator = MultiValidator([
+  //   RequiredValidator(errorText: "Email is required"),
+  //   PatternValidator(
+  //       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',||
+  //       errorText: 'please enter valid email')
+  // ]);
 
-  ]);
+  bool isEmail(String input) => EmailValidator.validate(input);
+
+  bool isPhone(String input) => RegExp(
+      r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'
+  ).hasMatch(input);
+
+  bool validateStructure(String value){
+    String  pattern = r'(?=.*?[#?!@$%^&*-])';
+    RegExp regExp = new RegExp(pattern);
+    return regExp.hasMatch(value);
+  }
 
   RxBool autologin = false.obs;
   RxBool ispasshidden = true.obs;
   bool formSatus = true;
-  var isPasswordHidden= true.obs;
+  var isPasswordHidden = true.obs;
 
   var email = '';
   var password = '';
-
-
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
@@ -50,8 +60,6 @@ class LoginController extends GetxController {
     super.onInit();
     autologin.value = true;
   }
-
-
 
   // isEmail(email) {
   //   bool isEmailValid = EmailValidator.validate(email);
@@ -89,21 +97,21 @@ class LoginController extends GetxController {
     return null;
   }
 
- // loginformvalid() {
- //    if (loginFormKey.currentState!.validate()) {
- //      if (isEmail(emailController.text)) {
- //        print("Login Form vaidated");
- //        checkconn();
- //        return true;
- //      }
- //    }
- //  }
+  // loginformvalid() {
+  //    if (loginFormKey.currentState!.validate()) {
+  //      if (isEmail(emailController.text)) {
+  //        print("Login Form vaidated");
+  //        checkconn();
+  //        return true;
+  //      }
+  //    }
+  //  }
 
-  Future login(context,phone,pass) async{
+  Future login(context, phone, pass) async {
     if (loginFormKey.currentState!.validate()) {
       print("form validated");
       Loader.showLoader(context);
-      if(!(await InternetConnectionChecker().hasConnection)){
+      if (!(await InternetConnectionChecker().hasConnection)) {
         Get.back();
         AwesomeDialog(
           context: context,
@@ -111,31 +119,29 @@ class LoginController extends GetxController {
           title: 'Warning!!',
           desc: 'Check internet connection',
         ).show();
-      }else{
+      } else {
         Get.back();
         FireBase.getData(context, phone, pass);
       }
-
     }
   }
 
-  forgotPassword(context) async{
-      Loader.showLoader(context);
-      if(!(await InternetConnectionChecker().hasConnection)){
-        Get.back();
-        AwesomeDialog(
-          context: context,
-          dialogType: DialogType.warning,
-          title: 'Warning!!',
-          desc: 'Check internet connection',
-        ).show();
-      }else{
-          Get.back();
-          Get.toNamed(Routes.forgotpass);
-      }
-
-
+  forgotPassword(context) async {
+    Loader.showLoader(context);
+    if (!(await InternetConnectionChecker().hasConnection)) {
+      Get.back();
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.warning,
+        title: 'Warning!!',
+        desc: 'Check internet connection',
+      ).show();
+    } else {
+      Get.back();
+      Get.toNamed(Routes.forgotpass);
+    }
   }
+
   //
   // void checkconn() async {
   //   var connectionresult = await (Connectivity().checkConnectivity());
@@ -161,15 +167,11 @@ class LoginController extends GetxController {
   //   });
   // }
 
-
-  EmailPassSignout(){
+  EmailPassSignout() {
     FirebaseAuth.instance.signOut().then((value) {
       print("Logout successfully");
     });
   }
-
-
-
 
   googleLogin() async {
     print("googleLogin method Called");
@@ -183,7 +185,7 @@ class LoginController extends GetxController {
       final credential = GoogleAuthProvider.credential(
           accessToken: userData.accessToken, idToken: userData.idToken);
       var finalResult =
-      await FirebaseAuth.instance.signInWithCredential(credential);
+          await FirebaseAuth.instance.signInWithCredential(credential);
       print(finalResult);
       print("Values is");
       print("Result $result");
@@ -202,5 +204,4 @@ class LoginController extends GetxController {
     await GoogleSignIn().disconnect();
     FirebaseAuth.instance.signOut();
   }
-
 }

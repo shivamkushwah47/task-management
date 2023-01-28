@@ -1,6 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 
 class InProgressController extends GetxController {
   var InprogressMap2;
@@ -33,4 +34,11 @@ class InProgressController extends GetxController {
       })
     });
   }
+
+  Stream<QuerySnapshot<Map<String, dynamic>>> InProgressSnapshotu = FirebaseFirestore.instance
+      .collection("mytask/mytask/InProgress").where("asignee",isEqualTo:  FireBase.userInfo['name'])
+      .snapshots();
+  Stream<QuerySnapshot<Map<String, dynamic>>> InProgressSnapshota = FirebaseFirestore.instance
+      .collection("mytask/mytask/InProgress")
+      .snapshots();
 }

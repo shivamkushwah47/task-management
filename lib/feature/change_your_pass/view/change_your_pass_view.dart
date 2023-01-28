@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/feature/change_your_pass/controller/change_pwd_controller.dart';
 
-import '../controller/change_pwd_controller.dart';
 
 
 class ChangePassView extends GetView<ChangeYourPassController> {
@@ -203,18 +203,6 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                     'passwords do not match').validateMatch(val.toString(), controller.newpassword),
                               ),
                             ),
-                            controller:
-                            controller.password,
-                            onSaved: (value) {
-                              controller.confirmPassword = value!;
-                            },
-                            validator: (val) => MatchValidator(
-                                errorText:
-                                'passwords do not match').validateMatch(val.toString(), controller.confirmPassword),
-                          ))),
-                          SizedBox(
-                            height: Get.height*0.035,
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -231,7 +219,7 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                ),
+                                ),),
                                 SizedBox(
                                   width: Get.width * 0.4,
                                   child: ElevatedButton(

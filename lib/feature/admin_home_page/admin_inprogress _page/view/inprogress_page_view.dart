@@ -8,6 +8,8 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/admin_home_page/admin_inprogress%20_page/controller/inprogress_page_controller.dart';
 
+import '../../../../core/firebase/firebase.dart';
+
 class InProgressView extends GetView<InProgressController> {
   @override
   Widget build(BuildContext context) {
@@ -94,9 +96,7 @@ class InProgressView extends GetView<InProgressController> {
                               ),
                             ),
                             StreamBuilder(
-                              stream: FirebaseFirestore.instance
-                                  .collection("mytask/mytask/InProgress")
-                                  .snapshots(),
+                              stream: FireBase.userInfo['role']=="admin"?controller.InProgressSnapshota:controller.InProgressSnapshotu,
                               builder: (BuildContext context,
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
                                 if (snapshot.hasError) {

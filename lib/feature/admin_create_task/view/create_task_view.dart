@@ -19,9 +19,9 @@ class CreateTaskView extends GetView<CreateTaskController> {
           children: [
             UserAccountsDrawerHeader(
               accountName: Text(FireBase.userInfo['name']),
-              accountEmail: Text("abc@gmail.com"),
+              accountEmail: Text(FireBase.userInfo['email']),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/dp.png"),
+                backgroundImage: AssetImage('assets/Image/Profileimage.png'),
               ),
             ),
             ListTile(
@@ -196,7 +196,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                           disabledItemFn: (String s) =>
                                               s.startsWith('I'),
                                         ),
-                                        items: controller.Alluser,
+                                        items: FireBase.userInfo['role']=="admin"?controller.Alluser:controller.userlist,
                                         dropdownDecoratorProps:
                                             DropDownDecoratorProps(
                                           dropdownSearchDecoration:

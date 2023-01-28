@@ -5,6 +5,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:hive/hive.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:visiter_app/core/components/loader.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
@@ -16,8 +17,12 @@ class CreateTaskController extends GetxController {
   final requiredValidator = RequiredValidator(errorText: 'this field is required');
 
   @override
-  void onInit() {
+  void onInit() async{
     getUser();
+    var db=await Hive.openBox('mytask');
+    FireBase.userInfo.value=db.get('userInfo');
+    userlist.add(FireBase.userInfo['name']);
+    print("Hii ${FireBase.userInfo['name']}");
     super.onInit();
   }
 
@@ -78,6 +83,8 @@ class CreateTaskController extends GetxController {
   String? selecteduser;
   String? selectedPriority;
   List<String> Alluser = [];
+  List<String> userlist = [];
+
 
   getUser() async {
     await FirebaseFirestore.instance
@@ -100,7 +107,7 @@ class CreateTaskController extends GetxController {
         AwesomeDialog(
           context: context,
           dialogType: DialogType.warning,
-          title: 'Warning!!',
+          title: "Network Issue",
           desc: 'Check internet connection',
         ).show();
       } else {

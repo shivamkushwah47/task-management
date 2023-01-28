@@ -2,9 +2,11 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ReadyToTaskController extends GetxController {
   var selectedDate = DateTime.now().obs;
+  final Rxn<int> selected = Rxn<int>();
 
   chooseDate() async {
     DateTime? pickedDate = await showDatePicker(

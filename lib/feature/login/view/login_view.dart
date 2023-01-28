@@ -90,34 +90,40 @@ class LoginView extends GetView<LoginController> {
                                   child: Column(
                                     children: [
                                       SizedBox(
-                                        height: Get.height * 0.04,
+                                        height: Get.height * 0.02,
                                       ),
                                       TextFormField(
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                          ),
-                                          decoration: InputDecoration(
-                                              prefixIcon: Icon(Icons.email,
-                                                  color: Colors.blue),
-                                              fillColor: Colors.grey.shade100,
-                                              filled: true,
-                                              hintText: "Enter Email",
-                                              border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(30),
-                                                borderSide: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.blue,
-                                                ),
-                                              )),
-                                          controller:
-                                              controller.phone,
-                                          onSaved: (value) {
-                                            controller.email = value!;
-                                          },
-                                          validator: controller.EmailValidator),
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                        ),
+                                        decoration: InputDecoration(
+                                            prefixIcon: Icon(Icons.email,
+                                                color: Colors.blue),
+                                            fillColor: Colors.grey.shade100,
+                                            filled: true,
+                                            hintText: "Enter Email or phone",
+                                            border: OutlineInputBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                              borderSide: BorderSide(
+                                                width: 2,
+                                                color: Colors.blue,
+                                              ),
+                                            )),
+                                        controller: controller.phone,
+                                        onSaved: (value) {
+                                          controller.email = value!;
+                                        },
+                                        validator: (value) {
+                                          if (!controller.isEmail(value!) &&
+                                              !controller.isPhone(value)) {
+                                            return 'Please enter a valid email or phone number.';
+                                          }
+                                          return null;
+                                        },
+                                      ),
                                       SizedBox(
-                                        height: 30,
+                                        height: 25,
                                       ),
                                       Obx(() => (TextFormField(
                                           style: TextStyle(),
@@ -152,15 +158,19 @@ class LoginView extends GetView<LoginController> {
                                                           .value;
                                                 }),
                                           ),
-                                          controller:
-                                              controller.pass,
+                                          controller: controller.pass,
                                           onSaved: (value) {
                                             controller.password = value!;
                                           },
-                                          validator:
-                                              controller.passwordValidator))),
+                                          validator: (value) {
+                                            if (!controller
+                                                .validateStructure(value!)) {
+                                              return 'Please enter a valid Password';
+                                            }
+                                            return null;
+                                          }))),
                                       SizedBox(
-                                        height: Get.height*0.03,
+                                        height: Get.height * 0.03,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -174,7 +184,6 @@ class LoginView extends GetView<LoginController> {
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.indigoAccent),
                                             ),
-
                                             onTap: () {
                                               controller
                                                   .forgotPassword(context);
@@ -183,13 +192,16 @@ class LoginView extends GetView<LoginController> {
                                         ],
                                       ),
                                       SizedBox(
-                                        height: Get.height*0.07,
+                                        height: Get.height * 0.045,
                                       ),
                                       SizedBox(
                                         width: Get.width - 150,
                                         child: ElevatedButton(
                                             onPressed: () {
-                                              controller.login(context,controller.phone.text, controller.pass.text);
+                                              controller.login(
+                                                  context,
+                                                  controller.phone.text,
+                                                  controller.pass.text);
                                             },
                                             child: Text(
                                               'LOGIN',
@@ -198,7 +210,7 @@ class LoginView extends GetView<LoginController> {
                                             )),
                                       ),
                                       SizedBox(
-                                        height: 30,
+                                        height: 15,
                                       ),
                                       Container(
                                         child: Row(

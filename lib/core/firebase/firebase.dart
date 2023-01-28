@@ -1,7 +1,13 @@
+import 'dart:convert';
+import 'dart:developer';
+import 'dart:io';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:visiter_app/core/routes.dart';
@@ -12,7 +18,7 @@ import '../components/snackbar.dart';
 class FireBase {
   static bool isPhoneExist = false;
   static bool isEmailExist = false;
-
+  static FirebaseMessaging fmessaging = FirebaseMessaging.instance;
   static FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   static Future checkUserByNum(phone) async {
@@ -42,12 +48,19 @@ class FireBase {
       }
     });
   }
-  
 
   //Function for signup users
 
   static Future addUser(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
+    await fmessaging.requestPermission();
+    String pushtoken = '';
+    await fmessaging.getToken().then((token) {
+      if (token != null) {
+        log('push token:$token');
+        pushtoken = token;
+      }
+    });
 
     Map<String, dynamic> userData = {
       "name": name,
@@ -56,11 +69,13 @@ class FireBase {
       "password": password,
       "role": role,
       'id': id,
+      'pushToken': pushtoken
     };
 
     await FirebaseFirestore.instance
         .collection('mytask/mytask/users/')
-        .doc(id).set(userData)
+        .doc(id)
+        .set(userData)
         .then((value) => {
               AwesomeDialog(
                 context: context,
@@ -74,10 +89,17 @@ class FireBase {
     print("user created by firebase");
   }
 
-
   //add Team (signup users)
   static Future addTeam(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
+    await fmessaging.requestPermission();
+    String pushtoken = '';
+    await fmessaging.getToken().then((token) {
+      if (token != null) {
+        log('push token:$token');
+        pushtoken = token;
+      }
+    });
 
     Map<String, dynamic> userData = {
       "name": name,
@@ -86,24 +108,25 @@ class FireBase {
       "password": password,
       "role": role,
       'id': id,
+      'pushToken': pushtoken
     };
 
     await FirebaseFirestore.instance
         .collection('mytask/mytask/users/')
-        .doc(id).set(userData)
+        .doc(id)
+        .set(userData)
         .then((value) => {
-      AwesomeDialog(
-        context: context,
-        dialogType: DialogType.success,
-        title: 'Success',
-        desc: 'You have been successfully added a New Member',
-        dismissOnTouchOutside: false,
-        //btnOkOnPress: () => Get.toNamed(Routes.HomePage),
-      ).show()
-    });
+              AwesomeDialog(
+                context: context,
+                dialogType: DialogType.success,
+                title: 'Success',
+                desc: 'You have been successfully added a New Member',
+                dismissOnTouchOutside: false,
+                //btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+              ).show()
+            });
     print("Team Member added in firebase");
   }
-
 
   //Login Function
   static bool isMatch = false;
@@ -113,6 +136,13 @@ class FireBase {
     final prefs = await SharedPreferences.getInstance();
     var db = await Hive.openBox('mytask');
     var role = '';
+    String pushtoken = '';
+    await fmessaging.getToken().then((token) {
+      if (token != null) {
+        log('push token:$token');
+        pushtoken = token;
+      }
+    });
     Loader.showLoader(context);
     firestore.collection('mytask/mytask/users/').get().then((snapshot) {
       // ignore: avoid_function_literals_in_foreach_calls
@@ -122,6 +152,10 @@ class FireBase {
           if ((data['phone'] == phone || data['email'] == phone) &&
               data['password'] == pass) {
             isMatch = true;
+            firestore
+                .collection('mytask/mytask/users')
+                .doc(data['id'])
+                .update({"pushtoken": pushtoken});
             role = data['role'];
             db.put('userInfo', {
               'name': data['name'],
@@ -141,43 +175,41 @@ class FireBase {
       if (isMatch) {
         if (role == 'admin') {
           Get.offAllNamed(Routes.bottombar);
-        }else if(role=="user"){
+        } else if (role == "user") {
           Get.offAllNamed(Routes.bottombar);
-        }else{
+        } else {
           Get.offAllNamed(Routes.signup);
-
-      }
+        }
       } else {
         const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
       }
     });
   }
+
   //change pass function
 
-  static updatePass(context,password, id) {
+  static updatePass(context, password, id) {
     Loader.showLoader(context);
     firestore.collection('mytask/mytask/users/').doc(id).update({
       "password": password,
     }).then((value) => {
-      AwesomeDialog(
-        context: context,
-        dialogType: DialogType.success,
-        title: 'Success',
-        desc: 'You have been successfully updated your Password',
-        dismissOnTouchOutside: true,
-        // btnOkOnPress: () => Get.back(),
-      ).show()
-    });
+          AwesomeDialog(
+            context: context,
+            dialogType: DialogType.success,
+            title: 'Success',
+            desc: 'You have been successfully updated your Password',
+            dismissOnTouchOutside: true,
+            // btnOkOnPress: () => Get.back(),
+          ).show()
+        });
   }
 
   static deleteUser(id, context) async {
     Loader.showLoader(context);
     await Hive.deleteBoxFromDisk('mytask');
-    firestore
-        .collection('mytask/mytask/users/')
-        .doc(id)
-        .delete()
-        .then((value) => Get.offAllNamed(Routes.login),);
+    firestore.collection('mytask/mytask/users/').doc(id).delete().then(
+          (value) => Get.offAllNamed(Routes.login),
+        );
   }
 
   //create task function
@@ -192,20 +224,30 @@ class FireBase {
       "priority": priority,
       "summary": summarry,
       'id': id,
-
     };
+    var id2 = DateTime.now().millisecondsSinceEpoch.toString();
 
     await FirebaseFirestore.instance
         .collection('mytask/mytask/todo/')
-        .doc(id).set(CreateTaskData)
+        .doc(id)
+        .set(CreateTaskData)
         .then((value) => {
-              AwesomeDialog(
-                context: context,
-                dialogType: DialogType.success,
-                title: 'Success',
-                desc: 'Your task has been successfully created',
-              ).show()
+              FirebaseFirestore.instance
+                  .collection('mytask/mytask/alltask/')
+                  .doc(id2)
+                  .set(CreateTaskData)
+                  .then((value) {
+                AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.success,
+                  title: 'Success',
+                  desc: 'Your task has been successfully created',
+                ).show();
+              })
             });
     print("your task created");
   }
+
+  //function for send Notification
+
 }
