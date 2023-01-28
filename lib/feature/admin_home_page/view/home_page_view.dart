@@ -4,9 +4,8 @@ import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
 import 'package:visiter_app/Core/routes.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_home_page/controller/home_page-controller.dart';
-
-import '../../../core/firebase/firebase.dart';
 
 class HomePageView extends GetView<HomePageController> {
   @override
@@ -23,7 +22,7 @@ class HomePageView extends GetView<HomePageController> {
                   children: [
                     UserAccountsDrawerHeader(
                       accountName: Text(FireBase.userInfo['name']),
-                      accountEmail: Text(FireBase.userInfo['id']),
+                      accountEmail: Text(FireBase.userInfo['email']),
                       currentAccountPicture: CircleAvatar(
                         backgroundImage: AssetImage("assets/Icon/appicon.png"),
                       ),

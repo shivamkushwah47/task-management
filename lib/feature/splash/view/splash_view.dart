@@ -21,7 +21,7 @@ class SplashView extends GetView<SplashController> {
           nextScreen: IntroView(),
           splashTransition: SplashTransition.slideTransition,
           backgroundColor: Colors.white,
-          duration: 3000,
+          duration: 4000,
 
         )
       ),

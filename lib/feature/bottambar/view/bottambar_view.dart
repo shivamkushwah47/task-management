@@ -7,9 +7,6 @@ import 'package:visiter_app/core/global/colors.dart';
 import 'package:visiter_app/feature/bottambar/controller/bottombar_controller.dart';
 
 
-
-
-
 class  BottombarView extends GetView<BottombarController>{
   BottombarView({super.key});
   @override
@@ -18,7 +15,7 @@ class  BottombarView extends GetView<BottombarController>{
       length: 5,
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: controller.adminallpages[controller.selectedindex.value],
+        body: controller.AdminalPages[controller.selectedindex.value],
         bottomNavigationBar: ConvexAppBar(
           style: TabStyle.fixedCircle,
           backgroundColor: Colors.white,
