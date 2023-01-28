@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/profile/controller/profile_controller.dart';
 
@@ -115,7 +116,7 @@ class ProfileView extends GetView<ProfileController> {
                                 ],
                               ),
                               Text(
-                                "Admin Name Surname",
+                                FireBase.userInfo['name'],
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
@@ -137,7 +138,7 @@ class ProfileView extends GetView<ProfileController> {
                                 height: Get.height * 0.01,
                               ),
                               Text(
-                                "Admin Designation",
+                                FireBase.userInfo['role'],
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
@@ -159,7 +160,7 @@ class ProfileView extends GetView<ProfileController> {
                                 height: Get.height * 0.01,
                               ),
                               Text(
-                                "+91 1234567890",
+                                FireBase.userInfo['phone'],
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
