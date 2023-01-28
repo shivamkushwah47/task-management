@@ -42,7 +42,7 @@ class FireBase {
       }
     });
   }
-
+  //Function for signup users
   static Future addUser(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -72,8 +72,7 @@ class FireBase {
   }
 
 
-  //add Team
-
+  //add Team (signup users)
   static Future addTeam(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -96,14 +95,14 @@ class FireBase {
         title: 'Success',
         desc: 'You have successfully added a New Member',
         dismissOnTouchOutside: false,
-        // btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+        //btnOkOnPress: () => Get.toNamed(Routes.HomePage),
       ).show()
     });
     print("Team Member added in firebase");
   }
 
 
-
+  //Login Function
   static bool isMatch = false;
   static RxMap userInfo = {}.obs;
 
@@ -139,9 +138,12 @@ class FireBase {
       if (isMatch) {
         if (role == 'admin') {
           Get.offAllNamed(Routes.bottombar);
-        } else {
+        }else if(role=="user"){
+          Get.offAllNamed(Routes.bottombar);
+        }else{
           Get.offAllNamed(Routes.signup);
-        }
+
+      }
       } else {
         const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
       }

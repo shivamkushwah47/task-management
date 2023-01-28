@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
-import 'package:visiter_app/feature/change_your_pass/controller/change_pwd_controller.dart';
 
-
+import '../controller/change_pwd_controller.dart';
 
 
 class ChangePassView extends GetView<ChangeYourPassController> {
@@ -43,20 +42,16 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       11, 0, 15, 0),
-                                  child: CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    child: IconButton(
-                                        onPressed: () {
-                                          Get.back();
-                                        },
-                                        icon: const Icon(
-                                          Icons.arrow_back_ios_new_rounded,
-                                          color: Colors.black,
-                                        )),
-                                  ),
+                                  child: IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.menu,
+                                        size: 35,
+                                        color: Colors.white,
+                                      )),
                                 ),
                                 Text(
-                                  'CHANGE PASSWORD',
+                                  'CHANGE YOUR PASSWORD',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: Get.height*0.035,
@@ -202,7 +197,7 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                 'passwords do not match').validateMatch(val.toString(), controller.confirmPassword),
                           ))),
                           SizedBox(
-                            height: Get.height*.08,
+                            height: Get.height*0.035,
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

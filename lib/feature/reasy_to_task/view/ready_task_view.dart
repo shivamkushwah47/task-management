@@ -224,9 +224,7 @@ class ReadyToTaskView extends GetView<ReadyToTaskController> {
                                                 color: Colors.white,
                                                 fontSize: Get.height * 0.015)),
                                         onPressed: () {
-                                          controller.gotoInprogress();
-
-
+                                          controller.gotoInprogress(context);
                                         },
                                       ),
                                     ),

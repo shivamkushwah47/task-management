@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,7 +54,7 @@ class ReadyToTaskController extends GetxController {
     print(tempMapId);
   }
 
-  gotoInprogress() async {
+  gotoInprogress(context) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
     tempMap['id'] = id;
     await FirebaseFirestore.instance
@@ -64,7 +65,14 @@ class ReadyToTaskController extends GetxController {
               FirebaseFirestore.instance
                   .collection("mytask/mytask/InProgress/")
                   .doc(id)
-                  .set(tempMap)
+                  .set(tempMap).then((value)  {
+                    AwesomeDialog(
+                  context: context,
+                  dialogType: DialogType.success,
+                  title: 'Task Inprogess',
+                  desc: 'your task has been started inprogress',
+                ).show();
+              })
             });
   }
 }
