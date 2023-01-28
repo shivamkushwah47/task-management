@@ -43,6 +43,7 @@ class FireBase {
     });
   }
 
+
   static Future addUser(context, name, email, phone, password, role) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -94,7 +95,7 @@ class FireBase {
         context: context,
         dialogType: DialogType.success,
         title: 'Success',
-        desc: 'You have successfully added a New Member',
+        desc: 'You have been successfully added a New Member',
         dismissOnTouchOutside: false,
         // btnOkOnPress: () => Get.toNamed(Routes.HomePage),
       ).show()
@@ -149,11 +150,20 @@ class FireBase {
   }
   //change pass function
 
-  static updateEmpInfo(context,password, id) {
+  static updatePass(context,password, id) {
     Loader.showLoader(context);
     firestore.collection('mytask/mytask/users/').doc(id).update({
       "password": password,
-    }).then((value) => Get.back());
+    }).then((value) => {
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.success,
+        title: 'Success',
+        desc: 'You have been successfully updated your Password',
+        dismissOnTouchOutside: true,
+        // btnOkOnPress: () => Get.back(),
+      ).show()
+    });
   }
 
   static deleteUser(id, context) async {

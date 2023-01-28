@@ -10,6 +10,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 
+import '../../../core/components/loader.dart';
+import '../../../core/components/snackbar.dart';
 import '../../../core/firebase/firebase.dart';
 
 class ChangeYourPassController extends GetxController {
@@ -24,9 +26,9 @@ class ChangeYourPassController extends GetxController {
   static var giveaccess = true;
   late TextEditingController oldpasswordController = TextEditingController();
   late TextEditingController newpasswordController = TextEditingController();
-  // late TextEditingController confirmPasswordController = TextEditingController();
+  late TextEditingController confirmPasswordController = TextEditingController();
 
-  final password = TextEditingController();
+  // final password = TextEditingController();
 
   dynamic argumenData = Get.arguments;
 
@@ -35,8 +37,9 @@ class ChangeYourPassController extends GetxController {
 
   var oldpassword = '';
   var newpassword = '';
-  var confirmPassword = '';
+  var password = '';
   var id = FireBase.userInfo['id'];
+  var oldpss = FireBase.userInfo['password'];
 
   var isPasswordHidden = true.obs;
   Future<void> onInit() async {
@@ -48,9 +51,12 @@ class ChangeYourPassController extends GetxController {
   RxBool loader=true.obs;
 
 
-  createNewPass(context,id,password) async {
 
+  changePass(context,id,oldpassword,password) async {
     print(id);
+    print(password);
+    print(oldpss);
+
     if (ChangeYourPassFormKey.currentState!.validate()) {
       print("form validated");
       if (!(await InternetConnectionChecker().hasConnection)) {
@@ -61,20 +67,33 @@ class ChangeYourPassController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       } else {
+        if (oldpassword == oldpss ){
+          FireBase.updatePass(context, id, password);
+        }
+        else{
+          // Get.back();
+          const Snackbar(title: 'Warning', msg: 'Old password is not matched').snack1();
+        }
 
-        // FireBase.addUser(context, name, email, phone, password, "admin");
-        FireBase.updateEmpInfo(context, id, password);
-        print(id);
-        print(password);
+
       }
     }
 
-    isvalid(value, pval) {
-      if (value == null || value.isEmpty) {
-        return 'Enter $pval';
-      }
-    }
+
+
+    // isvalid(value, pval) {
+    //   if (value == null || value.isEmpty) {
+    //     return 'Enter $pval';
+    //   }
+    // }
 
 
   }
+  clearText() {
+    oldpasswordController.clear();
+    newpasswordController.clear();
+    confirmPasswordController.clear();
+  }
+
+
 }
