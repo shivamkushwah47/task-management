@@ -76,7 +76,7 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                   Positioned(
                     bottom: 0,
                     width: Get.width * 1,
-                    height: Get.height * .55,
+                    height: Get.height * .6,
                     child: Container(
                       padding: EdgeInsets.all(15),
                       decoration: const BoxDecoration(
@@ -85,161 +85,171 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                             topLeft: Radius.circular(30),
                             topRight: Radius.circular(30)),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height:Get.height*0.035 ,
-                          ),
-                          Obx(() => (TextFormField(
-                            style: TextStyle(),
-                            obscureText:
-                            controller.isPasswordHidden.value,
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.lock,
-                                  color: Colors.blue),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: " Old Password",
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                BorderRadius.circular(30),
-                                borderSide: BorderSide(
-                                  width: 2,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              suffixIcon: InkWell(
-                                  child: Icon(
-                                    controller.isPasswordHidden
-                                        .value
-                                        ? Icons.visibility_off
-                                        : Icons.visibility,
+                      child: Form(
+                        key: controller.ChangeYourPassFormKey,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height:Get.height*0.012 ,
+                            ),
+                            Obx(()=>
+                              TextFormField(
+                                obscureText:
+                                controller.isPasswordHidden.value,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.lock,
+                                      color: Colors.blue),
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: " Old Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Colors.blue,
+                                    ),
                                   ),
-                                  onTap: () {
-                                    controller.isPasswordHidden
-                                        .value =
-                                    !controller
-                                        .isPasswordHidden
-                                        .value;
-                                  }),
-                            ),
-                            onChanged: (value) {
-                              controller.oldpassword = value;
-                            },
-                            validator: controller.passwordValidator,
-                          ))),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                          Obx(() => (TextFormField(
-                            style: TextStyle(),
-                            obscureText:
-                            controller.isPasswordHidden.value,
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.lock,
-                                  color: Colors.blue),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "New Password",
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                BorderRadius.circular(30),
-                                borderSide: BorderSide(
-                                  width: 2,
-                                  color: Colors.blue,
+                                  suffixIcon: InkWell(
+                                      child: Icon(
+                                        controller.isPasswordHidden
+                                            .value
+                                            ? Icons.visibility_off
+                                            : Icons.visibility,
+                                      ),
+                                      onTap: () {
+                                        controller.isPasswordHidden
+                                            .value =
+                                        !controller
+                                            .isPasswordHidden
+                                            .value;
+                                      }),
                                 ),
-                              ),
-                              // suffixIcon: InkWell(
-                              //     child: Icon(
-                              //       controller.isPasswordHidden
-                              //           .value
-                              //           ? Icons.visibility_off
-                              //           : Icons.visibility,
-                              //     ),
-                              //     onTap: () {
-                              //       controller.isPasswordHidden
-                              //           .value =
-                              //       !controller
-                              //           .isPasswordHidden
-                              //           .value;
-                              //     }),
-                            ),
-                            onChanged: (value) {
-                              controller.newpassword = value;
-                            },
-                            validator: controller.passwordValidator,
-                          ))),
-                          SizedBox(
-                            height: Get.height * 0.02,
-                          ),
-                          Obx(() => (TextFormField(
-                            style: TextStyle(),
-                            obscureText:
-                            controller.isPasswordHidden.value,
-                            decoration: InputDecoration(
-                              prefixIcon: Icon(Icons.lock,
-                                  color: Colors.blue),
-                              fillColor: Colors.grey.shade100,
-                              filled: true,
-                              hintText: "Confirm Password",
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                BorderRadius.circular(30),
-                                borderSide: BorderSide(
-                                  width: 2,
-                                  color: Colors.blue,
-                                ),
+                                controller: controller.oldpasswordController,
+                                onChanged: (value) {
+                                  controller.oldpassword = value;
+                                },
+                                validator: controller.passwordValidator,
                               ),
                             ),
-                            controller:
-                            controller.password,
-                            onSaved: (value) {
-                              controller.confirmPassword = value!;
-                            },
-                            validator: (val) => MatchValidator(
-                                errorText:
-                                'passwords do not match').validateMatch(val.toString(), controller.confirmPassword),
-                          ))),
-                          SizedBox(
-                            height: Get.height*.08,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: Get.width * 0.4,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.indigoAccent),
-                                      backgroundColor: Colors.white,
-                                      shape: BeveledRectangleBorder()),
-                                  child: Text("CANCEL",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: Get.height * 0.025)),
-                                  onPressed: () {
-                                    Get.back();
-                                  },
+                            SizedBox(
+                              height: Get.height * 0.012,
+                            ),
+                            Obx(()=>
+                                TextFormField(
+                                obscureText:
+                                controller.isPasswordHidden.value,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.lock,
+                                      color: Colors.blue),
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: "New Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                  // suffixIcon: InkWell(
+                                  //     child: Icon(
+                                  //       controller.isPasswordHidden
+                                  //           .value
+                                  //           ? Icons.visibility_off
+                                  //           : Icons.visibility,
+                                  //     ),
+                                  //     onTap: () {
+                                  //       controller.isPasswordHidden
+                                  //           .value =
+                                  //       !controller
+                                  //           .isPasswordHidden
+                                  //           .value;
+                                  //     }),
                                 ),
+                                onChanged: (value) {
+                                  controller.newpassword = value;
+                                },
+                                validator: controller.passwordValidator,
                               ),
-                              SizedBox(
-                                width: Get.width * 0.4,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      backgroundColor: Colors.indigo,
-                                      shape: BeveledRectangleBorder()),
-                                  child: Text("SUBMIT",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: Get.height * 0.025)),
-                                  onPressed: () {
-                                    controller.createNewPass(context,controller.id, controller.password.text);
-                                  },
+                            ),
+                            SizedBox(
+                              height: Get.height * 0.012,
+                            ),
+                            Obx(()=>
+                                TextFormField(
+                                style: TextStyle(),
+                                obscureText:
+                                controller.isPasswordHidden.value,
+                                decoration: InputDecoration(
+                                  prefixIcon: Icon(Icons.lock,
+                                      color: Colors.blue),
+                                  fillColor: Colors.grey.shade100,
+                                  filled: true,
+                                  hintText: "Confirm Password",
+                                  border: OutlineInputBorder(
+                                    borderRadius:
+                                    BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
                                 ),
+                                controller:
+                                controller.confirmPasswordController,
+                                onChanged: (value) {
+                                  controller.password = value;
+                                },
+                                validator: (val) => MatchValidator(
+                                    errorText:
+                                    'passwords do not match').validateMatch(val.toString(), controller.newpassword),
                               ),
-                            ],
-                          ),
-                        ],
+                            ),
+                            SizedBox(
+                              height: Get.height*.055,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: Get.width * 0.4,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.indigoAccent),
+                                        backgroundColor: Colors.white,
+                                        shape: BeveledRectangleBorder()),
+                                    child: Text("CANCEL",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: Get.height * 0.025)),
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: Get.width * 0.4,
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.indigo,
+                                        shape: BeveledRectangleBorder()),
+                                    child: Text("SUBMIT",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: Get.height * 0.025)),
+                                    onPressed: () {
+                                      controller.changePass(context,controller.password,controller.oldpassword.toString(),controller.id);
+                                      controller.clearText();
+
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
