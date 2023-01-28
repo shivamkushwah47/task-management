@@ -20,7 +20,7 @@ class TeamView extends GetView<TeamController> {
               accountName: Text(FireBase.userInfo['name']),
               accountEmail: Text(FireBase.userInfo['email']),
               currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/dp.png"),
+                backgroundImage: AssetImage('assets/Image/Profileimage.png'),
               ),
             ),
             ListTile(

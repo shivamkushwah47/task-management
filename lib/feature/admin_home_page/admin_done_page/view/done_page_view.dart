@@ -4,7 +4,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_home_page/admin_done_page/controller/done_page_controller.dart';
+
 
 class DoneView extends GetView<DoneController> {
   @override
@@ -66,10 +68,9 @@ class DoneView extends GetView<DoneController> {
                     ),
                   ),
                   Positioned(
-
-                      bottom: Get.height * .05,
+                      bottom: Get.height * .01,
                       width: Get.width * 1,
-                      height: Get.height * .6,
+                      height: Get.height * .65,
                       child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0) ,
                         decoration: const BoxDecoration(
                           color: Colors.white,
@@ -91,9 +92,7 @@ class DoneView extends GetView<DoneController> {
                               ),
                             ),
                             StreamBuilder(
-                              stream: FirebaseFirestore.instance
-                                  .collection("mytask/mytask/Done")
-                                  .snapshots(),
+                              stream: FireBase.userInfo['role']=="admin"?controller.DoneSnapshota:controller.DoneSnapshotu,
                               builder: (BuildContext context,
                                   AsyncSnapshot<QuerySnapshot> snapshot) {
                                 if (snapshot.hasError) {
