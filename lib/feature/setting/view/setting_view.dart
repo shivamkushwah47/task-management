@@ -148,9 +148,10 @@ class SettingView extends GetView<SettingController> {
                             height: Get.height*0.035,
                           ),
                           GestureDetector(
-                            onTap: (){Get.offAllNamed(Routes.donePage);
+                            onTap: (){Get.offAllNamed(Routes.ChangePass);
                             },
                             child: Row(
+
                               mainAxisAlignment:
                                   MainAxisAlignment.start,
                               children: [

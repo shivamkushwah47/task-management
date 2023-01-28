@@ -94,6 +94,7 @@ class FireBase {
               'phone': data['phone'],
               'password': data['password'],
               'role': data['role'],
+              'id': data['id'],
             });
 
             await prefs.setBool('isLogin', true);
@@ -112,6 +113,14 @@ class FireBase {
         const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
       }
     });
+  }
+  //change pass function
+
+  static updateEmpInfo(context,password, id) {
+    Loader.showLoader(context);
+    firestore.collection('mytask/mytask/users/').doc(id).update({
+      "password": password,
+    }).then((value) => Get.back());
   }
 
   //create task function
