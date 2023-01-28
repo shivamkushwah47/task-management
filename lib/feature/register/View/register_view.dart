@@ -45,7 +45,9 @@ class RegisterView extends GetView<RegisterController> {
                                       backgroundColor: Colors.white,
 
                                       child: IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Get.back();
+                                          },
                                           icon: const Icon(
                                             Icons.arrow_back_ios_new_rounded,
                                             color: Colors.black,
