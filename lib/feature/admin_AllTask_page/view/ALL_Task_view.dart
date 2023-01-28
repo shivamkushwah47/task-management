@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_AllTask_page/controller/All_Task_controller.dart';
 
 
@@ -14,19 +15,92 @@ class AllTaskView extends GetView<AllTaskController> {
 
     return Scaffold(
 
-        appBar: CalendarAppBar(
-          onDateChanged: (value) => print(value),
-          firstDate: DateTime.now().subtract(Duration(days: 140)),
-          lastDate: DateTime.now(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(FireBase.userInfo['name']),
+              accountEmail: Text("abc@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/dp.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("Notification"),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Delete Account"),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Log out"),
+            )
+          ],
         ),
+      ),
+
+      appBar: AppBar(
+        centerTitle: true,
+        title:  Row(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              '',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Get.height*0.030,
+                  fontWeight: FontWeight.w400),
+            ),
+
+          ],
+        ),
+        elevation: 0,
+        flexibleSpace: Container(
+
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Colors.blue,
+                    Colors.indigo
+                  ])
+          ),
+        ),
+      ),     // appBar: CalendarAppBar(
+     //
+     //      backButton: false,
+     //      onDateChanged: (value) => print(value),
+     //
+     //      firstDate: DateTime.now().subtract(Duration(days: 140)),
+     //      lastDate: DateTime.now(),
+     //    ),
 
 
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
+
             child: Column(
               children: [
+                CalendarAppBar(
+                  // white: Colors.black,
+                  // black: Colors.red,
+                  // accent: Colors.green,
 
+                  backButton: false,
+
+                  onDateChanged: (value) => print(value),
+                  // white: Colors.blueAccent,
+
+                  firstDate: DateTime.now().subtract(Duration(days: 140)),
+                  lastDate: DateTime.now(),
+
+                ),
                 Column(
                   children: [
                     Padding(
@@ -38,6 +112,9 @@ class AllTaskView extends GetView<AllTaskController> {
                         ],
                       ),
                     ),
+
+
+
                     Container(
                       width: Get.width * 0.95,
 

@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_create_task/controller/create_task_controller.dart';
 
 class CreateTaskView extends GetView<CreateTaskController> {
@@ -11,6 +12,64 @@ class CreateTaskView extends GetView<CreateTaskController> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(FireBase.userInfo['name']),
+              accountEmail: Text("abc@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/dp.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("Notification"),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Delete Account"),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Log out"),
+            )
+          ],
+        ),
+      ),
+
+      appBar: AppBar(
+        centerTitle: true,
+        title:  Row(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Create New Task ',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Get.height*0.030,
+                  fontWeight: FontWeight.w400),
+            ),
+
+          ],
+        ),
+        elevation: 0,
+        flexibleSpace: Container(
+
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Colors.blue,
+                    Colors.indigo
+                  ])
+          ),
+        ),
+      ),
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),
@@ -34,34 +93,13 @@ class CreateTaskView extends GetView<CreateTaskController> {
                         children: [
                           SizedBox(
 
-                            height: Get.height * 0.15,
+                            height: Get.height * 0.06,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Padding(
-                                  padding:
-                                      EdgeInsetsDirectional.fromSTEB(5, 0, 15, 0),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.menu,
-                                        color: Colors.white,
-                                      )),
-                                ),
-                                const Text(
-                                  'Create New Task',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.search,
-                                      color: Colors.white,
-                                    )),
+
+
                               ],
                             ),
                           ),
@@ -130,7 +168,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                     ),
                   ),
                   Positioned(
-                    top: Get.height * .37,
+                    top: Get.height * .28,
                     width: Get.width * 1,
                     height: Get.height * .690,
                     child: Container(
