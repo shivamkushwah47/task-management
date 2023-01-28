@@ -1,8 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/admin_home_page/admin_inprogress%20_page/controller/inprogress_page_controller.dart';
 
 class InProgressView extends GetView<InProgressController> {
@@ -85,73 +88,73 @@ class InProgressView extends GetView<InProgressController> {
                               padding:EdgeInsetsDirectional.fromSTEB(5, 0,5, 8) ,
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Created Task",style: TextStyle(fontSize: Get.height*0.025,fontWeight: FontWeight.bold)),
+                                  Text("Inprogress Task",style: TextStyle(fontSize: Get.height*0.025,fontWeight: FontWeight.bold)),
                                   Text("Priority",style: TextStyle(fontSize: Get.height*0.015,fontWeight: FontWeight.bold)),
                                 ],
                               ),
                             ),
-                            Container(
-                              width: Get.width * 0.95,
+                            StreamBuilder(
+                              stream: FirebaseFirestore.instance
+                                  .collection("mytask/mytask/InProgress")
+                                  .snapshots(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                                if (snapshot.hasError) {
+                                  return const Text('Something went wrong');
+                                }
+                                if (snapshot.connectionState ==
+                                    ConnectionState.waiting) {
+                                  return const Center(
+                                      child: CircularProgressIndicator());
+                                }
+                                if (snapshot.connectionState ==
+                                    ConnectionState.active) {
+                                  if (snapshot.hasData &&
+                                      snapshot.data != null) {
+                                    return Expanded(
+                                      child: ListView.builder(
+                                          itemCount: snapshot.data!.docs.length,
+                                          itemBuilder: (context, index) {
+                                            Map<String, dynamic> InProgressmap =
+                                            snapshot.data!.docs[index]
+                                                .data()
+                                            as Map<String, dynamic>;
 
-
-                              margin: EdgeInsets.only(top: 10),
-
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      height: Get.height * 0.09,
-                                      //padding: EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                        color: Colors.black12,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Row(children: [
-
-                                        SizedBox(
-                                          width: Get.width * 0.06,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Text(
-                                              'Login page',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: Get.height * 0.017,
-                                                fontWeight: FontWeight.w500,
+                                            return ListTile(
+                                              tileColor: Colors.grey,
+                                              onTap: () {
+                                                AwesomeDialog(
+                                                  context: context,
+                                                  dialogType: DialogType.warning,
+                                                  title: 'Are you sure!!',
+                                                  desc: 'Your task has been done',
+                                                  btnOkOnPress: () {
+                                                    controller.InprogressMap2 = InProgressmap;
+                                                    controller.gotoDone(context);
+                                                  }
+                                                ).show();
+                                              },
+                                              title: Text(InProgressmap["title"]),
+                                              subtitle: Text(InProgressmap["description"]),
+                                              trailing: IconButton(
+                                                icon: Icon(Icons.more_vert),
+                                                onPressed: () {  },
                                               ),
-                                            ),
-                                            Text(
-                                              "Description",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: Get.height * 0.012,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                            Text(
-                                              "30/01/2023",
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: Get.height * 0.012,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-
-                                          ],
-                                        ),
-                                        Expanded(child: Container()),
-                                        IconButton(onPressed:(){} , icon: Icon(Icons.more_vert_outlined),iconSize: 30,color: Colors.black,),
-                                        SizedBox(width:Get.width*0.02,)
-                                      ]),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                                            );
+                                          }),
+                                    );
+                                  } else {
+                                    return Text(
+                                      "No Data",
+                                      style: TextStyle(color: Colors.blue),
+                                    );
+                                  }
+                                } else {
+                                  return Center(
+                                      child: CircularProgressIndicator());
+                                }
+                              },
+                            )
                           ],
                         ),
 

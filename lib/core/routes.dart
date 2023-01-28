@@ -20,6 +20,7 @@ class Routes {
   static String Notification = "/admin_notification_view.dart";
   static String Settings = "/setting_view.dart";
   static String ChangePass = "/change_your_pass_view.dart";
+  static String readyToTask = "/ready_task_view.dart";
 
 
 
