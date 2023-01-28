@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
@@ -16,6 +17,21 @@ class HomePageController extends GetxController {
     super.onInit();
   }
   RxBool loader=true.obs;
+
+  deleteUser(id, context) {
+    print('id is'+ id);
+    AwesomeDialog(
+      context: context,
+      title: 'Warning',
+      dialogType: DialogType.infoReverse,
+      desc: 'Are you sure to delete your account',
+      btnCancelOnPress: () {},
+      btnOkOnPress: () {
+        FireBase.deleteUser(FireBase.userInfo['id'], context);
+      },
+    ).show();
+  }
+
 
   Logout()async{
     final pref = await SharedPreferences.getInstance();

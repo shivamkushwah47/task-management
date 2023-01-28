@@ -96,7 +96,7 @@ class FireBase {
         title: 'Success',
         desc: 'You have successfully added a New Member',
         dismissOnTouchOutside: false,
-        btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+        // btnOkOnPress: () => Get.toNamed(Routes.HomePage),
       ).show()
     });
     print("Team Member added in firebase");
@@ -154,6 +154,16 @@ class FireBase {
     firestore.collection('mytask/mytask/users/').doc(id).update({
       "password": password,
     }).then((value) => Get.back());
+  }
+
+  static deleteUser(id, context) async {
+    Loader.showLoader(context);
+    await Hive.deleteBoxFromDisk('mytask');
+    firestore
+        .collection('mytask/mytask/users/')
+        .doc(id)
+        .delete()
+        .then((value) => Get.offAllNamed(Routes.login),);
   }
 
   //create task function
