@@ -46,7 +46,9 @@ class ForgotView extends GetView<ForgotController> {
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
                                       child: IconButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            Get.back();
+                                          },
                                           icon: const Icon(
                                             Icons.arrow_back_ios_new_rounded,
                                             color: Colors.black,
