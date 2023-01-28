@@ -72,10 +72,9 @@ class HomePageView extends GetView<HomePageController> {
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
                                 fontSize: Get.height * 0.028)),
-                        Text(
-                          "Designation",
+                        Text(FireBase.userInfo['role'],
                           style: TextStyle(
-                              color: Colors.grey, fontSize: Get.height * 0.018),
+                              color: Colors.grey, fontSize: Get.height * 0.024),
                         )
                       ],
                     ),
