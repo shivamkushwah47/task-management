@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/setting/controller/seting_controller.dart';
 
@@ -14,6 +15,66 @@ class SettingView extends GetView<SettingController> {
     //  throw UnimplementedError();
 
     return Scaffold(
+
+
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              accountName: Text(FireBase.userInfo['name']),
+              accountEmail: Text("abc@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/dp.png"),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.notifications),
+              title: Text("Notification"),
+            ),
+            ListTile(
+              leading: Icon(Icons.lock),
+              title: Text("Delete Account"),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Log out"),
+            )
+          ],
+        ),
+      ),
+
+      appBar: AppBar(
+        centerTitle: true,
+        title:  Row(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'SETTINGS',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: Get.height*0.030,
+                  fontWeight: FontWeight.w500),
+            ),
+
+          ],
+        ),
+        elevation: 0,
+        flexibleSpace: Container(
+
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: <Color>[
+                    Colors.blue,
+                    Colors.indigo
+                  ])
+          ),
+        ),
+      ),
+
       resizeToAvoidBottomInset: false,
       body: Container(
         //height: Get.height,
@@ -38,28 +99,11 @@ class SettingView extends GetView<SettingController> {
                       child: Column(
                         children: [
                           SizedBox(
-                            height: Get.height * 0.17,
+                            height: Get.height * 0.08,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      11, 0, 15, 0),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.menu,
-                                        size: 35,
-                                        color: Colors.white,
-                                      )),
-                                ),
-                               Text(
-                                  'SETTINGS',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: Get.height*0.035,
-                                      fontWeight: FontWeight.w600),
-                                )
+
                               ],
                             ),
                           ),
