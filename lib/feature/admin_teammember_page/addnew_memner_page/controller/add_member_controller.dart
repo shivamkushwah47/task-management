@@ -28,11 +28,12 @@ class AddMemberController extends GetxController {
   late TextEditingController phoneController = TextEditingController();
   late TextEditingController passwordController = TextEditingController();
   var name = '';
+  var email = '';
   var phone = '';
   var password = '';
-  var confirmPassword = '';
+  // var confirmPassword = '';
 
-  dynamic googleArgument = Get.arguments;
+  // dynamic googleArgument = Get.arguments;
 
   addmember(context) async {
     if (AddTeamkey.currentState!.validate()) {
@@ -47,17 +48,18 @@ class AddMemberController extends GetxController {
           desc: 'Check internet connection',
         ).show();
       } else {
-        FireBase.checkUserByEmail(googleArgument).then((value) {
+        FireBase.checkUserByEmail(email).then((value) {
           if (FireBase.isEmailExist) {
             Get.back();
             const Snackbar(title: 'Warning', msg: 'This Email is already exist ')
                 .snack1();
           }
+         else
+          {
+            // FireBase.addUser(context,name, , phone, password, "admin");
+            FireBase.addTeam(context, name, email, phone, password, "admin");
 
-         //else
-          // {
-          //   FireBase.addUser(context,name, , phone, password, "admin");
-          // }
+          }
         });
 
 

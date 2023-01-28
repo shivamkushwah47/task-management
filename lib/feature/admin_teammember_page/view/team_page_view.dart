@@ -113,11 +113,10 @@ return Scaffold(
                 ),
               ),
               Positioned(
-
-                  bottom: Get.height * .2,
+                  bottom: Get.height * .04,
                   width: Get.width * 1,
                   height: Get.height * .6,
-                  child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0) ,
+                  child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 15, 25, 0) ,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -125,28 +124,20 @@ return Scaffold(
                           topRight: Radius.circular(30)),
                     ),
 
-                    child:
-                    Column(
+                    child: Column(
                       children: [
-                        Padding(
-                          padding:EdgeInsetsDirectional.fromSTEB(5, 0,5, 0) ,
-                          child: Row(mainAxisAlignment: MainAxisAlignment.end,
-                            children: [ TextButton(
-
-                              onPressed: (){
-                                Get.toNamed(Routes.AddTeamMember);
-                              },
-                              child: const Text('Add New Member',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.indigo)),
-                            ),
-                            ],
+                        Row(mainAxisAlignment: MainAxisAlignment.end,
+                          children: [ TextButton(
+                            onPressed: (){
+                              Get.toNamed(Routes.AddTeamMember);
+                            },
+                            child: const Text('Add New Member',style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold,color: Colors.indigo)),
                           ),
+                          ],
                         ),
                         Container(
                           width: Get.width * 0.95,
-
-
-                          margin: EdgeInsets.only(top: 10),
-
+                          // margin: EdgeInsets.only(top: 10),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -159,7 +150,6 @@ return Scaffold(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   child: Row(children: [
-
                                     SizedBox(
                                       width: Get.width * 0.06,
                                     ),
