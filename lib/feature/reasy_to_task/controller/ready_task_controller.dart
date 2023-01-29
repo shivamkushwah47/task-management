@@ -71,9 +71,11 @@ class ReadyToTaskController extends GetxController {
                     AwesomeDialog(
                       context: context,
                   dialogType: DialogType.success,
-                  title: 'Task InProgress',
-                  desc: 'Your task has been started InProgress',
-                ).show();
+                  title: 'Task Inprogess',
+                  desc: 'your task has been started inprogress',
+                ).show().then((value) => {
+                  Get.back()
+                    });
               })
             });
   }

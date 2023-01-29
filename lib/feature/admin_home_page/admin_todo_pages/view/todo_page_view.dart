@@ -138,7 +138,10 @@ class TodoView extends GetView<TodoController> {
                                               subtitle: Text(todomap["description"]),
                                               trailing: IconButton(
                                                 icon: Icon(Icons.more_vert),
-                                                onPressed: () {  },
+                                                onPressed: () {
+                                                  FireBase.userInfo["role"]=="admin"?
+                                                  Get.toNamed(Routes.EditTask, arguments: [index,todomap]):null;
+                                                },
                                               ),
                                             );
                                           }),
