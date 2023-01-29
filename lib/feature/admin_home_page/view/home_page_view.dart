@@ -88,7 +88,9 @@ class HomePageView extends GetView<HomePageController> {
                     CircleAvatar(
                       backgroundColor: Colors.indigo,
                       child: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.toNamed(Routes.Notification);
+                          },
                           icon: const Icon(
                             Icons.notifications,
                             size: 25,
