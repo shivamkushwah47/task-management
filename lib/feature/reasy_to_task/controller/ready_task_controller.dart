@@ -69,10 +69,10 @@ class ReadyToTaskController extends GetxController {
                   .doc(id)
                   .set(tempMap).then((value)  {
                     AwesomeDialog(
-                  context: context,
+                      context: context,
                   dialogType: DialogType.success,
-                  title: 'Task Inprogess',
-                  desc: 'your task has been started inprogress',
+                  title: 'Task InProgress',
+                  desc: 'Your task has been started InProgress',
                 ).show();
               })
             });

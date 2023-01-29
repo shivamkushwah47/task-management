@@ -3,6 +3,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
+import 'package:visiter_app/core/components/custombuttonsecond.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/admin_teammember_page/addnew_memner_page/controller/add_member_controller.dart';
@@ -14,63 +16,8 @@ class AddMemberView extends GetView<AddMemberController> {
 return Scaffold(
 
 
-  drawer: Drawer(
-    child: ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        UserAccountsDrawerHeader(
-          accountName: Text(FireBase.userInfo['name']),
-          accountEmail: Text("abc@gmail.com"),
-          currentAccountPicture: CircleAvatar(
-            backgroundImage: AssetImage("assets/dp.png"),
-          ),
-        ),
-        ListTile(
-          leading: Icon(Icons.notifications),
-          title: Text("Notification"),
-        ),
-        ListTile(
-          leading: Icon(Icons.lock),
-          title: Text("Delete Account"),
-        ),
-        ListTile(
-          leading: Icon(Icons.logout),
-          title: Text("Log out"),
-        )
-      ],
-    ),
-  ),
 
-  appBar: AppBar(
-    centerTitle: true,
-    title:  Row(
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'Add New Team',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: Get.height*0.035,
-              fontWeight: FontWeight.w500),
-        ),
 
-      ],
-    ),
-    elevation: 0,
-    flexibleSpace: Container(
-
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: <Color>[
-                Colors.blue,
-                Colors.indigo
-              ])
-      ),
-    ),
-  ),
 
 
   resizeToAvoidBottomInset: false,
@@ -85,7 +32,7 @@ return Scaffold(
                 Positioned(
                   child: Container(
                     width: Get.width,
-                    height: Get.height * 0.30,
+                    height: Get.height * 0.50,
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
                           colors: [Colors.blue, Colors.indigo]),
@@ -96,6 +43,35 @@ return Scaffold(
                     ),
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: Get.height * 0.17,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    11, 0, 15, 0),
+                                child: CircleAvatar( backgroundColor: Colors.white,
+                                  child: IconButton(
+                                      onPressed: () {
+                                        Get.back();
+                                      },
+                                      icon: Icon(
+                                        Icons.arrow_back_ios_rounded,
+                                        color: Colors.black,
+                                      )),
+                                ),
+                              ),
+                              Text(
+                                'ADD NEW MEMBER',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: Get.height*0.023,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
+                        ),
                         Image.asset(
                           'assets/Image/addnewmember.png',
                           height: Get.height*0.115,
@@ -105,7 +81,7 @@ return Scaffold(
                   ),
                 ),
                 Positioned(
-                    bottom: Get.height * .20,
+                    bottom: Get.height * .10,
                     width: Get.width * 1,
                     height: Get.height * .59,
                     child: Container(padding: EdgeInsetsDirectional.fromSTEB(20, 10, 20, 0) ,
@@ -237,34 +213,37 @@ return Scaffold(
                             ),
 
 
-                            SizedBox(height: Get.height*0.045,),
+                            SizedBox(height: Get.height*0.035,),
 
                             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(width: Get.width*0.40,
-                                  child: ElevatedButton(
-
-                                    style: ElevatedButton.styleFrom(side: BorderSide(color: Colors.indigoAccent),
-                                        backgroundColor: Colors.white,
-                                        shape:BeveledRectangleBorder()),
-                                    child: Text("CANCEL",
-                                        style: TextStyle(color: Colors.black, fontSize:Get.height*0.022)),
-                                    onPressed: () {
+                                  child:CustomButtonCancel(
+                                    title: "CANCEL",
+                                    onPress: () {
+                                      Get.back();
                                     },
                                   ),
                                 ),
                                 Container(width: Get.width*0.40,
-                                  child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.indigoAccent,
-                                        shape:BeveledRectangleBorder()),
-                                    child: Text("CREATE TEAM",
-                                        style: TextStyle(color: Colors.white, fontSize:Get.height*0.022)),
-                                    onPressed: () {
-                                      controller.addmember(context);
-                                    },
+                                   child:  CustomButton(
+                                     title: "ADD",
+                                     onPress: () {controller.addmember(context);
 
-                                  ),
+                                     },
+                                   ),
+
+                                   //ElevatedButton(
+                                  //   style: ElevatedButton.styleFrom(
+                                  //       backgroundColor: Colors.indigoAccent,
+                                  //       shape:BeveledRectangleBorder()),
+                                  //   child: Text("CREATE TEAM",
+                                  //       style: TextStyle(color: Colors.white, fontSize:Get.height*0.022)),
+                                  //   onPressed: () {
+                                  //     controller.addmember(context);
+                                  //   },
+                                  //
+                                  // ),
                                 ),
                               ],
                             ),

@@ -9,7 +9,10 @@ class AppDrawer extends GetView<DrawersController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return Obx(
+            () => controller.loader.value
+            ? const Center(child: CircularProgressIndicator())
+            :SafeArea(
       child: Container(
         width: 280,
         child: Drawer(
@@ -32,6 +35,7 @@ class AppDrawer extends GetView<DrawersController> {
               ),
               ListTile(
                 onTap: (){
+                  controller.deleteUser(FireBase.userInfo['id'],context);
 
                 },
                 leading: Icon(Icons.lock),
@@ -48,6 +52,7 @@ class AppDrawer extends GetView<DrawersController> {
           ),
         ),
       ),
-    );
+    ),
+        );
   }
 }

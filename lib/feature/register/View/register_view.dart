@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/feature/register/Controller/register_cotroller.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
@@ -244,15 +245,29 @@ class RegisterView extends GetView<RegisterController> {
                                     ),
                                     SizedBox(
                                       width: Get.width - 160,
-                                      child: ElevatedButton(
-                                          onPressed: () {
-                                            controller.createUser(context);
-                                          },
-                                          child: Text(
-                                            'SIGNUP',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          )),
+                                       child:
+                                       CustomButton(
+                                         title: "VERIFY OTP",
+                                         onPress: () {
+                                           controller.createUser(context);
+
+
+                                         },
+                                       ),
+                                       //ElevatedButton(
+                                      //     onPressed: () {
+                                      //       controller.createUser(context);
+                                      //     },
+                                      //     style: ElevatedButton.styleFrom(
+                                      //         backgroundColor: Colors.indigo),
+                                      //     child: Text(
+                                      //       'SIGNUP',
+                                      //       style:
+                                      //           TextStyle(color: Colors.white,
+                                      //             fontSize: Get.height * 0.030,
+                                      //
+                                      //           ),
+                                      //     )),
                                     ),
 
                                     SizedBox(height: Get.height*0.4,),

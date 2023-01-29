@@ -4,6 +4,8 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
+import 'package:visiter_app/core/components/custombuttonsecond.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_create_task/controller/create_task_controller.dart';
 
@@ -360,33 +362,34 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                 children: [
                                   SizedBox(
                                     width: Get.width * 0.4,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.indigo,
-                                          shape: BeveledRectangleBorder()),
-                                      child: Text("CANCEL",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: Get.height * 0.025)),
-                                      onPressed: () {
+                                    child:CustomButtonCancel(
+                                      title: "CANCEL",
+                                      onPress: () {
                                         Get.back();
                                       },
                                     ),
                                   ),
                                   SizedBox(
                                     width: Get.width * 0.4,
-                                    child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.indigo,
-                                          shape: BeveledRectangleBorder()),
-                                      child: Text("CREATE TASK",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: Get.height * 0.025)),
-                                      onPressed: () {
-                                        controller.gotoCreateTask(context);
-                                      },
-                                    ),
+                                     child: CustomButton(
+                                       title: "CREATE",
+                                       onPress: () {
+                                         controller.gotoCreateTask(context);
+                                       },
+                                     ),
+
+                                    // ElevatedButton(
+                                    //   style: ElevatedButton.styleFrom(
+                                    //       backgroundColor: Colors.indigo,
+                                    //       shape: BeveledRectangleBorder()),
+                                    //   child: Text("CREATE TASK",
+                                    //       style: TextStyle(
+                                    //           color: Colors.white,
+                                    //           fontSize: Get.height * 0.025)),
+                                    //   onPressed: () {
+                                    //     controller.gotoCreateTask(context);
+                                    //   },
+                                    // ),
                                   ),
                                 ],
                               ),

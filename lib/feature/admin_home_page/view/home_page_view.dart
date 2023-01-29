@@ -36,7 +36,7 @@ class HomePageView extends GetView<HomePageController> {
                     ),
                     ListTile(
                       onTap: (){
-                        controller.deleteUser(FireBase.userInfo['id'],context);
+                        //controller.deleteUser(FireBase.userInfo['id'],context);
 
                       },
                       leading: Icon(Icons.lock),

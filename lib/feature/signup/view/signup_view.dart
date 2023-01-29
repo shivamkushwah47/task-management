@@ -1,19 +1,16 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:visiter_app/Core/routes.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/feature/signup/controller/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Scaffold(
-
-
-
+    return Scaffold(
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),
@@ -44,7 +41,8 @@ class SignupView extends GetView<SignupController> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(11, 0, 15, 0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        11, 0, 15, 0),
                                     child: CircleAvatar(
                                       backgroundColor: Colors.white,
                                       child: IconButton(
@@ -57,19 +55,19 @@ class SignupView extends GetView<SignupController> {
                                           )),
                                     ),
                                   ),
-                                  const Text(
+                                  Text(
                                     'SIGN UP',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 27,
+                                        fontSize: Get.height * 0.035,
                                         fontWeight: FontWeight.w600),
                                   )
                                 ],
                               ),
                             ),
-                            Image.asset('assets/Image/sign up.png',
-
-                              height: 90,
+                            Image.asset(
+                              'assets/Image/sign up.png',
+                              height: Get.height * 0.12,
                             )
                           ],
                         ),
@@ -92,51 +90,74 @@ class SignupView extends GetView<SignupController> {
                                 children: [
                                   Form(
                                     key: controller.signupformkey,
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(height: Get.height*0.04,),
-                                          IntlPhoneField(
-
-                                            decoration: const InputDecoration(
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
-                                              ),
-
-                                              counterText: '',
-                                              hintText: 'Phone Number',
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(width: 2,color:Colors.indigoAccent),
-
-
-                                              ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        SizedBox(
+                                          height: Get.height * 0.04,
+                                        ),
+                                        IntlPhoneField(
+                                          decoration: const InputDecoration(
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  width: 2,
+                                                  color: Colors.indigoAccent),
                                             ),
-                                            controller: SignupController.phoneController,
-                                            initialCountryCode: 'IN',
-                                            onChanged: (phone) {
-                                              print(phone.completeNumber);
-                                              controller.phonevalue=phone.toString();
-                                            },
-                                            validator: (value) =>
-                                                controller.isSignupValid(value, 'Enter phone'),
+                                            counterText: '',
+                                            hintText: 'Phone Number',
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                  width: 2,
+                                                  color: Colors.indigoAccent),
+                                            ),
                                           ),
-                                          SizedBox(height: Get.height*0.07,),
-                                          SizedBox(
-                                            width: Get.width-160,
-                                            child: ElevatedButton(
-                                                onPressed: () {
-                                                  controller.SignupValidate(context);
-                                                },
-                                                child: Text(
-                                                  'REQUEST OTP',
-                                                  style:
-                                                  TextStyle(color: Colors.white),
-                                                )),
-                                          )
-                                        ],
-                                      ),
+                                          controller:
+                                              SignupController.phoneController,
+                                          initialCountryCode: 'IN',
+                                          onChanged: (phone) {
+                                            print(phone.completeNumber);
+                                            controller.phonevalue =
+                                                phone.toString();
+                                          },
+                                          validator: (value) =>
+                                              controller.isSignupValid(
+                                                  value, 'Enter phone'),
+                                        ),
+                                        SizedBox(
+                                          height: Get.height * 0.07,
+                                        ),
+                                        SizedBox(
+                                          width: Get.width - 160,
+                                          child:
+                                          CustomButton(
+                                            title: "GET STARTED",
+                                            onPress: () {
+                                            controller.SignupValidate(context);
+
+
+                                                },)
+                                          //ElevatedButton(
+                                          //     onPressed: () {
+                                          //       controller.SignupValidate(
+                                          //           context);
+                                          //     },
+                                          //     style: ElevatedButton.styleFrom(
+                                          //         backgroundColor: Colors.indigo),
+                                          //     child: Text(
+                                          //       'REQUEST OTP',
+                                          //       style: TextStyle(
+                                          //         color: Colors.white,
+                                          //         fontSize: Get.height * 0.030,
+                                          //       ),
+                                          //     )),
+                                        )
+                                      ],
                                     ),
-                                  SizedBox(height: Get.height*0.03,),
+                                  ),
+                                  SizedBox(
+                                    height: Get.height * 0.03,
+                                  ),
                                   Row(children: <Widget>[
                                     Expanded(
                                       child: new Container(
@@ -147,7 +168,7 @@ class SignupView extends GetView<SignupController> {
                                             height: 50,
                                           )),
                                     ),
-                                    Text("or "),
+                                    Text("OR"),
                                     Expanded(
                                       child: new Container(
                                           margin: const EdgeInsets.only(
@@ -158,30 +179,30 @@ class SignupView extends GetView<SignupController> {
                                           )),
                                     ),
                                   ]),
-                                  SizedBox(height: Get.height*0.03,),
-
                                   SizedBox(
-
+                                    height: Get.height * 0.03,
+                                  ),
+                                  SizedBox(
                                     width: Get.width - 140,
-
                                     child: ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           backgroundColor: Colors.white,
                                           side: BorderSide(
                                               width: 1.4,
-                                              color: Colors.indigoAccent), // NEW
+                                              color:
+                                                  Colors.indigoAccent), // NEW
                                         ),
                                         onPressed: () {
                                           controller.googleLogin(context);
                                         },
                                         child: Row(
                                           mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                              MainAxisAlignment.center,
                                           children: [
                                             Image.asset(
                                               "assets/Image/google_bg.png",
                                               width: 25,
-                                              height: 25,
+                                              height: 26,
                                             ),
                                             SizedBox(
                                               width: 8,
@@ -189,60 +210,40 @@ class SignupView extends GetView<SignupController> {
                                             Text(
                                               'Signup with Google',
                                               style: TextStyle(
-                                                // fontSize: Get.height*0.02,
+                                                fontSize: Get.height * 0.02,
                                                 fontWeight: FontWeight.w600,
-                                                color: Colors.indigoAccent,
+                                                color: Colors.indigo,
                                               ),
                                             ),
                                           ],
                                         )),
                                   ),
-
-
-
-
-
-
-
                                   SizedBox(
-                                    width: 10,
+                                    width: Get.width * 0.010,
                                   ),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Text('Already have an account? '),
+                                      Text('Already have an account?'),
                                       TextButton(
                                           onPressed: () {
                                             Get.toNamed(Routes.login);
                                           },
+
                                           child: Text(
-                                            'Login',
+                                            'LOGIN',
+
                                             style:
-                                            TextStyle(color: Colors.blue),
+                                                TextStyle(color: Colors.indigo),
                                           ))
                                     ],
                                   ),
-                                  SizedBox(height: Get.height*0.3)
+                                  SizedBox(height: Get.height * 0.3)
                                 ],
                               ),
                             ),
                           )),
                     )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                   ],
                 ),
               ),
