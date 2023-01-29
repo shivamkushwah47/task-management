@@ -1,16 +1,12 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hive/hive.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-
-import '../../../core/components/loader.dart';
 import '../../../core/components/snackbar.dart';
 import '../../../core/firebase/firebase.dart';
 
@@ -69,6 +65,7 @@ class ChangeYourPassController extends GetxController {
       } else {
         if (oldpassword == oldpss ){
           FireBase.updatePass(context, id, password);
+          clearText();
         }
         else{
           // Get.back();

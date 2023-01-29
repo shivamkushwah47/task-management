@@ -198,8 +198,8 @@ class FireBase {
             dialogType: DialogType.success,
             title: 'Success',
             desc: 'You have been successfully updated your Password',
-            dismissOnTouchOutside: true,
-            // btnOkOnPress: () => Get.back(),
+            dismissOnTouchOutside: false,
+            btnOkOnPress: () => Get.offAllNamed(Routes.login),
           ).show()
         });
   }

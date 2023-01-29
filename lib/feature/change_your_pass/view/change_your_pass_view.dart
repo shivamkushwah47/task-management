@@ -232,7 +232,6 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                             fontSize: Get.height * 0.025)),
                                     onPressed: () {
                                       controller.changePass(context,controller.password,controller.oldpassword.toString(),controller.id);
-                                      controller.clearText();
 
                                     },
                                   ),
