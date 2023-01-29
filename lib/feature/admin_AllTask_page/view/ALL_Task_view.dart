@@ -111,6 +111,8 @@ class AllTaskView extends GetView<AllTaskController> {
                   }
                   if (snapshot.connectionState == ConnectionState.active) {
                     if (snapshot.hasData && snapshot.data != null) {
+                      FireBase.userInfo['role'];
+                      FireBase.userInfo['name'];
                       return Expanded(
                         child: ListView.builder(
                             itemCount: snapshot.data!.docs.length,

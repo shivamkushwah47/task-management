@@ -21,7 +21,7 @@ return Scaffold(
               Positioned(
                 child: Container(
                   width: Get.width,
-                  height: Get.height * 0.45,
+                  height: Get.height * 0.4,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         colors: [Colors.blue, Colors.indigo]),
@@ -46,7 +46,7 @@ return Scaffold(
                                   )),
                             ),
                             const Text(
-                              'To Do',
+                              'Notification',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 23,
@@ -65,10 +65,12 @@ return Scaffold(
                 ),
               ),
               Positioned(
-
-                  bottom: Get.height * .05,
+                  top: Get.height * .28,
                   width: Get.width * 1,
-                  height: Get.height * .6,
+                  height: Get.height * .690,
+                  // bottom: Get.height * .05,
+                  // width: Get.width * 1,
+                  // height: Get.height * .6,
                   child: Container(padding: EdgeInsetsDirectional.fromSTEB(25, 20, 25, 0) ,
                     decoration: const BoxDecoration(
                       color: Colors.white,

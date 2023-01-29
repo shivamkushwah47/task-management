@@ -44,6 +44,8 @@ import 'package:visiter_app/feature/signup/binding/signup_binding.dart';
 import 'package:visiter_app/feature/signup/view/signup_view.dart';
 import 'package:visiter_app/feature/splash/binding/splash_binding.dart';
 import 'package:visiter_app/feature/splash/view/splash_view.dart';
+import 'package:visiter_app/feature/user_bottambar/binding/user_bottambar_binding.dart';
+import 'package:visiter_app/feature/user_bottambar/view/user_bottambar_view.dart';
 import '../feature/Forgot_pass/binding/Forgot_binding.dart';
 import '../feature/Forgot_pass/view/Forgot_view.dart';
 import '../feature/enter_password/binding/enter_pass_binding.dart';
@@ -80,5 +82,6 @@ List<GetPage> allpages = [
   GetPage(name: Routes.EditTask, page: () => EditTaskView(), binding: EditTaskBinding()),
   GetPage(name: Routes.ForgotOtp, page: () => ForgotOtpView(), binding: ForgotOtpBinding()),
   GetPage(name: Routes.EnterPass, page: () => EnterPassView(), binding: EnterPassBinding()),
+  GetPage(name: Routes.UserBottomBar, page: () => UserBottomBarView(), binding: UserBottomBarBinding()),
 
 ];

@@ -1,4 +1,3 @@
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
@@ -17,12 +16,9 @@ class SignupController extends GetxController {
   final GlobalKey<FormState> signupformkey = GlobalKey<FormState>();
   static TextEditingController phoneController = TextEditingController();
   static String verificationId = "";
-  var phonevalue= "";
+  var phonevalue = "";
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
-
-
 
   String? isvalid(String value) {
     if (value.length < 10) {
@@ -31,17 +27,17 @@ class SignupController extends GetxController {
     return null;
   }
 
-  isSignupValid(value,msg){
-    if(value == null || value.isEmpty){
+  isSignupValid(value, msg) {
+    if (value == null || value.isEmpty) {
       return 'Enter $msg';
     }
   }
 
-  SignupValidate(context) async{
+  SignupValidate(context) async {
     if (signupformkey.currentState!.validate()) {
       print("form validated");
       Loader.showLoader(context);
-      if(!(await InternetConnectionChecker().hasConnection)){
+      if (!(await InternetConnectionChecker().hasConnection)) {
         Get.back();
         AwesomeDialog(
           context: context,
@@ -49,19 +45,19 @@ class SignupController extends GetxController {
           title: 'Warning!!',
           desc: 'Check internet connection',
         ).show();
-      }else{
-        FireBase.checkUserByNum(SignupController.phoneController.text).then((value) {
+      } else {
+        FireBase.checkUserByNum(SignupController.phoneController.text)
+            .then((value) {
           if (FireBase.isPhoneExist) {
             Get.back();
-            const Snackbar(title: 'Warning', msg: 'This phone is already exist ')
+            const Snackbar(
+                    title: 'Warning', msg: 'This phone is already exist ')
                 .snack1();
-          }else{
+          } else {
             verifybyphone(SignupController.phoneController, context);
           }
         });
       }
-
-
     }
   }
 
@@ -73,10 +69,10 @@ class SignupController extends GetxController {
         verificationFailed: (FirebaseAuthException exception) {
           Get.back();
           AwesomeDialog(
-              context: context,
-              dialogType: DialogType.error,
-              title: 'Error',
-              desc: '${exception.message}')
+                  context: context,
+                  dialogType: DialogType.error,
+                  title: 'Error',
+                  desc: '${exception.message}')
               .show();
           print("verificationFailed");
         },
@@ -84,14 +80,13 @@ class SignupController extends GetxController {
           Get.back();
           verificationId = verificationID;
           Get.offNamed(Routes.otp, arguments: verificationId);
-
         },
         codeAutoRetrievalTimeout: (verificationID) async {});
   }
 
   googleLogin(context) async {
     Loader.showLoader(context);
-    if(!(await InternetConnectionChecker().hasConnection)){
+    if (!(await InternetConnectionChecker().hasConnection)) {
       Get.back();
       AwesomeDialog(
         context: context,
@@ -99,7 +94,7 @@ class SignupController extends GetxController {
         title: 'Warning!!',
         desc: 'Check internet connection',
       ).show();
-    }else{
+    } else {
       print("googleLogin method Called");
       GoogleSignIn _googleSignIn = GoogleSignIn();
       try {
@@ -111,7 +106,7 @@ class SignupController extends GetxController {
         final credential = GoogleAuthProvider.credential(
             accessToken: userData.accessToken, idToken: userData.idToken);
         var finalResult =
-        await FirebaseAuth.instance.signInWithCredential(credential);
+            await FirebaseAuth.instance.signInWithCredential(credential);
         print(finalResult);
         print("Values is");
         print("Result $result");
@@ -124,15 +119,11 @@ class SignupController extends GetxController {
         print("Error");
         print(error);
       }
-
     }
-
   }
 
   Future<void> logout() async {
     await GoogleSignIn().disconnect();
     FirebaseAuth.instance.signOut();
   }
-
-
 }
