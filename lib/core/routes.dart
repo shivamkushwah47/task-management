@@ -23,5 +23,6 @@ class Routes {
   static String readyToTask = "/ready_task_view.dart";
   static String drawer = "/drawer_view.dart";
   static String EditTask = "/edit_task_view.dart";
+  static String UserBottomBar = "/user_bottambar_view.dart";
 
 }
