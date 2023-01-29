@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/login/controller/login_controller.dart';
 
@@ -52,11 +53,11 @@ class LoginView extends GetView<LoginController> {
                                           )),
                                     ),
                                   ),
-                                  const Text(
+                                   Text(
                                     'LOGIN',
                                     style: TextStyle(
                                         color: Colors.white,
-                                        fontSize: 27,
+                                        fontSize: Get.height*0.035,
                                         fontWeight: FontWeight.w600),
                                   )
                                 ],
@@ -64,7 +65,7 @@ class LoginView extends GetView<LoginController> {
                             ),
                             Image.asset(
                               'assets/Image/login screen.png',
-                              height: 80,
+                              height: Get.height * 0.12,
                             )
                           ],
                         ),
@@ -123,7 +124,7 @@ class LoginView extends GetView<LoginController> {
                                         },
                                       ),
                                       SizedBox(
-                                        height: 25,
+                                        height: Get.height*0.025,
                                       ),
                                       Obx(() => (TextFormField(
                                           style: TextStyle(),
@@ -170,7 +171,7 @@ class LoginView extends GetView<LoginController> {
                                             return null;
                                           }))),
                                       SizedBox(
-                                        height: Get.height * 0.03,
+                                        height: Get.height * 0.01,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -178,11 +179,11 @@ class LoginView extends GetView<LoginController> {
                                         children: [
                                           InkWell(
                                             child: Text(
-                                              "Forgot password",
+                                              "Forgot password?",
                                               style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: Get.height*0.015,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.indigoAccent),
+                                                  color: Colors.indigo),
                                             ),
                                             onTap: () {
                                               controller
@@ -196,28 +197,43 @@ class LoginView extends GetView<LoginController> {
                                       ),
                                       SizedBox(
                                         width: Get.width - 150,
-                                        child: ElevatedButton(
-                                            onPressed: () {
-                                              controller.login(
-                                                  context,
-                                                  controller.phone.text,
-                                                  controller.pass.text);
-                                            },
-                                            child: Text(
-                                              'LOGIN',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            )),
+                                         child:
+                                         CustomButton(
+                                           title: "Login",
+                                           onPress: () {
+
+                                             controller.login(
+                                                           context,
+                                                           controller.phone.text,
+                                                           controller.pass.text);
+                                           },
+                                         ),
+                                        // ElevatedButton(
+                                        //     onPressed: () {
+                                        //       controller.login(
+                                        //           context,
+                                        //           controller.phone.text,
+                                        //           controller.pass.text);
+                                        //     },
+                                        //     style: ElevatedButton.styleFrom(
+                                        //         backgroundColor: Colors.indigo),
+                                        //     child: Text(
+                                        //       'LOGIN',
+                                        //
+                                        //       style: TextStyle(
+                                        //           fontSize:Get.height*0.030,
+                                        //           color: Colors.white),
+                                        //     )),
                                       ),
                                       SizedBox(
-                                        height: 15,
+                                        height: Get.height*0.015,
                                       ),
                                       Container(
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Text('Do not have an account? '),
+                                            Text('Do not have an account?'),
                                             TextButton(
                                                 onPressed: () {
                                                   Get.toNamed(Routes.signup);
