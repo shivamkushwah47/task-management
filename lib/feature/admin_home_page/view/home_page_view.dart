@@ -24,7 +24,7 @@ class HomePageView extends GetView<HomePageController> {
                       accountName: Text(FireBase.userInfo['name']),
                       accountEmail: Text(FireBase.userInfo['email']),
                       currentAccountPicture: CircleAvatar(
-                        backgroundImage: AssetImage("assets/Icon/appicon.png"),
+                        backgroundImage: AssetImage('assets/Image/Profileimage.png'),
                       ),
                     ),
                     ListTile(
@@ -59,24 +59,31 @@ class HomePageView extends GetView<HomePageController> {
                   // crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                        radius: 25,
-                        backgroundImage:
-                            AssetImage('assets/Image/forgot_password.png')),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(FireBase.userInfo['name'],
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 15, 0, 0),
+                      child: CircleAvatar(
+                          radius: 25,
+                          backgroundImage:
+                              AssetImage('assets/Image/Profileimage.png')),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 10, 20, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(FireBase.userInfo['name'],
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: Get.height * 0.028)),
+                          Text(
+                            FireBase.userInfo['role'],
                             style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: Get.height * 0.028)),
-                        Text(FireBase.userInfo['role'],
-                          style: TextStyle(
-                              color: Colors.grey, fontSize: Get.height * 0.024),
-                        )
-                      ],
+                                color: Colors.grey, fontSize: Get.height * 0.018),
+                          )
+                        ],
+                      ),
                     ),
                     CircleAvatar(
                       backgroundColor: Colors.indigo,

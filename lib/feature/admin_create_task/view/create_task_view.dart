@@ -369,7 +369,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                               color: Colors.white,
                                               fontSize: Get.height * 0.025)),
                                       onPressed: () {
-                                        Get.back();
+                                         Get.back();
                                       },
                                     ),
                                   ),

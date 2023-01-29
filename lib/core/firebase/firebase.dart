@@ -155,7 +155,7 @@ class FireBase {
             firestore
                 .collection('mytask/mytask/users')
                 .doc(data['id'])
-                .update({"pushtoken": pushtoken});
+                .update({"pushToken": pushtoken});
             role = data['role'];
             db.put('userInfo', {
               'name': data['name'],
@@ -176,7 +176,7 @@ class FireBase {
         if (role == 'admin') {
           Get.offAllNamed(Routes.bottombar);
         } else if (role == "user") {
-          Get.offAllNamed(Routes.bottombar);
+          Get.offAllNamed(Routes.UserBottomBar);
         } else {
           Get.offAllNamed(Routes.signup);
         }
@@ -249,5 +249,25 @@ class FireBase {
   }
 
   //function for send Notification
+  static sendNotification(token) async {
+    try {
+      final body = {
+        "to": token['pushtoken'],
+        "notification": {"title": 'My Task', "body": " hey ${token["name"]} you have got a task"}
+      };
+
+      // ignore: unused_local_variable
+      var response = await post(
+          Uri.parse('https://fcm.googleapis.com/fcm/send'),
+          body: jsonEncode(body),
+          headers: {
+            HttpHeaders.contentTypeHeader: 'application/json',
+            HttpHeaders.authorizationHeader:
+            "key=AAAAZJVMrEY:APA91bGCwcY4hhBolnwANsWg0_k8gFwIVs6sjIWz9cRb5iVnXF8p7EeV6U9JAWPDlmmy2PyPj-bXts1KMXdNxDJ-sCyBVXLFhtXJ814onGO-AYYys8zmx6Midd2VshCuDcFXdrAE70rD"
+          });
+    } catch (e) {
+      log('$e');
+    }
+  }
 
 }

@@ -73,7 +73,9 @@ class ReadyToTaskController extends GetxController {
                   dialogType: DialogType.success,
                   title: 'Task Inprogess',
                   desc: 'your task has been started inprogress',
-                ).show();
+                ).show().then((value) => {
+                  Get.back()
+                    });
               })
             });
   }
