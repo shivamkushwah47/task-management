@@ -204,6 +204,26 @@ class FireBase {
         });
   }
 
+  static Future forgetPass(phone, password) async {
+    String id = '';
+    firestore.collection('mytask/mytask/users/').get().then((snapshot) {
+      // ignore: avoid_function_literals_in_foreach_calls
+      snapshot.docs.forEach(
+            (e) async {
+          var data = e.data();
+          if (data['phone'] == phone) {
+            isMatch = true;
+            id = data['id'];
+          }
+        },
+      );
+      firestore
+          .collection('mytask/mytask/users/')
+          .doc(id)
+          .update({'password': password});
+    });
+  }
+
   static deleteUser(id, context) async {
     Loader.showLoader(context);
     await Hive.deleteBoxFromDisk('mytask');
