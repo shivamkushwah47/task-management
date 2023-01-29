@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/Introduction/binding/introduction_binding.dart';
@@ -26,6 +25,8 @@ import 'package:visiter_app/feature/change_your_pass/binding/change_pwd_binding.
 import 'package:visiter_app/feature/change_your_pass/view/change_your_pass_view.dart';
 import 'package:visiter_app/feature/drawer/binding/drawer_binding.dart';
 import 'package:visiter_app/feature/drawer/view/drawer_view.dart';
+import 'package:visiter_app/feature/edit_create_task/binding/edit_task_binding.dart';
+import 'package:visiter_app/feature/edit_create_task/view/edit_task_view.dart';
 import 'package:visiter_app/feature/google_register/binding/google_register_binding.dart';
 import 'package:visiter_app/feature/google_register/view/google_register_view.dart';
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
@@ -72,5 +73,6 @@ List<GetPage> allpages = [
   GetPage(name: Routes.ChangePass, page: () => ChangePassView(), binding: ChangepassBinding()),
   GetPage(name: Routes.readyToTask, page: () => ReadyToTaskView(), binding: ReadyToTaskBinding()),
   GetPage(name: Routes.drawer, page: () => AppDrawer(), binding: DrawerBinding()),
+  GetPage(name: Routes.EditTask, page: () => EditTaskView(), binding: EditTaskBinding()),
 
 ];
