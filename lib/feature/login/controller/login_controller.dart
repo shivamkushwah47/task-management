@@ -35,12 +35,12 @@ class LoginController extends GetxController {
 
   bool isEmail(String input) => EmailValidator.validate(input);
 
-  bool isPhone(String input) => RegExp(
-      r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'
-  ).hasMatch(input);
+  bool isPhone(String input) =>
+      RegExp(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$')
+          .hasMatch(input);
 
-  bool validateStructure(String value){
-    String  pattern = r'(?=.*?[#?!@$%^&*-])';
+  bool validateStructure(String value) {
+    String pattern = r'(?=.*?[#?!@$%^&*-])';
     RegExp regExp = new RegExp(pattern);
     return regExp.hasMatch(value);
   }

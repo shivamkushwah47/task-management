@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:visiter_app/Core/routes.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/feature/Introduction/controller/introduction_controller.dart';
 
 class IntroView extends GetView<IntroController> {
@@ -29,14 +30,12 @@ class IntroView extends GetView<IntroController> {
                         ),
                         SizedBox(
                           width: Get.width*0.6,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigo,
-                                shape:BeveledRectangleBorder()),
-                            child: Text("GET STARTED",
-                                style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
-                            onPressed: () { Get.toNamed(Routes.login);},
-                          ),
+                          child: CustomButton(
+                            title: "GET STARTED",
+                            onPress: () {Get.toNamed(Routes.login);
+
+
+                            },)
                         )
                       ],
                     ),
@@ -56,15 +55,14 @@ class IntroView extends GetView<IntroController> {
                         ),
                         SizedBox(
                           width: Get.width*0.6,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigo,
-                                shape:BeveledRectangleBorder()),
-                            child: Text("GET STARTED",
-                                style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
-                            onPressed: () { Get.toNamed(Routes.login);},
-                          ),
-                        )
+                           child: CustomButton(
+                             title: "GET STARTED",
+                             onPress: () {Get.toNamed(Routes.login);
+
+
+                             },)
+
+                        ),
                       ],
                     ),
                     decoration: PageDecoration(titleTextStyle: TextStyle(color: Colors.black,fontSize: Get.height*0.03, fontWeight: FontWeight.w500),)),
@@ -79,14 +77,22 @@ class IntroView extends GetView<IntroController> {
                         ),
                         SizedBox(
                           width: Get.width*0.6,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.indigo,
-                                shape:BeveledRectangleBorder()),
-                            child: Text("GET STARTED",
-                                style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
-                            onPressed: () { Get.toNamed(Routes.login);},
+                          child:
+                          CustomButton(
+                            title: "GET STARTED",
+                            onPress: () {Get.toNamed(Routes.login);
+
+
+                            },
                           ),
+                          //ElevatedButton(
+                          //   style: ElevatedButton.styleFrom(
+                          //       backgroundColor: Colors.indigo,
+                          //       shape:BeveledRectangleBorder()),
+                          //   child: Text("GET STARTED",
+                          //       style: TextStyle(color: Colors.white, fontSize:Get.height*0.030)),
+                          //   onPressed: () { Get.toNamed(Routes.login);},
+                          // ),
                         )
                       ],
                     ),
@@ -120,7 +126,7 @@ class IntroView extends GetView<IntroController> {
                     backgroundColor: Colors.purple,
                     shape: StadiumBorder()),
                 child: Text("GET STARTED",
-                    style: TextStyle(color: Colors.white, fontSize: 20)),
+                    style: TextStyle(color: Colors.white, fontSize: Get.height*0.030)),
                 onPressed: () { Get.toNamed(Routes.login);},
               ),
             ),

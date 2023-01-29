@@ -103,7 +103,7 @@ class ProfileView extends GetView<ProfileController> {
                                     "Name",
                                     style: TextStyle(
                                       color: Colors.black87,
-                                      fontSize: Get.height * 0.045,
+                                      fontSize: Get.height * 0.025,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
@@ -111,7 +111,7 @@ class ProfileView extends GetView<ProfileController> {
                                       // height: Get.height * 0.17,
                                       child: Image.asset(
                                     'assets/Image/Profileimage.png',
-                                    height: Get.height * 0.075,
+                                    height: Get.height * 0.045,
                                   )),
                                 ],
                               ),
@@ -120,7 +120,7 @@ class ProfileView extends GetView<ProfileController> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: Get.height * 0.025,
+                                  fontSize: Get.height * 0.018,
                                 ),
                               ),
                               SizedBox(
@@ -130,7 +130,7 @@ class ProfileView extends GetView<ProfileController> {
                                 "Designation",
                                 style: TextStyle(
                                   color: Colors.black87,
-                                  fontSize: Get.height * 0.045,
+                                  fontSize: Get.height * 0.025,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -142,7 +142,7 @@ class ProfileView extends GetView<ProfileController> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: Get.height * 0.025,
+                                  fontSize: Get.height * 0.018,
                                 ),
                               ),
                               SizedBox(
@@ -152,7 +152,7 @@ class ProfileView extends GetView<ProfileController> {
                                 "Phone number",
                                 style: TextStyle(
                                   color: Colors.black87,
-                                  fontSize: Get.height * 0.045,
+                                  fontSize: Get.height * 0.025,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -164,7 +164,7 @@ class ProfileView extends GetView<ProfileController> {
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.w500,
-                                  fontSize: Get.height * 0.025,
+                                  fontSize: Get.height * 0.018,
                                 ),
                               ),
                             ]),

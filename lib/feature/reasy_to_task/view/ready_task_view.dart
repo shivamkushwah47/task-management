@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
+import 'package:visiter_app/core/components/custombuttonsecond.dart';
 import 'package:visiter_app/feature/reasy_to_task/controller/ready_task_controller.dart';
 
 class ReadyToTaskView extends GetView<ReadyToTaskController> {
@@ -196,36 +198,25 @@ class ReadyToTaskView extends GetView<ReadyToTaskController> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width: Get.width * 0.3,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.white,
-                                            shape: BeveledRectangleBorder(
-                                                side: BorderSide(
-                                                    color: Colors.indigo))),
-                                        child: Text("CANCEL",
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: Get.height * 0.015)),
-                                        onPressed: () {
-                                          Get.back();
+                                      width: Get.width * 0.35,
+                                      child: CustomButtonCancel(
+                                        title: "CANCEL",
+                                        onPress: () {Get.back();
+
+
                                         },
                                       ),
                                     ),
                                     SizedBox(
-                                      width: Get.width * 0.3,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                            backgroundColor: Colors.indigo,
-                                            shape: BeveledRectangleBorder()),
-                                        child: Text("READY TO TASK",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: Get.height * 0.015)),
-                                        onPressed: () {
-                                          controller.gotoInprogress(context);
-                                        },
-                                      ),
+                                      width: Get.width * 0.35,
+                                       child:
+                                       CustomButton(
+                                         title: "UPDATE",
+                                         onPress: () {
+
+                                           controller.gotoInprogress(context);
+                                         },
+                                       ),
                                     ),
                                   ],
                                 ),
