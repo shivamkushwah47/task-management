@@ -33,7 +33,6 @@ class SettingController extends GetxController {
     ).show();
   }
 
-
   Logout()async{
     final pref = await SharedPreferences.getInstance();
     await pref.clear().then((value) {
