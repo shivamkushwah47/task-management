@@ -168,7 +168,6 @@ class ForgotView extends GetView<ForgotController> {
                                       //
                                       // ),
                                     )
-
                                   ],
                                 ))
                               ],

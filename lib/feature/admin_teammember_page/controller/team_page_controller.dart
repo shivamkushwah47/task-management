@@ -36,5 +36,4 @@ class TeamController extends GetxController {
     });
   }
 
-
 }
