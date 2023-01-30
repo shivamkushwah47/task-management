@@ -14,7 +14,7 @@ class CustomButtonCancel extends GetView {
       child: MaterialButton(
         onPressed: onPress,
         color: GlobalColor.cancelbut,
-        shape: const StadiumBorder(),
+        shape: BeveledRectangleBorder(),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Text(
