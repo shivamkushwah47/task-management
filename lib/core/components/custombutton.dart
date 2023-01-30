@@ -14,7 +14,7 @@ class CustomButton extends GetView {
       child: MaterialButton(
         onPressed: onPress,
         color: GlobalColor.themecolor,
-        shape: const StadiumBorder(),
+        shape: BeveledRectangleBorder(),
         child: Padding(
           padding: const EdgeInsets.all(10),
           child: Text(
