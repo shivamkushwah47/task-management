@@ -29,14 +29,14 @@ class HomePageView extends GetView<HomePageController> {
                     ),
                     ListTile(
                       onTap: (){
-
+                        Get.toNamed(Routes.Notification);
                       },
                       leading: Icon(Icons.notifications),
                       title: Text("Notification"),
                     ),
                     ListTile(
                       onTap: (){
-                        //controller.deleteUser(FireBase.userInfo['id'],context);
+                        controller.deleteUser(FireBase.userInfo['id'],context);
 
                       },
                       leading: Icon(Icons.lock),

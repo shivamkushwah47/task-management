@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
+import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_AllTask_page/controller/All_Task_controller.dart';
 
@@ -25,14 +26,24 @@ class AllTaskView extends GetView<AllTaskController> {
               ),
             ),
             ListTile(
+              onTap: (){
+                Get.toNamed(Routes.Notification);
+              },
               leading: Icon(Icons.notifications),
               title: Text("Notification"),
             ),
             ListTile(
+              onTap: (){
+                controller.deleteUser(FireBase.userInfo['id'],context);
+
+              },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),
             ),
             ListTile(
+              onTap: (){
+                controller.Logout();
+              },
               leading: Icon(Icons.logout),
               title: Text("Log out"),
             )

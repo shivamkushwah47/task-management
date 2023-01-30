@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/core/components/custombuttonsecond.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
@@ -27,14 +28,23 @@ class CreateTaskView extends GetView<CreateTaskController> {
               ),
             ),
             ListTile(
+              onTap: (){
+                Get.toNamed(Routes.Notification);
+              },
               leading: Icon(Icons.notifications),
               title: Text("Notification"),
             ),
             ListTile(
+              onTap: (){
+                controller.deleteUser(FireBase.userInfo['id'],context);
+              },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),
             ),
             ListTile(
+              onTap: (){
+                controller.Logout();
+              },
               leading: Icon(Icons.logout),
               title: Text("Log out"),
             )
