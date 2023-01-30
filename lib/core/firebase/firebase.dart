@@ -122,7 +122,7 @@ class FireBase {
                 title: 'Success',
                 desc: 'You have been successfully added a New Member',
                 dismissOnTouchOutside: false,
-                //btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+                btnOkOnPress: () => Get.toNamed(Routes.bottombar),
               ).show()
             });
     print("Team Member added in firebase");
