@@ -85,7 +85,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                   Positioned(
                     child: Container(
                       width: Get.width,
-                      height: Get.height * 0.4,
+                      height: Get.height * 0.3,
                       decoration: const BoxDecoration(
                         gradient:
                             LinearGradient(colors: [Colors.blue, Colors.indigo]),
@@ -95,7 +95,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                         children: [
                           SizedBox(
 
-                            height: Get.height * 0.06,
+                            height: Get.height * 0.03,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +170,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                     ),
                   ),
                   Positioned(
-                    top: Get.height * .28,
+                    top: Get.height * .25,
                     width: Get.width * 1,
                     height: Get.height * .690,
                     child: Container(
@@ -356,7 +356,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              SizedBox(height: Get.height * 0.03),
+                              SizedBox(height: Get.height * 0.02),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
