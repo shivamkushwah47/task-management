@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_home_page/controller/home_page-controller.dart';
@@ -189,6 +190,24 @@ class HomePageView extends GetView<HomePageController> {
                                                 color: Colors.white)),
                                       ],
                                     ),
+                                    SizedBox(
+                                      height: Get.height*0.05,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+
+                                      Text("Progress",style: TextStyle(color: Colors.white,fontSize: Get.height * 0.017,),),
+                                      Text("50%",style: TextStyle(color: Colors.white,fontSize: Get.height * 0.017,),)
+                                      ],
+                                    ),
+                                    LinearProgressIndicator(
+                                      value:0.5,
+                                      backgroundColor: Colors.white,
+                                      minHeight: Get.height*0.01,
+                                      color: Colors.green,
+
+                                    ),
                                   ],
                                 ),
                                 decoration: BoxDecoration(
@@ -249,6 +268,24 @@ class HomePageView extends GetView<HomePageController> {
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ],
+                                    ),
+                                    SizedBox(
+                                      height: Get.height*0.05,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+
+                                        Text("Progress",style: TextStyle(color: Colors.white,fontSize: Get.height * 0.017,),),
+                                        Text("65%",style: TextStyle(color: Colors.white,fontSize: Get.height * 0.017,),)
+                                      ],
+                                    ),
+                                    LinearProgressIndicator(
+                                      value:0.65,
+                                      backgroundColor: Colors.white,
+                                      minHeight: Get.height*0.01,
+                                      color: Colors.green,
+
                                     ),
                                   ],
                                 ),
