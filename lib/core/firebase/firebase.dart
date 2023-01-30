@@ -178,7 +178,7 @@ class FireBase {
         } else if (role == "user") {
           Get.offAllNamed(Routes.UserBottomBar);
         } else {
-          Get.offAllNamed(Routes.signup);
+          Get.offAllNamed(Routes.login);
         }
       } else {
         const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
