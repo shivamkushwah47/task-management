@@ -3,7 +3,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/utils.dart';
-import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_home_page/controller/home_page-controller.dart';
@@ -142,7 +141,7 @@ class HomePageView extends GetView<HomePageController> {
                           child: Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.all(16),
                                 margin: EdgeInsets.only(
                                     left: 0, right: 22, top: 0, bottom: 0),
                                 width: Get.width * 0.4,
@@ -157,9 +156,9 @@ class HomePageView extends GetView<HomePageController> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text("5 Task",
+                                        Text("In Progress Task",
                                             style: TextStyle(
-                                                fontSize: Get.height * 0.029,
+                                                fontSize: Get.height * 0.025,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ],
@@ -221,7 +220,7 @@ class HomePageView extends GetView<HomePageController> {
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.all(16),
                                 margin: EdgeInsets.only(
                                     left: 0, right: 22, top: 0, bottom: 0),
                                 width: Get.width * 0.42,
@@ -236,9 +235,9 @@ class HomePageView extends GetView<HomePageController> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        Text("5 Task",
+                                        Text("Done Task",
                                             style: TextStyle(
-                                                fontSize: Get.height * 0.029,
+                                                fontSize: Get.height * 0.025,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.white)),
                                       ],
