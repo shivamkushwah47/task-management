@@ -41,6 +41,7 @@ class SettingController extends GetxController {
     });
   }
 
+
 }
 
 
