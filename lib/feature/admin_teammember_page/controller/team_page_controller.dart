@@ -1,10 +1,21 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 
 class TeamController extends GetxController {
+
+  Future<void> onInit() async {
+    var db=await Hive.openBox('mytask');
+    FireBase.userInfo.value=db.get('userInfo');
+    loader.value=false;
+    super.onInit();
+  }
+
+  RxBool loader=true.obs;
+
 
   deleteUser(id, context) {
     print('id is'+ id);
@@ -23,7 +34,7 @@ class TeamController extends GetxController {
   Logout()async{
     final pref = await SharedPreferences.getInstance();
     await pref.clear().then((value) {
-      Get.offAllNamed(Routes.login);
+      Get.offAllNamed(Routes.login );
     });
   }
 

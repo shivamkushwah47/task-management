@@ -55,7 +55,7 @@ class SettingView extends GetView<SettingController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'SETINGS',
+              'SETTINGS',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: Get.height * 0.030,

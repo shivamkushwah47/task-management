@@ -45,11 +45,11 @@ return Scaffold(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          'Notification ',
+          'NOTIFICATION ',
           style: TextStyle(
               color: Colors.white,
-              fontSize: Get.height * 0.030,
-              fontWeight: FontWeight.w500),
+              fontSize: Get.height * 0.032,
+              fontWeight: FontWeight.w700),
         ),
       ],
     ),
