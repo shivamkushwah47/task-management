@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:get/get.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:visiter_app/core/components/custombutton.dart';
 import '../controller/Forgot_controller.dart';
 
 class ForgotView extends GetView<ForgotController> {
@@ -37,7 +38,7 @@ class ForgotView extends GetView<ForgotController> {
               '   FORGOT PASSWORD',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: Get.height*0.035,
+                    fontSize: Get.height*0.025,
                     fontWeight: FontWeight.w500),
               ),
             ),
@@ -66,7 +67,7 @@ class ForgotView extends GetView<ForgotController> {
           child: Column(
             children: [
               Container(
-                height: Get.height-81,
+                height: Get.height-90,
                 child: Stack(
                   children: [
                     Positioned(
@@ -96,7 +97,7 @@ class ForgotView extends GetView<ForgotController> {
                       ),
                     ),
                     Positioned(
-                      bottom: Get.height * .1,
+                      bottom: Get.height * .15,
                       left: Get.width * .05,
                       width: Get.width * .9,
                       height: Get.height * .55,
@@ -147,16 +148,25 @@ class ForgotView extends GetView<ForgotController> {
                                     SizedBox(height:Get.height*0.05),
                                     SizedBox(
                                       width: Get.width*0.6,
-                                      child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.indigo
-                                        ),
-                                          onPressed: () {
-                                          // controller.signupformvalid();
-                                          controller.ForgotPassword(context);},
-                                          child: Text('SUBMIT',style: TextStyle(color: Colors.white),)
+                                       child:
+                                       CustomButton(
+                                         title: "VERIFY OTP",
+                                         onPress: () {
+                                           controller.ForgotPassword(context);
 
-                                      ),
+
+                                         },
+                                       ),
+                                      // ElevatedButton(
+                                      //   style: ElevatedButton.styleFrom(
+                                      //     backgroundColor: Colors.indigo
+                                      //   ),
+                                      //     onPressed: () {
+                                      //     // controller.signupformvalid();
+                                      //     controller.ForgotPassword(context);},
+                                      //     child: Text('SUBMIT',style: TextStyle(color: Colors.white),)
+                                      //
+                                      // ),
                                     )
 
                                   ],
