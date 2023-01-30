@@ -10,6 +10,7 @@ import 'package:visiter_app/core/routes.dart';
 
 class HomePageController extends GetxController {
 
+
   Future<void> onInit() async {
     var db=await Hive.openBox('mytask');
     FireBase.userInfo.value=db.get('userInfo');

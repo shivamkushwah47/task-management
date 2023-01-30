@@ -35,7 +35,6 @@ class AllTaskView extends GetView<AllTaskController> {
             ListTile(
               onTap: (){
                 controller.deleteUser(FireBase.userInfo['id'],context);
-
               },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),

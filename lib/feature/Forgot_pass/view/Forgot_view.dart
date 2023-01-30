@@ -33,12 +33,12 @@ class ForgotView extends GetView<ForgotController> {
                   )),
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+              padding: const EdgeInsets.fromLTRB(0, 5, 9, 0),
               child: Text(
               '   FORGOT PASSWORD',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: Get.height*0.027,
+                    fontSize: Get.height*0.033,
                     fontWeight: FontWeight.w500),
               ),
             ),
