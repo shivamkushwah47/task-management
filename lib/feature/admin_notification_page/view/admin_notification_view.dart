@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/feature/admin_notification_page/controller/afdmin_notification_controller.dart';
 
 class NotificationView extends GetView<NotificationController> {
@@ -10,6 +11,58 @@ class NotificationView extends GetView<NotificationController> {
   Widget build(BuildContext context) {
     // TODO: implement build
 return Scaffold(
+
+  drawer: Drawer(
+    child: ListView(
+      padding: EdgeInsets.zero,
+      children: [
+        UserAccountsDrawerHeader(
+          accountName: Text(FireBase.userInfo['name']),
+          accountEmail: Text(FireBase.userInfo['email']),
+          currentAccountPicture: CircleAvatar(
+            backgroundImage: AssetImage('assets/Image/Profileimage.png'),
+          ),
+        ),
+        ListTile(
+          leading: Icon(Icons.notifications),
+          title: Text("Notification"),
+        ),
+        ListTile(
+          leading: Icon(Icons.lock),
+          title: Text("Delete Account"),
+        ),
+        ListTile(
+          leading: Icon(Icons.logout),
+          title: Text("Log out"),
+        )
+      ],
+    ),
+  ),
+  appBar: AppBar(
+    centerTitle: true,
+    title: Row(
+      // crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          'Notification ',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: Get.height * 0.030,
+              fontWeight: FontWeight.w500),
+        ),
+      ],
+    ),
+    elevation: 0,
+    flexibleSpace: Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: <Color>[Colors.blue, Colors.indigo])),
+    ),
+  ),
+
   resizeToAvoidBottomInset: false,
   body: Container(
     child: Column(
@@ -33,25 +86,10 @@ return Scaffold(
                   child: Column(
                     children: [
                       SizedBox(
-                        height: Get.height * 0.15,
+                        height: Get.height * 0.05,
                         child: Row(
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(5, 0, 10, 0),
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.menu,size: 30,
-                                    color: Colors.white,
-                                  )),
-                            ),
-                            const Text(
-                              'Notification',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 23,
-                                  fontWeight: FontWeight.w600),
-                            ),
+
 
                           ],
                         ),
@@ -65,7 +103,7 @@ return Scaffold(
                 ),
               ),
               Positioned(
-                  top: Get.height * .28,
+                  top: Get.height * .25,
                   width: Get.width * 1,
                   height: Get.height * .690,
                   // bottom: Get.height * .05,
@@ -165,7 +203,6 @@ return Scaffold(
 
                   )
               )
-
 
 
             ],
