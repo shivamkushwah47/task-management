@@ -247,7 +247,7 @@ class RegisterView extends GetView<RegisterController> {
                                       width: Get.width - 160,
                                        child:
                                        CustomButton(
-                                         title: "VERIFY OTP",
+                                         title: "SUBMIT",
                                          onPress: () {
                                            controller.createUser(context);
 
