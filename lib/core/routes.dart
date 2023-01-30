@@ -24,7 +24,7 @@ class Routes {
   static String drawer = "/drawer_view.dart";
   static String EditTask = "/edit_task_view.dart";
   static String ForgotOtp = "/forgot_otp_view.dart";
-  static String EnterPass = "/enter_pass _view.dart";
+  static String EnterPass = "/enter_pass_view.dart";
   static String UserBottomBar = "/user_bottambar_view.dart";
 
 }

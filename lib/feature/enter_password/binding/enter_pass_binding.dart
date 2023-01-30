@@ -5,7 +5,6 @@ import '../controller/enter_pass_controller.dart';
 class EnterPassBinding extends Bindings{
   @override
   void dependencies(){
-    Get.lazyPut(()=>EnterPassController());
     Get.put(EnterPassController());
   }
 

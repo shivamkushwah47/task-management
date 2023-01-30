@@ -35,8 +35,6 @@ class EnterPassController extends GetxController {
 
   var isPasswordHidden = true.obs;
   Future<void> onInit() async {
-    var db=await Hive.openBox('mytask');
-    FireBase.userInfo.value=db.get('userInfo');
     loader.value=false;
     super.onInit();
   }
@@ -46,6 +44,7 @@ class EnterPassController extends GetxController {
 
   enterPass(context,password) async {
     print(password);
+    print(phone);
 
     if (EnterYourPassFormKey.currentState!.validate()) {
       print("form validated");
@@ -59,7 +58,7 @@ class EnterPassController extends GetxController {
       } else {
         Get.back();
 
-        FireBase.forgetPass(phone[0], password).then((value) {
+        FireBase.forgetPass(phone, password).then((value) {
           AwesomeDialog(
             context: context,
             dialogType: DialogType.success,
@@ -76,11 +75,7 @@ class EnterPassController extends GetxController {
 
 
 
-    // isvalid(value, pval) {
-    //   if (value == null || value.isEmpty) {
-    //     return 'Enter $pval';
-    //   }
-    // }
+
 
 
   }

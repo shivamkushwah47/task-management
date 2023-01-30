@@ -183,7 +183,8 @@ class LoginView extends GetView<LoginController> {
                                               style: TextStyle(
                                                   fontSize: Get.height*0.015,
                                                   fontWeight: FontWeight.bold,
-                                                  color: Colors.indigo),
+                                                  color: Colors.indigoAccent
+                                              ),
                                             ),
                                             onTap: () {
                                               controller
@@ -241,7 +242,7 @@ class LoginView extends GetView<LoginController> {
                                                 child: Text(
                                                   'Signup',
                                                   style: TextStyle(
-                                                      color: Colors.blue),
+                                                      color: Colors.indigoAccent),
                                                 ))
                                           ],
                                         ),
