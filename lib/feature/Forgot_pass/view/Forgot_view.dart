@@ -149,8 +149,10 @@ class ForgotView extends GetView<ForgotController> {
                                     SizedBox(
                                       width: Get.width*0.6,
                                        child:
+
+
                                        CustomButton(
-                                         title: "VERIFY OTP",
+                                         title: "SUBMIT",
                                          onPress: () {
                                            controller.ForgotPassword(context);
 
