@@ -171,7 +171,7 @@ class LoginView extends GetView<LoginController> {
                                             return null;
                                           }))),
                                       SizedBox(
-                                        height: Get.height * 0.01,
+                                        height: Get.height * 0.015,
                                       ),
                                       Row(
                                         mainAxisAlignment:
@@ -181,7 +181,7 @@ class LoginView extends GetView<LoginController> {
                                             child: Text(
                                               "Forgot password?",
                                               style: TextStyle(
-                                                  fontSize: Get.height*0.015,
+                                                  fontSize: Get.height*0.018,
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.indigoAccent
                                               ),
