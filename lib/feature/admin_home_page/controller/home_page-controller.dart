@@ -28,6 +28,7 @@ class HomePageController extends GetxController {
       btnCancelOnPress: () {},
       btnOkOnPress: () {
         FireBase.deleteUser(FireBase.userInfo['id'], context);
+        Logout();
       },
     ).show();
    }
