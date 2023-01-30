@@ -38,7 +38,7 @@ class ForgotView extends GetView<ForgotController> {
               '   FORGOT PASSWORD',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: Get.height*0.025,
+                    fontSize: Get.height*0.027,
                     fontWeight: FontWeight.w500),
               ),
             ),

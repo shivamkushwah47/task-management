@@ -329,7 +329,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                                 child: TextFormField(
                                   // controller: _Titlecontroller,
                                   cursorColor: Colors.black,

@@ -304,7 +304,7 @@ class HomePageView extends GetView<HomePageController> {
                                       CircleAvatar(
                                           backgroundColor: Colors.white,
                                           radius: 25,
-                                          child: const Icon(Icons.abc,
+                                          child: const Icon(Icons.toc,
                                               color: Colors.indigo)),
                                       SizedBox(
                                         width: Get.width * 0.06,
@@ -386,7 +386,7 @@ class HomePageView extends GetView<HomePageController> {
                                       CircleAvatar(
                                           backgroundColor: Colors.white,
                                           radius: 25,
-                                          child: const Icon(Icons.abc,
+                                          child: const Icon(Icons.cached_rounded,
                                               color: Colors.indigo)),
                                       SizedBox(
                                         width: Get.width * 0.06,
@@ -468,7 +468,7 @@ class HomePageView extends GetView<HomePageController> {
                                       CircleAvatar(
                                           backgroundColor: Colors.white,
                                           radius: 25,
-                                          child: const Icon(Icons.abc,
+                                          child: const Icon(Icons.done,
                                               color: Colors.indigo)),
                                       SizedBox(
                                         width: Get.width * 0.06,
