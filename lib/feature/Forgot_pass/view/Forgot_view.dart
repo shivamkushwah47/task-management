@@ -149,6 +149,8 @@ class ForgotView extends GetView<ForgotController> {
                                     SizedBox(
                                       width: Get.width*0.6,
                                        child:
+
+
                                        CustomButton(
                                          title: "SUBMIT",
                                          onPress: () {
