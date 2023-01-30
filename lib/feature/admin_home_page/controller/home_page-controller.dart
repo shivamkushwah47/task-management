@@ -18,19 +18,19 @@ class HomePageController extends GetxController {
   }
   RxBool loader=true.obs;
 
-  // deleteUser(id, context) {
-  //   print('id is'+ id);
-  //   AwesomeDialog(
-  //     context: context,
-  //     title: 'Warning',
-  //     dialogType: DialogType.infoReverse,
-  //     desc: 'Are you sure to delete your account',
-  //     btnCancelOnPress: () {},
-  //     btnOkOnPress: () {
-  //       FireBase.deleteUser(FireBase.userInfo['id'], context);
-  //     },
-  //   ).show();
-  // }
+  deleteUser(id, context) {
+    print('id is'+ id);
+    AwesomeDialog(
+      context: context,
+      title: 'Warning',
+      dialogType: DialogType.infoReverse,
+      desc: 'Are you sure to delete your account',
+      btnCancelOnPress: () {},
+      btnOkOnPress: () {
+        FireBase.deleteUser(FireBase.userInfo['id'], context);
+      },
+    ).show();
+   }
 
 
   Logout()async{
@@ -38,8 +38,8 @@ class HomePageController extends GetxController {
     await pref.clear().then((value) {
       Get.offAllNamed(Routes.login);
     });
-
   }
+
 }
 
 
