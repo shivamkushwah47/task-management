@@ -365,6 +365,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                     child:CustomButtonCancel(
                                       title: "CANCEL",
                                       onPress: () {
+
                                         Get.back();
                                       },
                                     ),

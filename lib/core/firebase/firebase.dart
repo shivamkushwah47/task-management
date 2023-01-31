@@ -224,6 +224,8 @@ class FireBase {
       "priority": priority,
       "summary": summarry,
       'id': id,
+      'report': userInfo["name"],
+      'createDate': DateTime.now(),
     };
     var id2 = DateTime.now().millisecondsSinceEpoch.toString();
 
@@ -250,11 +252,17 @@ class FireBase {
 
   //function for send Notification
   static sendNotification(token) async {
+    print("in notification");
+    print(token[2]);
     try {
       final body = {
-        "to": token['pushtoken'],
-        "notification": {"title": 'My Task', "body": " hey ${token["name"]} you have got a task"}
+        "to": token[2],
+        "notification": {
+          "title": 'My Task',
+          "body": " hey ${token[0]} you have got a task"
+        }
       };
+      print(token[0]);
 
       // ignore: unused_local_variable
       var response = await post(
@@ -263,11 +271,10 @@ class FireBase {
           headers: {
             HttpHeaders.contentTypeHeader: 'application/json',
             HttpHeaders.authorizationHeader:
-            "key=AAAAZJVMrEY:APA91bGCwcY4hhBolnwANsWg0_k8gFwIVs6sjIWz9cRb5iVnXF8p7EeV6U9JAWPDlmmy2PyPj-bXts1KMXdNxDJ-sCyBVXLFhtXJ814onGO-AYYys8zmx6Midd2VshCuDcFXdrAE70rD"
+                "key=AAAAZJVMrEY:APA91bGCwcY4hhBolnwANsWg0_k8gFwIVs6sjIWz9cRb5iVnXF8p7EeV6U9JAWPDlmmy2PyPj-bXts1KMXdNxDJ-sCyBVXLFhtXJ814onGO-AYYys8zmx6Midd2VshCuDcFXdrAE70rD"
           });
     } catch (e) {
       log('$e');
     }
   }
-
 }

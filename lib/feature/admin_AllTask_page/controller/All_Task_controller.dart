@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 
 class AllTaskController extends GetxController {
+  var selectedDate;
 
 
   Stream<QuerySnapshot<Map<String, dynamic>>> allTaskSnapshota =  FirebaseFirestore.instance

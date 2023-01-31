@@ -75,9 +75,11 @@ class AllTaskView extends GetView<AllTaskController> {
                 // black: Colors.red,
                 // accent: Colors.green,
                 // white: Colors.blueAccent,
-
+                selectedDate: DateTime.now(),
                 backButton: false,
-                onDateChanged: (value) => print(value),
+                onDateChanged: (value)  {
+                  controller.selectedDate = value;
+                  print(value);},
                 firstDate: DateTime.now().subtract(Duration(days: 140)),
                 lastDate: DateTime.now(),
               ),
