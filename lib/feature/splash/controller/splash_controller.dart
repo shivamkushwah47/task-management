@@ -13,7 +13,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     getdata();
-    Timer(Duration(seconds: 4), () {
+    Timer(Duration(seconds: 3), () {
       if (isLogin) {
         Get.offAndToNamed(Routes.bottombar);
       } else {
