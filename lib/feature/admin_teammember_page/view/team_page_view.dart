@@ -121,7 +121,8 @@ class TeamView extends GetView<TeamController> {
                 Positioned(
                   top: Get.height * .28,
                   width: Get.width * 1,
-                  height: Get.height * .690,
+                  height: Get.height * .63,
+
                   child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(

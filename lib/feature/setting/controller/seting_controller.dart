@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
+//import 'package:visiter_app/core/components/loader.dart';
 
 class SettingController extends GetxController {
   Future<void> onInit() async {
@@ -38,7 +39,6 @@ class SettingController extends GetxController {
       Get.offAllNamed(Routes.login);
     });
   }
-
 
 
 }
