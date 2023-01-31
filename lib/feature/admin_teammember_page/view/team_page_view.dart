@@ -112,6 +112,7 @@ class TeamView extends GetView<TeamController> {
                   top: Get.height * .28,
                   width: Get.width * 1,
                   height: Get.height * .63,
+
                   child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
