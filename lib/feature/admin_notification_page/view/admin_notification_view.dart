@@ -68,7 +68,7 @@ return Scaffold(
     child: Column(
       children: [
         SizedBox(
-          height: Get.height,
+          height: Get.height-81,
           child: Stack(
             children: [
               Positioned(
@@ -81,7 +81,6 @@ return Scaffold(
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30)),
-                    color: Colors.red,
                   ),
                   child: Column(
                     children: [
