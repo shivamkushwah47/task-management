@@ -17,6 +17,7 @@ class SignupController extends GetxController {
   static TextEditingController phoneController = TextEditingController();
   static String verificationId = "";
   var phonevalue = "";
+  var countryCode = "";
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 

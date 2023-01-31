@@ -99,59 +99,87 @@ class SignupView extends GetView<SignupController> {
                                         ),
                                         IntlPhoneField(
                                           decoration: const InputDecoration(
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.indigoAccent),
-                                            ),
                                             counterText: '',
                                             hintText: 'Phone Number',
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                  width: 2,
-                                                  color: Colors.indigoAccent),
+                                            border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
                                             ),
                                           ),
-                                          controller:
-                                              SignupController.phoneController,
+                                          dropdownIconPosition:
+                                              IconPosition.trailing,
+                                          flagsButtonMargin:
+                                              const EdgeInsets.all(10),
                                           initialCountryCode: 'IN',
                                           onChanged: (phone) {
                                             print(phone.completeNumber);
                                             controller.phonevalue =
                                                 phone.toString();
                                           },
+                                          controller:
+                                              SignupController.phoneController,
+                                          onCountryChanged: (country) {
+                                            controller.countryCode =
+                                                country.dialCode;
+                                          },
                                           validator: (value) =>
                                               controller.isSignupValid(
                                                   value, 'Enter phone'),
                                         ),
+
+                                        // IntlPhoneField(
+                                        //   decoration: const InputDecoration(
+                                        //     enabledBorder: OutlineInputBorder(
+                                        //       borderSide: BorderSide(
+                                        //           width: 2,
+                                        //           color: Colors.indigoAccent),
+                                        //     ),
+                                        //     counterText: '',
+                                        //     hintText: 'Phone Number',
+                                        //     focusedBorder: OutlineInputBorder(
+                                        //       borderSide: BorderSide(
+                                        //           width: 2,
+                                        //           color: Colors.indigoAccent),
+                                        //     ),
+                                        //   ),
+                                        //   controller:
+                                        //       SignupController.phoneController,
+                                        //   initialCountryCode: 'IN',
+                                        //   onChanged: (phone) {
+                                        //     print(phone.completeNumber);
+                                        //     controller.phonevalue =
+                                        //         phone.toString();
+                                        //   },
+                                        //   validator: (value) =>
+                                        //       controller.isSignupValid(
+                                        //           value, 'Enter phone'),
+                                        // ),
                                         SizedBox(
                                           height: Get.height * 0.07,
                                         ),
                                         SizedBox(
-                                          width: Get.width - 160,
-                                          child:
-                                          CustomButton(
-                                            title: "GET STARTED",
-                                            onPress: () {
-                                            controller.SignupValidate(context);
-
-
-                                                },)
-                                          //ElevatedButton(
-                                          //     onPressed: () {
-                                          //       controller.SignupValidate(
-                                          //           context);
-                                          //     },
-                                          //     style: ElevatedButton.styleFrom(
-                                          //         backgroundColor: Colors.indigo),
-                                          //     child: Text(
-                                          //       'REQUEST OTP',
-                                          //       style: TextStyle(
-                                          //         color: Colors.white,
-                                          //         fontSize: Get.height * 0.030,
-                                          //       ),
-                                          //     )),
-                                        )
+                                            width: Get.width - 160,
+                                            child: CustomButton(
+                                              title: "GET STARTED",
+                                              onPress: () {
+                                                controller.SignupValidate(
+                                                    context);
+                                              },
+                                            )
+                                            //ElevatedButton(
+                                            //     onPressed: () {
+                                            //       controller.SignupValidate(
+                                            //           context);
+                                            //     },
+                                            //     style: ElevatedButton.styleFrom(
+                                            //         backgroundColor: Colors.indigo),
+                                            //     child: Text(
+                                            //       'REQUEST OTP',
+                                            //       style: TextStyle(
+                                            //         color: Colors.white,
+                                            //         fontSize: Get.height * 0.030,
+                                            //       ),
+                                            //     )),
+                                            )
                                       ],
                                     ),
                                   ),
@@ -229,10 +257,8 @@ class SignupView extends GetView<SignupController> {
                                           onPressed: () {
                                             Get.toNamed(Routes.login);
                                           },
-
                                           child: Text(
                                             'LOGIN',
-
                                             style:
                                                 TextStyle(color: Colors.indigo),
                                           ))

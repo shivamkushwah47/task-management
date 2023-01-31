@@ -133,13 +133,14 @@ class TodoView extends GetView<TodoController> {
                                                     as Map<String, dynamic>;
 
                                             return ListTile(
+
                                               tileColor: Colors.grey,
                                               onTap: () {
                                                 Get.toNamed(Routes.readyToTask, arguments: [index,todomap]);
 
                                               },
                                               title: Text(todomap["title"]),
-                                              subtitle: Text(todomap["description"]),
+                                              subtitle: Text(todomap["report"]),
                                               trailing: IconButton(
                                                 icon: Icon(Icons.more_vert),
                                                 onPressed: () {

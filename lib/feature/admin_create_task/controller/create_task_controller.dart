@@ -26,6 +26,7 @@ class CreateTaskController extends GetxController {
     FireBase.userInfo.value = db.get('userInfo');
     userlist.add(FireBase.userInfo['name']);
     print("Hii ${FireBase.userInfo['name']}");
+
     super.onInit();
   }
 
@@ -135,40 +136,49 @@ class CreateTaskController extends GetxController {
         ).show();
       } else {
         Get.back();
-        sendTo();
-        await FireBase.createTask(
-                context,
-                titlecontroller.text,
-                desccontroller.text,
-                selecteduser,
-                selectedPriority,
-                summarycontroller.text)
+        await sendTo().then((value) => {
+        FireBase.createTask(
+        context,
+        titlecontroller.text,
+        desccontroller.text,
+        selecteduser,
+        selectedPriority,
+        summarycontroller.text)
             .then((value) => {
-                  titlecontroller.clear(),
-                  desccontroller.clear(),
-                  summarycontroller.clear(),
-                  FireBase.userInfo["name"]!=selecteduser?
-                  FireBase.sendNotification(sendToInfo[0]):null
-                });
+        FireBase.sendNotification(sendToInfo)
+
+        // FireBase.userInfo["name"]!=selecteduser?
+        // FireBase.sendNotification(sendToInfo[0]):null
+        }).then((value) => {sendToInfo.clear(),
+          titlecontroller.clear(),
+          desccontroller.clear(),
+          summarycontroller.clear(),
+        })
+        });
+
+
       }
     }
   }
 
-  dynamic sendToInfo = [];
-
-  Future sendTo() async {
-    print("this is selected user:$selecteduser");
-    await FirebaseFirestore.instance
-        .collection("mytask/mytask/users/")
+  var sendToInfo = [];
+  Future sendTo() {
+    print("this is selected user $selecteduser");
+    return FirebaseFirestore.instance
+        .collection('mytask/mytask/users')
         .get()
-        .then((QuerySnapshot snapshot) {
-      for (var doc in snapshot.docs) {
-        if (doc["name"] == selecteduser) {
-          sendToInfo.add({
-            'name': doc['name'],
-            'pushtoken': doc['pushtoken'],
-            'email': doc['email']
-          });
+        .then((QuerySnapshot querySnapshot) {
+      for (var e in querySnapshot.docs) {
+        // print(e);
+        if (e['name'] == selecteduser) {
+          sendToInfo.add(
+            e['name'],
+          );sendToInfo.add(
+            e['email'],
+          );sendToInfo.add(
+            e['pushToken'],
+          );
+          print(sendToInfo);
         }
       }
 

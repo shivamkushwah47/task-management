@@ -81,25 +81,19 @@ class AllTaskView extends GetView<AllTaskController> {
         child: Container(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: <Color>[
-                          Colors.blue,
-                          Colors.indigo
-                        ])),
-                child: CalendarAppBar(
-                  // white: Colors.black,
-                  // black: Colors.red,
-                  accent: Colors.transparent,
-                  // white: Colors.blueAccent,
-                  backButton: false,
-                  onDateChanged: (value) => print(value),
-                  firstDate: DateTime.now().subtract(Duration(days: 140)),
-                  lastDate: DateTime.now(),
-                ),
+              CalendarAppBar(
+                // white: Colors.black,
+                // black: Colors.red,
+                // accent: Colors.green,
+                // white: Colors.blueAccent,
+                selectedDate: DateTime.now(),
+                backButton: false,
+                onDateChanged: (value)  {
+                  controller.selectedDate = value;
+                  print(value);},
+                firstDate: DateTime.now().subtract(Duration(days: 140)),
+                lastDate: DateTime.now(),
+
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 8),
