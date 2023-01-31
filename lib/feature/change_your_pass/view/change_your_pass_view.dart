@@ -59,7 +59,7 @@ class ChangePassView extends GetView<ChangeYourPassController> {
                                   'CHANGE YOUR PASSWORD',
                                   style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: Get.height*0.023,
+                                      fontSize: Get.height * 0.030,
                                       fontWeight: FontWeight.w600),
                                 )
                               ],
