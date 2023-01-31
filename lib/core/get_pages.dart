@@ -27,6 +27,7 @@ import 'package:visiter_app/feature/drawer/binding/drawer_binding.dart';
 import 'package:visiter_app/feature/drawer/view/drawer_view.dart';
 import 'package:visiter_app/feature/edit_create_task/binding/edit_task_binding.dart';
 import 'package:visiter_app/feature/edit_create_task/view/edit_task_view.dart';
+import 'package:visiter_app/feature/forgototp/binding/forgot_otp_binding.dart';
 import 'package:visiter_app/feature/google_register/binding/google_register_binding.dart';
 import 'package:visiter_app/feature/google_register/view/google_register_view.dart';
 import 'package:visiter_app/feature/login/binding/login_binding.dart';
@@ -47,6 +48,9 @@ import 'package:visiter_app/feature/user_bottambar/binding/user_bottambar_bindin
 import 'package:visiter_app/feature/user_bottambar/view/user_bottambar_view.dart';
 import '../feature/Forgot_pass/binding/Forgot_binding.dart';
 import '../feature/Forgot_pass/view/Forgot_view.dart';
+import '../feature/enter_password/binding/enter_pass_binding.dart';
+import '../feature/enter_password/view/enter_pass _view.dart';
+import '../feature/forgototp/view/forgot_otp_view.dart';
 import '../feature/profile/binding/profile_binding.dart';
 import '../feature/profile/view/profile_view.dart';
 import '../feature/bottambar/binding/bottombar_binding.dart';
@@ -76,6 +80,8 @@ List<GetPage> allpages = [
   GetPage(name: Routes.readyToTask, page: () => ReadyToTaskView(), binding: ReadyToTaskBinding()),
   GetPage(name: Routes.drawer, page: () => AppDrawer(), binding: DrawerBinding()),
   GetPage(name: Routes.EditTask, page: () => EditTaskView(), binding: EditTaskBinding()),
+  GetPage(name: Routes.ForgotOtp, page: () => ForgotOtpView(), binding: ForgotOtpBinding()),
+  GetPage(name: Routes.EnterPass, page: () => EnterPassView(), binding: EnterPassBinding()),
   GetPage(name: Routes.UserBottomBar, page: () => UserBottomBarView(), binding: UserBottomBarBinding()),
 
 ];

@@ -24,14 +24,24 @@ class SettingView extends GetView<SettingController> {
               ),
             ),
             ListTile(
+              onTap: (){
+                Get.toNamed(Routes.Notification);
+              },
               leading: Icon(Icons.notifications),
               title: Text("Notification"),
             ),
             ListTile(
+              onTap: (){
+                controller.deleteUser(FireBase.userInfo['id'],context);
+
+              },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),
             ),
             ListTile(
+              onTap: (){
+                controller.Logout();
+              },
               leading: Icon(Icons.logout),
               title: Text("Log out"),
             )
@@ -45,7 +55,7 @@ class SettingView extends GetView<SettingController> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'SETINGS',
+              'SETTINGS',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: Get.height * 0.030,

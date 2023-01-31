@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/components/custombutton.dart';
 import 'package:visiter_app/core/components/custombuttonsecond.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
@@ -27,14 +28,23 @@ class CreateTaskView extends GetView<CreateTaskController> {
               ),
             ),
             ListTile(
+              onTap: (){
+                Get.toNamed(Routes.Notification);
+              },
               leading: Icon(Icons.notifications),
               title: Text("Notification"),
             ),
             ListTile(
+              onTap: (){
+                controller.deleteUser(FireBase.userInfo['id'],context);
+              },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),
             ),
             ListTile(
+              onTap: (){
+                controller.Logout();
+              },
               leading: Icon(Icons.logout),
               title: Text("Log out"),
             )
@@ -85,7 +95,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                   Positioned(
                     child: Container(
                       width: Get.width,
-                      height: Get.height * 0.4,
+                      height: Get.height * 0.3,
                       decoration: const BoxDecoration(
                         gradient:
                             LinearGradient(colors: [Colors.blue, Colors.indigo]),
@@ -95,7 +105,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                         children: [
                           SizedBox(
 
-                            height: Get.height * 0.06,
+                            height: Get.height * 0.03,
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -170,7 +180,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                     ),
                   ),
                   Positioned(
-                    top: Get.height * .28,
+                    top: Get.height * .25,
                     width: Get.width * 1,
                     height: Get.height * .690,
                     child: Container(
@@ -319,7 +329,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
+                                    EdgeInsetsDirectional.fromSTEB(0, 10, 0, 20),
                                 child: TextFormField(
                                   // controller: _Titlecontroller,
                                   cursorColor: Colors.black,
@@ -356,7 +366,7 @@ class CreateTaskView extends GetView<CreateTaskController> {
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              SizedBox(height: Get.height * 0.03),
+                              SizedBox(height: Get.height * 0.02),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [

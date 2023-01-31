@@ -122,7 +122,7 @@ class FireBase {
                 title: 'Success',
                 desc: 'You have been successfully added a New Member',
                 dismissOnTouchOutside: false,
-                //btnOkOnPress: () => Get.toNamed(Routes.HomePage),
+                btnOkOnPress: () => Get.toNamed(Routes.bottombar),
               ).show()
             });
     print("Team Member added in firebase");
@@ -178,7 +178,7 @@ class FireBase {
         } else if (role == "user") {
           Get.offAllNamed(Routes.UserBottomBar);
         } else {
-          Get.offAllNamed(Routes.signup);
+          Get.offAllNamed(Routes.login);
         }
       } else {
         const Snackbar(title: 'Warning', msg: 'Invalid credentials').snack1();
@@ -202,6 +202,26 @@ class FireBase {
             // btnOkOnPress: () => Get.back(),
           ).show()
         });
+  }
+
+  static Future forgetPass(phone, password) async {
+    String id = '';
+    firestore.collection('mytask/mytask/users/').get().then((snapshot) {
+      // ignore: avoid_function_literals_in_foreach_calls
+      snapshot.docs.forEach(
+            (e) async {
+          var data = e.data();
+          if (data['phone'] == phone) {
+            isMatch = true;
+            id = data['id'];
+          }
+        },
+      );
+      firestore
+          .collection('mytask/mytask/users/')
+          .doc(id)
+          .update({'password': password});
+    });
   }
 
   static deleteUser(id, context) async {

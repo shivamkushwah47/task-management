@@ -45,13 +45,17 @@ class TodoView extends GetView<TodoController> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5, 0, 10, 0),
-                                  child: IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.menu,
-                                        size: 30,
-                                        color: Colors.white,
-                                      )),
+                                  child: CircleAvatar( backgroundColor: Colors.white,
+                                    child: IconButton(
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        icon: const Icon(
+                                          Icons.arrow_back_ios_rounded,
+
+                                          color: Colors.black,
+                                        )),
+                                  ),
                                 ),
                                 const Text(
                                   'To Do',
