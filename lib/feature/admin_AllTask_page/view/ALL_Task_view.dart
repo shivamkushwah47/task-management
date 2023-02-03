@@ -13,7 +13,7 @@ class AllTaskView extends GetView<AllTaskController> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
+    return Obx(() => Scaffold(
       drawer: Drawer(
 
         child: ListView(
@@ -107,6 +107,21 @@ class AllTaskView extends GetView<AllTaskController> {
         child: Container(
           child: Column(
             children: [
+              CalendarAppBar(
+                // white: Colors.black,
+                // black: Colors.red,
+                // accent: Colors.green,
+                // white: Colors.blueAccent,
+                selectedDate: DateTime.now(),
+                backButton: false,
+                onDateChanged: (value)  {
+                  AllTaskController.selectedDate.value = value.toString();
+                  print(value);
+                  },
+                firstDate: DateTime.now().subtract(Duration(days: 140)),
+                lastDate: DateTime.now(),
+
+              ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 8),
                 child: Row(
@@ -137,8 +152,8 @@ class AllTaskView extends GetView<AllTaskController> {
                   }
                   if (snapshot.connectionState == ConnectionState.active) {
                     if (snapshot.hasData && snapshot.data != null) {
-                      FireBase.userInfo['role'];
-                      FireBase.userInfo['name'];
+                      print("AllTaskController.selectedDate");
+                      print(AllTaskController.selectedDate);
                       return Expanded(
                         child: ListView.builder(
                             itemCount: snapshot.data!.docs.length,
@@ -173,6 +188,6 @@ class AllTaskView extends GetView<AllTaskController> {
           ),
         ),
       ),
-    );
+    ));
   }
 }

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:visiter_app/core/components/loader.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 import 'package:visiter_app/core/routes.dart';
 import 'package:visiter_app/feature/admin_teammember_page/controller/team_page_controller.dart';
@@ -34,21 +36,21 @@ class TeamView extends GetView<TeamController> {
               ),
             ),
             ListTile(
-              onTap: (){
+              onTap: () {
                 Get.toNamed(Routes.Notification);
               },
               leading: Icon(Icons.notifications),
               title: Text("Notification"),
             ),
             ListTile(
-              onTap: (){
-                controller.deleteUser(FireBase.userInfo['id'],context);
+              onTap: () {
+                controller.deleteUser(FireBase.userInfo['id'], context);
               },
               leading: Icon(Icons.lock),
               title: Text("Delete Account"),
             ),
             ListTile(
-              onTap: (){
+              onTap: () {
                 controller.Logout();
               },
               leading: Icon(Icons.logout),
@@ -104,11 +106,8 @@ class TeamView extends GetView<TeamController> {
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-
-                            ],
+                            children: [],
                           ),
-
                         ),
                         Image.asset(
                           'assets/Image/Teammenber.png',
@@ -170,27 +169,64 @@ class TeamView extends GetView<TeamController> {
                                     ConnectionState.active) {
                                   if (snapshot.hasData &&
                                       snapshot.data != null) {
-
                                     return Expanded(
                                       child: ListView.builder(
                                           itemCount: snapshot.data!.docs.length,
                                           itemBuilder: (context, index) {
                                             Map<String, dynamic> usersmap =
-                                            snapshot.data!.docs[index]
-                                                .data()
-                                            as Map<String, dynamic>;
+                                                snapshot.data!.docs[index]
+                                                        .data()
+                                                    as Map<String, dynamic>;
 
                                             return ListTile(
+                                              isThreeLine: true,
+                                              leading: CircleAvatar(
+                                                backgroundColor: Colors.blue,
+                                                child: Text(
+                                                    (index + 1).toString()),
+                                              ),
                                               tileColor: Colors.grey,
-                                              onTap: (){
-
-
-                                              },
+                                              onTap: () {},
                                               title: Text(usersmap["name"]),
                                               subtitle: Text(usersmap["email"]),
                                               trailing: IconButton(
                                                 icon: Icon(Icons.more_vert),
-                                                onPressed: () {  },
+                                                onPressed: () {
+                                                  Get.defaultDialog(
+                                                    onConfirm: () async {
+                                                      Loader.showLoader(
+                                                          context);
+                                                      await FirebaseFirestore
+                                                          .instance
+                                                          .collection(
+                                                              "mytask/mytask/users")
+                                                          .doc(usersmap["id"])
+                                                          .delete()
+                                                          .then((value) {
+                                                            Get.back();
+                                                        Get.back();
+                                                      });
+                                                    },
+                                                    title: "Delete User ?",
+                                                    middleText:
+                                                        "Are you sure want to delete this user",
+                                                    backgroundColor:
+                                                        Colors.blueGrey,
+                                                    titleStyle: TextStyle(
+                                                        color: Colors.white),
+                                                    middleTextStyle: TextStyle(
+                                                        color: Colors.white),
+                                                    radius: 30,
+                                                    textConfirm: "Confirm",
+                                                    textCancel: "Cancel",
+                                                    cancelTextColor:
+                                                        Colors.white,
+                                                    confirmTextColor:
+                                                        Colors.white,
+                                                    buttonColor: Colors.red,
+                                                    //confirm: controller.Logout()
+                                                  );
+                                                },
                                               ),
                                             );
                                           }),
@@ -206,7 +242,8 @@ class TeamView extends GetView<TeamController> {
                                       child: CircularProgressIndicator());
                                 }
                               },
-                            )
+                            ),
+                            SizedBox(height: 30,)
                           ],
                         ),
                       )),
