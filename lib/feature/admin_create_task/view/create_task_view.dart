@@ -21,6 +21,16 @@ class CreateTaskView extends GetView<CreateTaskController> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
+              decoration:  BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: <Color>[
+                        Colors.indigo,
+                        Colors.blue
+                      ]
+                  )
+              ),
               accountName: Text(FireBase.userInfo['name']),
               accountEmail: Text(FireBase.userInfo['email']),
               currentAccountPicture: CircleAvatar(

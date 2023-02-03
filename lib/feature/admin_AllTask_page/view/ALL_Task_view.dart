@@ -15,10 +15,21 @@ class AllTaskView extends GetView<AllTaskController> {
     // TODO: implement build
     return Obx(() => Scaffold(
       drawer: Drawer(
+
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
+              decoration:  BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.bottomLeft,
+            end: Alignment.topRight,
+            colors: <Color>[
+              Colors.indigo,
+              Colors.blue
+            ]
+        )
+      ),
               accountName: Text(FireBase.userInfo['name']),
               accountEmail: Text(FireBase.userInfo['email']),
               currentAccountPicture: CircleAvatar(
@@ -50,33 +61,48 @@ class AllTaskView extends GetView<AllTaskController> {
           ],
         ),
       ),
-      appBar: AppBar(
-        centerTitle: true,
-        title: Row(
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              '',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: Get.height * 0.030,
-                  fontWeight: FontWeight.w400),
-            ),
-          ],
-        ),
-        elevation: 0,
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: <Color>[
-                Colors.blue,
-                Colors.indigo
-              ])),
-        ),
+     appBar: CalendarAppBar(
+        // white: Colors.black,
+        // black: Colors.red,
+        // accent: Colors.green,
+        // white: Colors.blueAccent,
+        selectedDate: DateTime.now(),
+        backButton: false,
+        onDateChanged: (value)  {
+          controller.selectedDate = value;
+          print(value);},
+        firstDate: DateTime.now().subtract(Duration(days: 140)),
+        lastDate: DateTime.now(),
+
       ),
+
+      // appBar: AppBar(
+      //   centerTitle: true,
+      //   title: Row(
+      //     // crossAxisAlignment: CrossAxisAlignment.center,
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     children: [
+      //       Text(
+      //         '',
+      //         style: TextStyle(
+      //             color: Colors.white,
+      //             fontSize: Get.height * 0.030,
+      //             fontWeight: FontWeight.w400),
+      //       ),
+      //     ],
+      //   ),
+      //   elevation: 0,
+      //   flexibleSpace: Container(
+      //     decoration: BoxDecoration(
+      //         gradient: LinearGradient(
+      //             begin: Alignment.topLeft,
+      //             end: Alignment.bottomRight,
+      //             colors: <Color>[
+      //           Colors.blue,
+      //           Colors.indigo
+      //         ])),
+      //   ),
+      // ),
       body: SafeArea(
         child: Container(
           child: Column(

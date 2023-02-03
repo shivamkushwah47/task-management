@@ -19,6 +19,16 @@ class TeamView extends GetView<TeamController> {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
+              decoration:  BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
+                      colors: <Color>[
+                        Colors.indigo,
+                        Colors.blue
+                      ]
+                  )
+              ),
               accountName: Text(FireBase.userInfo['name']),
               accountEmail: Text(FireBase.userInfo['email']),
               currentAccountPicture: CircleAvatar(
@@ -110,7 +120,8 @@ class TeamView extends GetView<TeamController> {
                 Positioned(
                   top: Get.height * .28,
                   width: Get.width * 1,
-                  height: Get.height * .690,
+                  height: Get.height * .63,
+
                   child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(

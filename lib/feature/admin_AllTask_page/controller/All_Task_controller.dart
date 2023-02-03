@@ -6,7 +6,9 @@ import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 
 class AllTaskController extends GetxController {
+
   static var selectedDate= "".obs;
+
 
   static var currDate = DateTime.now();
   var date = '${currDate.year}-${currDate.month}-${currDate.day}';
