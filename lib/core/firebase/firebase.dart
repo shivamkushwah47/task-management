@@ -236,7 +236,9 @@ class FireBase {
   static Future createTask(
       context, title, desc, asignee, priority, summarry) async {
     var id = DateTime.now().millisecondsSinceEpoch.toString();
+    var currDate = DateTime.now();
 
+    String date = '${currDate.day}-${currDate.month}-${currDate.year}';
     Map<String, dynamic> CreateTaskData = {
       "title": title,
       "description": desc,
@@ -245,7 +247,7 @@ class FireBase {
       "summary": summarry,
       'id': id,
       'report': userInfo["name"],
-      'createDate': DateTime.now(),
+      'createDate': date,
     };
     var id2 = DateTime.now().millisecondsSinceEpoch.toString();
 

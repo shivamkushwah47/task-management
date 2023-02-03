@@ -156,7 +156,7 @@ class HomePageView extends GetView<HomePageController> {
                                 mainAxisAlignment:
                                 MainAxisAlignment.center,
                                 children: [
-                                  Text("In Progress Task",
+                                  Text("Progress Task",
                                       style: TextStyle(
                                           fontSize: Get.height * 0.025,
                                           fontWeight: FontWeight.bold,

@@ -11,6 +11,7 @@ class LoginView extends GetView<LoginController> {
     // TODO: implement build
 
     return Scaffold(
+
       resizeToAvoidBottomInset: false,
       body: GestureDetector(
         onTap: () => Get.focusScope!.unfocus(),

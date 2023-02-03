@@ -6,11 +6,13 @@ import 'package:visiter_app/Core/routes.dart';
 import 'package:visiter_app/core/firebase/firebase.dart';
 
 class AllTaskController extends GetxController {
-  var selectedDate;
+  static var selectedDate= "".obs;
 
+  static var currDate = DateTime.now();
+  var date = '${currDate.year}-${currDate.month}-${currDate.day}';
 
   Stream<QuerySnapshot<Map<String, dynamic>>> allTaskSnapshota =  FirebaseFirestore.instance
-      .collection("mytask/mytask/alltask")
+      .collection("mytask/mytask/alltask").where("createDate",isEqualTo: "31-1-2023")
       .snapshots();
   Stream<QuerySnapshot<Map<String, dynamic>>> allTaskSnapshotu = FirebaseFirestore.instance
       .collection("mytask/mytask/alltask").where("asignee", isEqualTo:FireBase.userInfo['name'])

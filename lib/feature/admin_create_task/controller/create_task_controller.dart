@@ -42,9 +42,8 @@ class CreateTaskController extends GetxController {
     print("inside function");
   }
 
-
   deleteUser(id, context) {
-    print('id is'+ id);
+    print('id is' + id);
     AwesomeDialog(
       context: context,
       title: 'Warning',
@@ -57,7 +56,7 @@ class CreateTaskController extends GetxController {
     ).show();
   }
 
-  Logout()async{
+  Logout() async {
     final pref = await SharedPreferences.getInstance();
     await pref.clear().then((value) {
       Get.offAllNamed(Routes.login);
@@ -137,31 +136,32 @@ class CreateTaskController extends GetxController {
       } else {
         Get.back();
         await sendTo().then((value) => {
-        FireBase.createTask(
-        context,
-        titlecontroller.text,
-        desccontroller.text,
-        selecteduser,
-        selectedPriority,
-        summarycontroller.text)
-            .then((value) => {
-        FireBase.sendNotification(sendToInfo)
+              FireBase.createTask(
+                      context,
+                      titlecontroller.text,
+                      desccontroller.text,
+                      selecteduser,
+                      selectedPriority,
+                      summarycontroller.text)
+                  .then((value) => {
+                        FireBase.sendNotification(sendToInfo)
 
-        // FireBase.userInfo["name"]!=selecteduser?
-        // FireBase.sendNotification(sendToInfo[0]):null
-        }).then((value) => {sendToInfo.clear(),
-          titlecontroller.clear(),
-          desccontroller.clear(),
-          summarycontroller.clear(),
-        })
-        });
-
-
+                        // FireBase.userInfo["name"]!=selecteduser?
+                        // FireBase.sendNotification(sendToInfo[0]):null
+                      })
+                  .then((value) => {
+                        sendToInfo.clear(),
+                        titlecontroller.clear(),
+                        desccontroller.clear(),
+                        summarycontroller.clear(),
+                      })
+            });
       }
     }
   }
 
   var sendToInfo = [];
+
   Future sendTo() {
     print("this is selected user $selecteduser");
     return FirebaseFirestore.instance
@@ -173,19 +173,17 @@ class CreateTaskController extends GetxController {
         if (e['name'] == selecteduser) {
           sendToInfo.add(
             e['name'],
-          );sendToInfo.add(
+          );
+          sendToInfo.add(
             e['email'],
-          );sendToInfo.add(
+          );
+          sendToInfo.add(
             e['pushToken'],
           );
           print(sendToInfo);
         }
       }
-
     });
-
-
-
   }
 
 //end

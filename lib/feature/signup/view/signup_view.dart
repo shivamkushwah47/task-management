@@ -125,34 +125,6 @@ class SignupView extends GetView<SignupController> {
                                               controller.isSignupValid(
                                                   value, 'Enter phone'),
                                         ),
-
-                                        // IntlPhoneField(
-                                        //   decoration: const InputDecoration(
-                                        //     enabledBorder: OutlineInputBorder(
-                                        //       borderSide: BorderSide(
-                                        //           width: 2,
-                                        //           color: Colors.indigoAccent),
-                                        //     ),
-                                        //     counterText: '',
-                                        //     hintText: 'Phone Number',
-                                        //     focusedBorder: OutlineInputBorder(
-                                        //       borderSide: BorderSide(
-                                        //           width: 2,
-                                        //           color: Colors.indigoAccent),
-                                        //     ),
-                                        //   ),
-                                        //   controller:
-                                        //       SignupController.phoneController,
-                                        //   initialCountryCode: 'IN',
-                                        //   onChanged: (phone) {
-                                        //     print(phone.completeNumber);
-                                        //     controller.phonevalue =
-                                        //         phone.toString();
-                                        //   },
-                                        //   validator: (value) =>
-                                        //       controller.isSignupValid(
-                                        //           value, 'Enter phone'),
-                                        // ),
                                         SizedBox(
                                           height: Get.height * 0.07,
                                         ),
