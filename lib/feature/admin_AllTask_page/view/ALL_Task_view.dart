@@ -61,21 +61,6 @@ class AllTaskView extends GetView<AllTaskController> {
           ],
         ),
       ),
-     appBar: CalendarAppBar(
-        // white: Colors.black,
-        // black: Colors.red,
-        // accent: Colors.green,
-        // white: Colors.blueAccent,
-        selectedDate: DateTime.now(),
-        backButton: false,
-        onDateChanged: (value)  {
-          controller.selectedDate = value;
-          print(value);},
-        firstDate: DateTime.now().subtract(Duration(days: 140)),
-        lastDate: DateTime.now(),
-
-      ),
-
       // appBar: AppBar(
       //   centerTitle: true,
       //   title: Row(
@@ -115,7 +100,7 @@ class AllTaskView extends GetView<AllTaskController> {
                 selectedDate: DateTime.now(),
                 backButton: false,
                 onDateChanged: (value)  {
-                  AllTaskController.selectedDate.value = value.toString();
+                  controller.selectedDate = value;
                   print(value);
                   },
                 firstDate: DateTime.now().subtract(Duration(days: 140)),
@@ -153,7 +138,6 @@ class AllTaskView extends GetView<AllTaskController> {
                   if (snapshot.connectionState == ConnectionState.active) {
                     if (snapshot.hasData && snapshot.data != null) {
                       print("AllTaskController.selectedDate");
-                      print(AllTaskController.selectedDate);
                       return Expanded(
                         child: ListView.builder(
                             itemCount: snapshot.data!.docs.length,
